@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #352b2b;
+    color: white; 
+}
+div#conMenu{
+    width: 75%;
+    float: right;
+}
+
+div#sinMenu{
+    width: 100%;
+}
+div#menu{
+    width: 20%;
+    float: left;
+}
+div#navbar{
+    padding-top: 5px;
+    width: 80%;
+    float: left;
+    font-size: larger;
+    padding-right: 10%;
+}
+div#izq{
+    width: 50%;
+    float: left;
+    padding-left: 10%;
+}
+div#der{
+    width: 50%;
+    float: right;
+}
+h1{
+    text-align: center;
+}
