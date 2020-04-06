@@ -16,7 +16,6 @@ import { SubirAlbumComponent } from './components/subir-album/subir-album.compon
 import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
 import { SubirAlbum2Component } from './components/subir-album2/subir-album2.component';
-import { InicioComponent } from './components/inicio/inicio.component';
 
 
 @NgModule({
@@ -32,8 +31,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     SubirAlbumComponent,
     BibliotecaComponent,
     SubirAlbum1Component,
-    SubirAlbum2Component,
-    InicioComponent
+    SubirAlbum2Component
   ],
   imports: [
     BrowserModule,

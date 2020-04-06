@@ -1,8 +1,8 @@
-export class cancion {
+export class lista {
     constructor(
         public _id: string,
-        public genero: string,
+        public foto: string,
         public nombre: string,
-        public mp3: string
+        public fecha: string
     ){}
 }

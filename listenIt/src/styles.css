@@ -27,8 +27,12 @@ div#izq{
     padding-left: 10%;
 }
 div#der{
-    width: 50%;
+    width: 40%;
     float: right;
+    background-color: #453b3b;
+    margin-right: 10%;
+    padding-bottom: 2%;
+    padding-left: 4%;
 }
 h1{
     text-align: center;
