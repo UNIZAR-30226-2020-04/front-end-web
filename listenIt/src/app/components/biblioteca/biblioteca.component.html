@@ -4,22 +4,12 @@
 		<app-sidebar></app-sidebar>
 	</div>
 	<div class="col-sm-6 bg-dark">
-		<nav class="navbar navbar-expand">
-		  <ul class="navbar-nav">
-		    <li class="nav-item">
-		      <a class="nav-link" (click)="select = 1">Playlists</a>
-		    </li>
-		    <li class="nav-item">
-		      <a class="nav-link" (click)="select = 2">Artistas</a>
-		    </li>
-		    <li class="nav-item">
-		      <a class="nav-link" (click)="select = 3">Álbumes</a>
-		    </li>
-		    <li class="nav-item">
-		      <a class="nav-link" (click)="select = 4">Podcasts</a>
-		    </li>
-		  </ul>
-		</nav>
+		 <div class="btn-group">
+		  <button type="button" (click)="select = 1" class="btn btn-outline-secondary text-light">Playlists</button>
+		  <button type="button" (click)="select = 2" class="btn btn-outline-secondary text-light">Artistas</button>
+		  <button type="button" (click)="select = 3" class="btn btn-outline-secondary text-light">Álbumes</button>
+		  <button type="button" (click)="select = 4" class="btn btn-outline-secondary text-light">Podcasts</button>
+		</div> 
 		<div class="container">
 			<div *ngIf="select == 1">
 				<p>Mis playlists</p>
