@@ -5,11 +5,13 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SubirAlbumComponent } from './components/subir-album/subir-album.component';
-
+import { InicioComponent } from './components/inicio/inicio.component';
+import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
 
 const routes: Routes = [
-  { path: 'Inicio', component: LoginComponent },
-  { path: 'Biblioteca', component: RegistroComponent },
+  { path: '', component: InicioComponent},
+  { path: 'Inicio', component: InicioComponent },
+  { path: 'Biblioteca', component: BibliotecaComponent },
   { path: 'Buscar', component: NavbarComponent },
   { path: 'Seguidos', component: UsuarioComponent },
   { path: 'Login', component: LoginComponent },

@@ -1,1 +1,39 @@
-<p>biblioteca works!</p>
+
+<div class="row">
+	<div class="col-sm-2">
+		<app-sidebar></app-sidebar>
+	</div>
+	<div class="col-sm-6 bg-dark">
+		<nav class="navbar navbar-expand">
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" (click)="select = 1">Playlists</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" (click)="select = 2">Artistas</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" (click)="select = 3">Álbumes</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" (click)="select = 4">Podcasts</a>
+		    </li>
+		  </ul>
+		</nav>
+		<div class="container">
+			<div *ngIf="select == 1">
+				<p>Mis playlists</p>
+			</div>
+			<div *ngIf="select == 2">
+				<p>Mis artistas</p>
+			</div>
+			<div *ngIf="select == 3">
+				<p>Mis álbumes</p>
+			</div>
+			<div *ngIf="select == 4">
+				<p>Mis podcasts</p>
+			</div>
+		</div>
+	</div>
+</div>
+

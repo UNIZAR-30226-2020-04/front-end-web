@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BibliotecaComponent implements OnInit {
 
+	public select = 1;
+
   constructor() { }
 
   ngOnInit(): void {
