@@ -1,29 +1,38 @@
 <div id="izq">
     <div class="col-lg-8">
-        <form class="col-lg-16">
-            <p>
-                <label>Nombre del álbum:</label>
-                <input type="text" name="nombre" class="form-control" required />
-            </p>
-            <p>
-                <label>Imagen del álbum:</label>
-                <img src="assets/plus-circular-button.png" width=50px height=50px padding-left=50px>
-            </p>
-            <input type="submit" value="SUBIR ÁLBUM" class="btn btn-success" />
-        </form> 
-        <br/>
-        <br/>
-        <form class="col-lg-16">
+        <form #subirCancion="ngForm" (ngSubmit)="onSubmit2()" class="col-lg-16">
             <p>
                 <label>Nombre de la canción:</label>
-                <input type="text" name="nombreC" class="form-control" required />
+                <input type="text" name="nombreC" #name="ngModel" class="form-control" [(ngModel)]="cancion.nombre" required />
             </p>
             <p>
                 <label>Subir canción:</label>
-                <img src="assets/plus-circular-button.png" width=50px height=50px padding-left=50px>
-                
+                <input type="file" placeholder="Subir canción..."  />
             </p>
-            <input type="submit" value="AÑADIR" class="btn btn-success" />
+            <p>
+                <label>Género:</label>
+                <input type="text" name="genero" #genero="ngModel" class="form-control" [(ngModel)]="cancion.genero" required />
+            </p>
+            <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!subirCancion.form.valid"/>
+        </form> 
+        <br/>
+        <br/>
+        <form #subirAlbum="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16">
+            <p>
+                <label>Nombre del álbum:</label>
+                <input type="text" name="nombre" #name="ngModel" class="form-control" [(ngModel)]="album.nombre" required />
+                <span *ngIf="!name.valid && name.touched" >El nombre es obligatorio.</span>
+            </p>
+            <p>
+                <label>Imagen del álbum:</label>
+                <br/>
+                <input type="file" placeholder="Subir foto..."/>
+            </p>
+            <p>
+                <label>Fecha:</label>
+                <input type="date" name="fecha" #fecha="ngModel" class="form-control" [(ngModel)]="album.fecha" required />
+            </p>
+            <input type="submit" value="SUBIR ÁLBUM" class="btn btn-success" [disabled]="!subirAlbum.form.valid" />
         </form> 
     </div>
 </div>

@@ -30,5 +30,12 @@ export class SubirAlbum1Component implements OnInit {
   ngOnInit(): void {
     console.log('subir-album1.component.ts cargado');
   }
+  onSubmit2(){
+    console.log(this.cancion);
+  }
+
+  onSubmit(){
+    console.log(this.album);
+  }
 
 }
