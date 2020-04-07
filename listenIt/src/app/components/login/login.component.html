@@ -2,14 +2,21 @@
     <div class="col-lg-8">
         <h1 class="h1-strong">{{title}}</h1>
         <br/>
-        <form class="col-lg-16">
+        <div class="alert alert-success" *ngIf="status == 'success'">
+            Bienvenido a ListenIt!
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+            Error al iniciar sesión, datos incorrectos.
+        </div>
+        <form #loginForn="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16">
             <p>
                 <label>Correo:</label>
-                <input type="email" name="correo" class="form-control" required />
+                <input type="email" #email="ngModel" name="correo" [(ngModel)]="usuario.correo" class="form-control" required />
+                <span *ngIf="!email.valid && email.touched" >El correo no es válido</span>
             </p>
             <p>
                 <label>Contraseña:</label>
-                <input type="password" name="pass" class="form-control" required />
+                <input type="password" #pass="ngModel" name="pass" [(ngModel)]="usuario.contrasena" class="form-control" required />
             </p>
             <input type="submit" value="INICIAR SESIÓN" class="btn btn-success" />
         </form> 
