@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-subir-album2',
-  templateUrl: './subir-album2.component.html'
+  selector: 'app-crear-playlist2',
+  templateUrl: './crear-playlist2.component.html'
 })
-export class SubirAlbum2Component implements OnInit {
+export class CrearPlaylist2Component implements OnInit {
 
   constructor() { }
 
