@@ -1,11 +1,13 @@
-<div class="container">
+<div id="reprod" class="container fixed-bottom">
 	<div class="row">
 		<div id="cancion" class="col-sm-2">
 			<h1>Una cancion</h1>
 		</div>
 
-		<div id="reprod" class="col-sm-8">
-			<h1>Reproductor</h1>
+		<div id="player" class="col-sm-8">
+		    <mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted"
+		    [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msbapDisplayVolumeControls">
+		    </mat-basic-audio-player>
 		</div>
 
 		<div id="listAct" class="col-sm-2">

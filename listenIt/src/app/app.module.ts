@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -37,6 +39,8 @@ import { SubirAlbum2Component } from './components/subir-album2/subir-album2.com
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    NgxAudioPlayerModule,
     AppRoutingModule, 
     SidebarModule.forRoot(),
     NgbModule,

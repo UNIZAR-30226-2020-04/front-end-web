@@ -8,13 +8,13 @@ import { BibliotecaComponent } from './components/biblioteca/biblioteca.componen
 
 
 const routes: Routes = [
+  {path: '', component: BibliotecaComponent},
   { path: 'Inicio', component: LoginComponent },
   { path: 'Biblioteca', component: BibliotecaComponent },
   { path: 'Buscar', component: NavbarComponent },
   { path: 'Seguidos', component: UsuarioComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Registro', component: RegistroComponent },
-  //{ path: 'SubirAlbum', component: SubirAlbumComponent }
 ];
 
 @NgModule({
