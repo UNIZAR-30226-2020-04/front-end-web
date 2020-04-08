@@ -26,6 +26,9 @@ import { CrearPlaylist2Component } from './components/crear-playlist2/crear-play
 import { SubirAlbumComponent } from './components/subir-album/subir-album.component';
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
 import { SubirAlbum2Component } from './components/subir-album2/subir-album2.component';
+import { VerAlbumComponent } from './components/ver-album/ver-album.component';
+import { VerPlaylistComponent } from './components/ver-playlist/ver-playlist.component';
+import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
 
 
 
@@ -47,7 +50,10 @@ import { SubirAlbum2Component } from './components/subir-album2/subir-album2.com
     CrearPlaylistComponent,
     CrearPlaylist1Component,
     CrearPlaylist2Component,
-    PrincipalComponent
+    PrincipalComponent,
+    VerAlbumComponent,
+    VerPlaylistComponent,
+    VerUsuarioComponent
   ],
   imports: [
     BrowserModule,
