@@ -15,6 +15,7 @@ export class UsuarioComponent implements OnInit {
   public status: string;
   public identity;
   public token;
+  public filesToUpload: Array<File>;
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -51,12 +52,10 @@ export class UsuarioComponent implements OnInit {
   ); 
   }
 
-  public filesToUpload: Array<File>;
 
   //recoge del input la imagen
   fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>>fileInput.target.files;
-
   }
 
   makeFileRequest(url: string, params: Array<string>, files: Array<File>){
