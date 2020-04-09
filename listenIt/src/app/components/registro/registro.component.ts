@@ -28,11 +28,11 @@ export class RegistroComponent implements OnInit {
   onSubmit() {
     this._userService.register(this.usuario).subscribe(
       response => {
-        let usuario = response.usuario;
-        this.usuario = usuario;
-        if (usuario != "undefined") {
+        if (response) {
             this.status = 'success';
-            this.usuario= new usuario("","","","","","");
+            this.usuario = response;
+            localStorage.setItem('identity', JSON.stringify(this.usuario));
+            localStorage.setItem('token', this.usuario.correo);
             this._router.navigate[('/Inicio')];
         } else {
             this.status = 'error';

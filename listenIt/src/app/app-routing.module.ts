@@ -14,7 +14,7 @@ import { VerPlaylistComponent } from './components/ver-playlist/ver-playlist.com
 import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
 
 const routes: Routes = [
-  { path: '', component: PrincipalComponent },
+  { path: '', component: LoginComponent },
   { path: 'Inicio', component: InicioComponent },
   { path: 'Principal', component: PrincipalComponent },
   { path: 'Biblioteca', component: BibliotecaComponent },

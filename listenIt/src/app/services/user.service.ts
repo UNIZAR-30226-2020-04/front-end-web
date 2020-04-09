@@ -16,20 +16,17 @@ export class UserService {
 	constructor(public _http: HttpClient) { 
 		this.url = GLOBAL.url;
 	}
-	signup(user, gettoken = null): Observable<any> {
-        if (gettoken != null) {
-            user.gettoken = gettoken;
-        }
+	signup(user): Observable<any> {
         let params = JSON.stringify(user);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-		return this._http.post(this.url + 'login', params, {headers: headers});
+		return this._http.post(this.url + 'loginUser', params, {headers: headers});
 	}
 
 	register(user: usuario): Observable<any> {
         let params = JSON.stringify(user);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'register', params, {headers: headers});
+        return this._http.post(this.url + 'registerUser', params, {headers: headers});
 	}
 	
 	update(user: usuario): Observable<any> {
