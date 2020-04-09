@@ -17,6 +17,12 @@
         </form> 
         <br/>
         <br/>
+        <div class="alert alert-success" *ngIf="status == 'success'">
+            SU álbum ha sido creado!
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+            Error al crear álbum.
+        </div>
         <form #subirAlbum="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16">
             <p>
                 <label>Nombre del álbum:</label>
