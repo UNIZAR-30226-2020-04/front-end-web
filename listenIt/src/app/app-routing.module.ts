@@ -9,7 +9,9 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { CrearPlaylistComponent } from './components/crear-playlist/crear-playlist.component';
 import { SubirAlbumComponent } from './components/subir-album/subir-album.component';
-
+import { VerAlbumComponent } from './components/ver-album/ver-album.component';
+import { VerPlaylistComponent } from './components/ver-playlist/ver-playlist.component';
+import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
 
 const routes: Routes = [
   { path: '', component: PrincipalComponent },
@@ -22,7 +24,10 @@ const routes: Routes = [
   { path: 'Registro', component: RegistroComponent },
   { path: 'modificar', component: UsuarioComponent },
   { path: 'crearPlay', component: CrearPlaylistComponent },
-  { path: 'subirAlb', component: SubirAlbumComponent }
+  { path: 'subirAlb', component: SubirAlbumComponent },
+  { path: 'verAlbum', component: VerAlbumComponent },
+  { path: 'verPlaylist', component: VerPlaylistComponent },
+  { path: 'verUser', component: VerUsuarioComponent }
 ];
 
 @NgModule({

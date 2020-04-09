@@ -1,1 +1,59 @@
-<p>ver-usuario works!</p>
+<div class="row">
+	<div class="col-sm-3">
+		<app-sidebar></app-sidebar>
+	</div>
+	<div class="col-sm-7">
+		<div class="container">
+			<h2>Sus álbumes...</h2>
+				<ul class="list-inline">
+					<li class="list-inline-item">
+						<a class="text-light" href="/verAlbum">
+							<div class="container text-center">
+									<h2><i class="fas fa-heart"></i></h2>
+									<h2>album</h2>
+							</div>
+						</a>
+					</li>
+				</ul>
+			<h2>Sus podcast...</h2>
+				<ul class="list-inline">
+					<li class="list-inline-item">
+						<a class="text-light" href="#">
+							<div class="container text-center">
+									<h2><i class="fas fa-heart"></i></h2>
+									<h2>podcast</h2>
+							</div>
+						</a>
+					</li>
+				</ul>
+			<h2>Sus playlist...</h2>
+				<ul class="list-inline">
+					<li class="list-inline-item">
+						<a class="text-light" href="/verPlaylist">
+							<div class="container text-center">
+									<h2><i class="fas fa-heart"></i></h2>
+									<h2>playlist</h2>
+							</div>
+						</a>
+					</li>
+				</ul>
+		</div>
+		<div class="container">
+			<h2>Tus playlist</h2>
+
+
+		</div>
+
+	</div>
+	<div class="col-sm-2 text-center">
+		<i class="fas fa-user fa-7x"></i>
+		<h4>NombreUsuario</h4>
+		<h4>emailUsuario</h4>
+		<button type="button" class="btn btn-dark">Seguir</button>
+	</div>
+
+</div>
+
+<nav class="container fixed-bottom navbar-dark bg-dark">
+  <app-reproductor></app-reproductor>
+</nav>
