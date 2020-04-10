@@ -29,7 +29,7 @@ export class SongService{
 		let headers = new HttpHeaders()
 		.set('Content-Type', 'application/json');
 
-		return this._http.post(this.url+ 'uploadSong', cancion, {headers: headers});
+		return this._http.post(this.url+ 'uploadSong', params, {headers: headers});
 	}
 	  
 
