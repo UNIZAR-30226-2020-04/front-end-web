@@ -27,7 +27,7 @@ export class UserService {
 		let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
         console.log(data);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'registerUser', user, {headers: headers});
+        return this._http.post(this.url + 'registerUser', data, {headers: headers});
 	}
 	
 	update(user: usuario): Observable<any> {

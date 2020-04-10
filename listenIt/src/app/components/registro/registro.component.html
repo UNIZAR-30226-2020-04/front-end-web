@@ -6,7 +6,7 @@
             Ya estás registrado! Bienvenido!
         </div>
         <div class="alert alert-danger" *ngIf="status == 'error'">
-            Error al registrarse. Este usuario no existe.
+            Error al registrarse. Este usuario ya existe.
         </div>
         <form #RegistroForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16">
             <p>

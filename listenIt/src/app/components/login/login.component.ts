@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this._userService.signup(this.usuario).subscribe(
       response => {
-        if (response.correo == "") {
+        if (response.correo == null) {
           this.status = 'error';
         }
         else {
