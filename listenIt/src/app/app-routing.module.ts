@@ -15,7 +15,6 @@ import { SubirAlbum1Component } from './components/subir-album1/subir-album1.com
 import { AddSongComponent } from './components/add-song/add-song.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
   { path: 'Inicio', component: InicioComponent },
   { path: 'Principal', component: PrincipalComponent },
   { path: 'Biblioteca', component: BibliotecaComponent },

@@ -14,7 +14,7 @@ import { GLOBAL } from '../../services/global';
   styleUrls: ['./add-song.component.css']
 })
 export class AddSongComponent implements OnInit {
-  public prueba;
+  public prueba: File;
   public album: album;
   public usuario: usuario;
   public identity;
