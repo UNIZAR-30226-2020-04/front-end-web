@@ -23,13 +23,13 @@ export class SongService{
 		return this._http.get(this.url+'cancion/'+id, {headers: headers})
 	}
 
-	addSong(token, cancion: cancion) : Observable<any> {
+	addSong(cancion) : Observable<any> {
+		console.log(cancion);
     	let params = JSON.stringify(cancion);
 		let headers = new HttpHeaders()
-		.set('Content-Type', 'application/json')
-		.set('Authorization', token);
+		.set('Content-Type', 'application/json');
 
-		return this._http.post(this.url+ 'cancion', params, {headers: headers});
+		return this._http.post(this.url+ 'uploadSong', cancion, {headers: headers});
 	}
 	  
 
