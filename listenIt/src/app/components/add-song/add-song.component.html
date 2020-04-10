@@ -1,0 +1,70 @@
+<h1 class="h1-strong">{{title}}</h1>
+<br/>
+<div id="izq" class="col-lg-8">
+    <form #subirCancion="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16">
+        <p>
+            <label>Nombre de la canción:</label>
+            <input type="text" name="nombreC" #name="ngModel" class="form-control" [(ngModel)]="cancion.nombre" required />
+        </p>
+        <p>
+            <label>Género:</label>
+            <input type="text" name="genero" #genero="ngModel" class="form-control" [(ngModel)]="cancion.genero" required />
+        </p>
+
+        <div class="song_file_for_edit" *ngIf="cancion.mp3 && cancion.mp3 != 'null' ">
+            <audio controls>
+                <source src="{{ url + 'get-cancion-mp3/' + cancion.mp3 }}" type="audio/mpeg" />
+                    El navegador web no soporta la reproducción de audio
+            </audio>
+        </div>
+
+        <p>
+            <label> Subir canción:</label>
+            <input type="file" placeholder="Subir fichero..." (change)="fileChangeEvent($event)" />
+        </p>
+
+        <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!subirCancion.form.valid"/>
+    </form> 
+<br/>
+    <app-salir></app-salir>
+</div>
+
+
+<div id="izq" class="col-sm-9">
+    <div class="container">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Duración</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-music"></i></td>
+                    <td>titulo canción</td>
+                    <td>duración de la canción</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-music"></i></td>
+                    <td >{{cancion.nombre}}</td>
+                    <td>duración de la canción</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-music"></i></td>
+                    <td>titulo canción</td>
+                    <td>duración de la canción</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-music"></i></td>
+                    <td>titulo canción</td>
+                    <td>duración de la canción</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

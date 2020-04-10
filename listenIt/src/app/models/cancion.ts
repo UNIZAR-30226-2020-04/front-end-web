@@ -6,6 +6,7 @@ export class cancion {
         public genero: string,
         public nombre: string,
         public mp3: string,
-        public autor: string
+        public autor: string,
+        public album: string
     ){}
 }

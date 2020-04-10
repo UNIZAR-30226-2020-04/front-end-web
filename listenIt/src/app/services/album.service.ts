@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Response, Headers, RequestOptions } from '@angular/http';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-//import { Observable } from 'rxjs/Observable'; 
 import { GLOBAL } from './global';
 import { album } from '../models/album';
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

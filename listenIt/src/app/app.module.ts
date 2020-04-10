@@ -9,6 +9,8 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { SongService } from './services/song.service';
+
 import { InicioComponent } from './components/inicio/inicio.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { LoginComponent } from './components/login/login.component';
@@ -23,12 +25,16 @@ import { ReproductorComponent } from './components/reproductor/reproductor.compo
 import { CrearPlaylistComponent } from './components/crear-playlist/crear-playlist.component';
 import { CrearPlaylist1Component } from './components/crear-playlist1/crear-playlist1.component';
 import { CrearPlaylist2Component } from './components/crear-playlist2/crear-playlist2.component';
-import { SubirAlbumComponent } from './components/subir-album/subir-album.component';
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
-import { SubirAlbum2Component } from './components/subir-album2/subir-album2.component';
 import { VerAlbumComponent } from './components/ver-album/ver-album.component';
 import { VerPlaylistComponent } from './components/ver-playlist/ver-playlist.component';
 import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
+import { AddSongComponent } from './components/add-song/add-song.component';
+import { DelAlbumComponent } from './components/del-album/del-album.component';
+import { DelPlaylistComponent } from './components/del-playlist/del-playlist.component';
+import { DelPodcastComponent } from './components/del-podcast/del-podcast.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { SalirComponent } from './components/salir/salir.component';
 
 
 
@@ -44,16 +50,20 @@ import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.compon
     ReproductorComponent,
     UsuarioComponent,
     BibliotecaComponent,
-    SubirAlbumComponent,
     SubirAlbum1Component,
-    SubirAlbum2Component,
     CrearPlaylistComponent,
     CrearPlaylist1Component,
     CrearPlaylist2Component,
     PrincipalComponent,
     VerAlbumComponent,
     VerPlaylistComponent,
-    VerUsuarioComponent
+    VerUsuarioComponent,
+    AddSongComponent,
+    DelAlbumComponent,
+    DelPlaylistComponent,
+    DelPodcastComponent,
+    LogoutComponent,
+    SalirComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +75,7 @@ import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.compon
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [SongService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

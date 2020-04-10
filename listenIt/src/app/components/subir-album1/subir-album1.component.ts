@@ -22,6 +22,7 @@ export class SubirAlbum1Component implements OnInit {
   public url;
   public status: string;
   public filesToUpload: Array<File>;
+  public title;
   
   constructor(
     private _route: ActivatedRoute,
@@ -31,10 +32,11 @@ export class SubirAlbum1Component implements OnInit {
     //private _artistService: ArtistService
   ) { 
     this.album = new album("","","","","");
-    this.cancion = new cancion("","","","","");
+    this.cancion = new cancion("","","","","","");
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;
+    this.title = "Subir álbum";
    }
 
   ngOnInit(): void {
@@ -57,7 +59,7 @@ export class SubirAlbum1Component implements OnInit {
 						this.alertMessage = '¡El album se ha creado correctamente!';						
             
             
-           /* // Subir la imagen del alblum
+           /* // Subir la imagen del album
 							this.makeFileRequest(this.url+'upload-image-album/'+ id, [], this.filesToUpload, this.token, 'image')
               .then(
                 (result) => {
@@ -66,8 +68,8 @@ export class SubirAlbum1Component implements OnInit {
                   console.log(error);
                 }
               );
-
-              //this._router.navigate(['/', this.album._id]);*/
+            */
+            this._router.navigate(['/subirCanc', this.album._id]);
 					}
 				},
 				error => {
@@ -81,36 +83,8 @@ export class SubirAlbum1Component implements OnInit {
 		});
   }
   
-
-  
   //recoge del input la imagen
   fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>>fileInput.target.files;
   }
-
-  makeFileRequest(url: string, params: Array<string>, files: Array<File>){
-    var token = this.token;
-    return new Promise(function(resolve,reject){
-      var formData: any = new FormData();
-      var xhr = new XMLHttpRequest();
-
-      for (var i=0 ; i < files.length ; i++){
-        formData.append('Image',files[i],files[i].name);
-      }
-      xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4){
-          if(xhr.status == 200){
-            resolve(JSON.parse(xhr.response))
-          }
-          else {
-            reject(xhr.response);
-          }
-        }
-      }
-      xhr.open('POST',url,true);
-      xhr.setRequestHeader('Authorization',token);
-      xhr.send(formData);
-    });
-  }
-
 }
