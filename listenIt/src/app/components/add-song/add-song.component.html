@@ -20,7 +20,7 @@
 
         <p>
             <label> Subir canción:</label>
-            <input type="audio/mpeg" placeholder="Subir fichero..." name="song" #song="ngModel" class="form-control" [(ngModel)]= "prueba" required (change)="fileChangeEvent($event)"/>
+            <input type="file" placeholder="Subir fichero..." name="song" #song="ngModel" class="form-control" [(ngModel)]= "prueba" required (change)="fileChangeEvent($event)"/>
         </p>
 
         <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!subirCancion.form.valid"/>
