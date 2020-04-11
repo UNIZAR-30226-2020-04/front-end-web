@@ -9,25 +9,24 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 })
 export class UserService {
 // Datos personales del usuario.
-
 	public identity;
 	public url: string;
 	public token;
 	
-	constructor(public _http: HttpClient) {
+	constructor(public _http: HttpClient) { 
 		this.url = GLOBAL.url;
 	}
-	signup(user: usuario): Observable<any> {
-		let data = {email: user.correo, password: user.contrasena};
+	signup(user): Observable<any> {
+        let params = JSON.stringify(user);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url + 'loginUser', data, {headers: headers});
+
+		return this._http.post(this.url + 'loginUser', params, {headers: headers});
 	}
 
 	register(user: usuario): Observable<any> {
-		let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
-        console.log(data);
+        let params = JSON.stringify(user);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'registerUser', user, {headers: headers});
+        return this._http.post(this.url + 'registerUser', params, {headers: headers});
 	}
 	
 	update(user: usuario): Observable<any> {

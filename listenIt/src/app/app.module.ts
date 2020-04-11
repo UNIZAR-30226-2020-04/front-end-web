@@ -33,7 +33,6 @@ import { AddSongComponent } from './components/add-song/add-song.component';
 import { DelAlbumComponent } from './components/del-album/del-album.component';
 import { DelPlaylistComponent } from './components/del-playlist/del-playlist.component';
 import { DelPodcastComponent } from './components/del-podcast/del-podcast.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { SalirComponent } from './components/salir/salir.component';
 
 
@@ -62,7 +61,6 @@ import { SalirComponent } from './components/salir/salir.component';
     DelAlbumComponent,
     DelPlaylistComponent,
     DelPodcastComponent,
-    LogoutComponent,
     SalirComponent
   ],
   imports: [

@@ -40,10 +40,6 @@ export class SubirAlbum1Component implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('subir-album1.component.ts cargado');
-  }
-  onSubmit2(){
-    console.log(this.cancion);
   }
 
   onSubmit(){
@@ -54,10 +50,8 @@ export class SubirAlbum1Component implements OnInit {
 			this._albumService.addAlbum(this.token, this.album).subscribe(
 				response => {
 					if(!this.album){
-						this.alertMessage = 'Error en el servidor';
-					}else{
-						this.alertMessage = '¡El album se ha creado correctamente!';						
-            
+						this.status = 'Error';
+					}else{						
             
            /* // Subir la imagen del album
 							this.makeFileRequest(this.url+'upload-image-album/'+ id, [], this.filesToUpload, this.token, 'image')

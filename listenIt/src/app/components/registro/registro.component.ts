@@ -40,6 +40,7 @@ export class RegistroComponent implements OnInit {
     },
     error => {
         console.log(<any>error);
+        this.status = 'error';
     }
   ); }
 }
