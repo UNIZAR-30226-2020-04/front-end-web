@@ -16,28 +16,24 @@ export class UserService {
 	constructor(public _http: HttpClient) { 
 		this.url = GLOBAL.url;
 	}
-	signup(user): Observable<any> {
-        let params = JSON.stringify(user);
+	signup(user: usuario): Observable<any> {
+		let data = {email: user.correo, password: user.contrasena};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-		return this._http.post(this.url + 'loginUser', params, {headers: headers});
+		return this._http.post(this.url + 'loginUser', data, {headers: headers});
 	}
 
 	register(user: usuario): Observable<any> {
-        let params = JSON.stringify(user);
+	let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
+        console.log(data);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-<<<<<<< HEAD
-        return this._http.post(this.url + 'registerUser', params, {headers: headers});
-=======
         return this._http.post(this.url + 'registerUser', data, {headers: headers});
->>>>>>> e6b74a7dfc06117df858ff3f6c409fcb7362a08c
 	}
-	
+
 	update(user: usuario): Observable<any> {
 		let params = JSON.stringify(user);
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
-            .set('Authorization', this.getToken());
         return this._http.put(this.url + 'update-user/' + user.correo, params, {headers: headers});
     }
 	

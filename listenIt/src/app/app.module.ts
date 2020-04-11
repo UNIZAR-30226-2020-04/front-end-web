@@ -62,13 +62,8 @@ import { UploadComponent } from './components/upload/upload.component';
     DelAlbumComponent,
     DelPlaylistComponent,
     DelPodcastComponent,
-<<<<<<< HEAD
-    SalirComponent
-=======
-    LogoutComponent,
     SalirComponent,
     UploadComponent
->>>>>>> e6b74a7dfc06117df858ff3f6c409fcb7362a08c
   ],
   imports: [
     BrowserModule,
