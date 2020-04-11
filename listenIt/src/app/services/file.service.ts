@@ -15,7 +15,6 @@ export class FileService {
 			  reportProgress: true,
 			  responseType: 'text'
 		});
-	
 		return this.http.request(req);
    }
    

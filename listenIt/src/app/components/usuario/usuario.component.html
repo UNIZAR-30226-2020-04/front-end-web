@@ -6,29 +6,24 @@
         <form #RegistroForn="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16" >
             <p>
                 <label>Nombre:</label>
-                <input type="text" name="nombre" #name="ngModel" class="form-control" [(ngModel)]="usuario.nombre" required />
-                <span *ngIf="!name.valid && name.touched" >El nombre es obligatorio.</span>
+                <input type="text" value="{{identity.nombre}}" #name="ngModel" class="form-control" [(ngModel)]="usuario.nombre" required />
             </p>
             <p>
                 <label>Nombre de usuario:</label>
-                <input type="text"  name="nick" #nick="ngModel" class="form-control" [(ngModel)]="usuario.nick" required />
-                <span *ngIf="!nick.valid && nick.touched" >El nombre de usuario es obligatorio.</span>
+                <input type="text" value="{{identity.nick}}" #nick="ngModel" class="form-control" [(ngModel)]="usuario.nick" required />
             </p>
             <p>
                 <label>Correo:</label>
-                <input type="email" #email="ngModel" name="correo" [(ngModel)]="usuario.correo" class="form-control" required />
-                <span *ngIf="!email.valid && email.touched" >El correo no es válido</span>
+                <input type="email" value="{{identity.correo}}" #email="ngModel" [(ngModel)]="usuario.correo" class="form-control" required />
             </p>
-
             <p>
                 <label>Fecha de nacimiento:</label>
-                <input type="datetime" #nacimiento="ngModel" name="fecha" class="form-control" [(ngModel)]="usuario.nacimiento" required />
+                <input type="datetime" value="{{identity.nacimiento}}" #nacimiento="ngModel" class="form-control" [(ngModel)]="usuario.nacimiento" required />
             </p>
 
             <p>
                 <label>Contraseña:</label>
-                <input type="password" name="pass" #pass="ngModel" class="form-control" [(ngModel)]="usuario.contrasena" required />
-                <span *ngIf="!pass.valid && pass.touched" >La contraseña es obligatoria.</span>
+                <input type="password" value="{{identity.contrasena}}" name="pass" #pass="ngModel" class="form-control" [(ngModel)]="usuario.contrasena" required />
             </p>
 
             <div class="image_for_edit" *ngIf="usuario.foto && usuario.foto != 'null' ">

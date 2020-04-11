@@ -11,22 +11,9 @@
             <input type="text" name="genero" #genero="ngModel" class="form-control" [(ngModel)]="cancion.genero" required />
         </p>
 
-        <div class="song_file_for_edit" *ngIf="cancion.mp3 && cancion.mp3 != 'null' ">
-            <audio controls>
-                <source src="{{ url + 'get-cancion-mp3/' + cancion.mp3 }}" type="audio/mpeg" />
-                    El navegador web no soporta la reproducción de audio
-            </audio>
-        </div>
-
-        <p>
-            <label> Subir canción:</label>
-            <input type="file" placeholder="Subir fichero..." (change)="fileChangeEvent($event)"/>
-        </p>
-
         <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!subirCancion.form.valid"/>
     </form> 
 <br/>
-    <app-salir></app-salir>
 </div>
 
 

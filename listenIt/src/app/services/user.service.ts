@@ -25,16 +25,15 @@ export class UserService {
 
 	register(user: usuario): Observable<any> {
 	let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
-        console.log(data);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'registerUser', data, {headers: headers});
 	}
 
 	update(user: usuario): Observable<any> {
-		let params = JSON.stringify(user);
+		let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
-        return this._http.put(this.url + 'update-user/' + user.correo, params, {headers: headers});
+        return this._http.put(this.url + 'updateUser', data, {headers: headers});
     }
 	
 	getIdentity() {

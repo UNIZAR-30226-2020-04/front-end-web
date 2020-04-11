@@ -43,10 +43,6 @@ export class SubirAlbum1Component implements OnInit {
   }
 
   onSubmit(){
-		this._route.params.forEach((params: Params) => {
-			let artist_id = params['artist'];
-      this.album.autor = artist_id;
-
 			this._albumService.addAlbum(this.token, this.album).subscribe(
 				response => {
 					if(!this.album){
@@ -74,7 +70,6 @@ export class SubirAlbum1Component implements OnInit {
           }
       }	
 			);
-		});
   }
   
   //recoge del input la imagen

@@ -23,12 +23,13 @@ export class AlbumService {
     return this._http.post(this.url+ 'createAlbum', data, {headers: headers});
   }
 
-  /*deleteAlbum(token, id: string){
+  deleteAlbum(token, nombreAlbum: string){
+    let data = {email: token, name: nombreAlbum};
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization', token);
 
-		let options = new HttpHeaders({headers: headers});
-		return this._http.delete(this.url+'album/'+id, options);
-	}*/
+    return this._http.delete(this.url+'album/'+ data, {headers: headers});
+    //return this._http.delete(this.url+'album/'+ nombreAlbum, {headers: headers});
+	}
 }
