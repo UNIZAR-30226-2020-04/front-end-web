@@ -34,6 +34,7 @@ import { DelAlbumComponent } from './components/del-album/del-album.component';
 import { DelPlaylistComponent } from './components/del-playlist/del-playlist.component';
 import { DelPodcastComponent } from './components/del-podcast/del-podcast.component';
 import { SalirComponent } from './components/salir/salir.component';
+import { UploadComponent } from './components/upload/upload.component';
 
 
 
@@ -61,7 +62,13 @@ import { SalirComponent } from './components/salir/salir.component';
     DelAlbumComponent,
     DelPlaylistComponent,
     DelPodcastComponent,
+<<<<<<< HEAD
     SalirComponent
+=======
+    LogoutComponent,
+    SalirComponent,
+    UploadComponent
+>>>>>>> e6b74a7dfc06117df858ff3f6c409fcb7362a08c
   ],
   imports: [
     BrowserModule,

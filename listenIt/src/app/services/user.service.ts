@@ -26,7 +26,11 @@ export class UserService {
 	register(user: usuario): Observable<any> {
         let params = JSON.stringify(user);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
+<<<<<<< HEAD
         return this._http.post(this.url + 'registerUser', params, {headers: headers});
+=======
+        return this._http.post(this.url + 'registerUser', data, {headers: headers});
+>>>>>>> e6b74a7dfc06117df858ff3f6c409fcb7362a08c
 	}
 	
 	update(user: usuario): Observable<any> {
