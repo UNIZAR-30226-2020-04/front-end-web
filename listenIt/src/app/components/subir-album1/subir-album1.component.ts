@@ -63,7 +63,7 @@ export class SubirAlbum1Component implements OnInit {
                 }
               );
             */
-            this._router.navigate(['/subirCanc', this.album._id]);
+            this._router.navigate(['/subirCanc']);
 					}
 				},
 				error => {

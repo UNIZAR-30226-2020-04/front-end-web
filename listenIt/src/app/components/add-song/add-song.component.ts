@@ -14,7 +14,7 @@ import { GLOBAL } from '../../services/global';
   styleUrls: ['./add-song.component.css']
 })
 export class AddSongComponent implements OnInit {
-
+  public prueba: File;
   public album: album;
   public usuario: usuario;
   public identity;
@@ -50,7 +50,7 @@ export class AddSongComponent implements OnInit {
 			let album_id = params['album'];
 			this.cancion.album = album_id;
 
-			this._songService.addSong(this.token, this.cancion).subscribe(
+			this._songService.addSong(this.prueba).subscribe(
 				response => {
 					
 					if(!response.cancion){

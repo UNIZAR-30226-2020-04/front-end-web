@@ -11,7 +11,7 @@ export class ReproductorComponent implements OnInit {
 	msbapAudioUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 
 	msbapDisplayTitle = true;
-  	msbapDisplayVolumeControls = true;
+  msbapDisplayVolumeControls = true;
 
 
   constructor() { }

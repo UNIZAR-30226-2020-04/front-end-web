@@ -14,12 +14,14 @@ export class AlbumService {
 	}
 
   addAlbum(token, album: album){
+    let data = {email: token, name: album.nombre, date: album.fecha};
+    console.log(data);
     let params = JSON.stringify(album);
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization', token);
 
-    return this._http.post(this.url+ 'album', params, {headers: headers});
+    return this._http.post(this.url+ 'createAlbum', data, {headers: headers});
   }
 
   /*deleteAlbum(token, id: string){
