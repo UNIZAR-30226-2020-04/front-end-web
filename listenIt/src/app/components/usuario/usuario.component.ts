@@ -15,6 +15,9 @@ export class UsuarioComponent implements OnInit {
   public status: string;
   public identity;
   public token;
+  public myEmail;
+  public myPassA;
+  public myPassB;
   public filesToUpload: Array<File>;
   constructor(
     private _route: ActivatedRoute,
@@ -28,6 +31,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.identity);
   }
 
   onSubmit() {
@@ -40,15 +44,39 @@ export class UsuarioComponent implements OnInit {
             localStorage.setItem('identity', JSON.stringify(this.usuario));
 
         }
-    },
-    error => {
-      console.log(<any> error);
-      var errorMessage = <any> error;
-      if (errorMessage != null) {
-          this.status = 'error';
+      },
+      error => {
+        console.log(<any> error);
+        var errorMessage = <any> error;
+        if (errorMessage != null) {
+            this.status = 'error';
+        }
       }
+    ); 
   }
-  ); 
+
+  // Elimina la cuenta del usuario.
+  delete() {
+    this._userService.deleteAccount(this.myEmail,this.myPassA,this.myPassB).subscribe(
+      response => {
+        if(response) {
+          // Cuenta eliminada.
+          this.status = "success";
+          localStorage.clear();
+          this._router.navigate(['/Login']);
+        }
+        else {
+          this.status = "error";
+        }
+      },
+      error => {
+        console.log(<any> error);
+        var errorMessage = <any> error;
+        if (errorMessage != null) {
+            this.status = 'error';
+        }
+      }
+    );
   }
 
 

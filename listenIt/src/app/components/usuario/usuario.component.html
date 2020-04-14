@@ -1,24 +1,22 @@
 <div id="conMenu" >
     <div class="col-lg-8">
         <h1 class="h1-strong">{{title}}</h1>
-        <br/>
-
         <form #RegistroForn="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16" >
             <p>
                 <label>Nombre:</label>
-                <input type="text" value="{{identity.nombre}}" #name="ngModel" class="form-control" [(ngModel)]="usuario.nombre" required />
+                <input type="text" value="{{identity.nombre}}" name="name" #name="ngModel" class="form-control" [(ngModel)]="usuario.nombre" required />
             </p>
             <p>
                 <label>Nombre de usuario:</label>
-                <input type="text" value="{{identity.nick}}" #nick="ngModel" class="form-control" [(ngModel)]="usuario.nick" required />
+                <input type="text" value="{{identity.nick}}" name="nick" #nick="ngModel" class="form-control" [(ngModel)]="usuario.nick" required />
             </p>
             <p>
                 <label>Correo:</label>
-                <input type="email" value="{{identity.correo}}" #email="ngModel" [(ngModel)]="usuario.correo" class="form-control" required />
+                <input type="email" value="{{identity.correo}}" name="email" #email="ngModel" class="form-control" [(ngModel)]="usuario.correo" required />
             </p>
             <p>
                 <label>Fecha de nacimiento:</label>
-                <input type="datetime" value="{{identity.nacimiento}}" #nacimiento="ngModel" class="form-control" [(ngModel)]="usuario.nacimiento" required />
+                <input type="text" value="{{identity.fNacimiento}}" name="nacimiento" #nacimiento="ngModel" class="form-control" [(ngModel)]="usuario.nacimiento" required />
             </p>
 
             <p>
@@ -32,11 +30,26 @@
             <p>
                 <label>Subir foto de perfil:</label>
                 <br/>
-                <input type="file" placeholder="Subir foto..." (change)="fileChangeEvent($event)" #foto="ngModel" name="fecha" [(ngModel)]="usuario.foto" required />
+                <input type="file" placeholder="Subir foto..." (change)="fileChangeEvent($event)" name="foto" #foto="ngModel" [(ngModel)]="usuario.foto" required />
             </p>
             <input  type="submit" value="GUARDAR CAMBIOS" class="btn btn-success" />
-        </form> 
-        <br/>
+        </form>
+        <h1>Eliminar cuenta</h1>
+        <form #DeleteForn="ngForm" (ngSubmit)="delete()" class="col-lg-16" >
+            <p>
+                <label>Introduzca su correo, por favor:</label>
+                <input type="email" name="email" #email="ngModel" class="form-control" [(ngModel)]="myEmail" required />
+            </p>
+            <p>
+                <label>Introduzca su contraseña, por favor:</label>
+                <input type="password" name="pass" #pass="ngModel" class="form-control" [(ngModel)]="myPassA" required />
+            </p>
+            <p>
+                <label>Vuelva a introducir su contraseña, por favor:</label>
+                <input type="password" name="pass" #pass="ngModel" class="form-control" [(ngModel)]="myPassB" required />
+            </p>
+            <input  type="submit" value="ELIMINAR CUENTA" class="btn btn-danger" />
+        </form>
     </div>
 </div>
 
