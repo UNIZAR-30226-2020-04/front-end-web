@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { usuario } from '../../models/usuario';
 import { album } from '../../models/album';
+import { FileService } from '../../services/file.service';
 import { FilesService } from '../../services/files.service';
 import { UserService } from '../../services/user.service';
 import { SongService } from '../../services/song.service';
@@ -14,7 +15,11 @@ import { GLOBAL } from '../../services/global';
   styleUrls: ['./add-song.component.css']
 })
 export class AddSongComponent implements OnInit {
-  public prueba: File;
+  selectedFiles: FileList;
+  currentFile: File;
+  public msg;
+  public tituloAlbum;
+  public nombreCancion;
   public album: album;
   public usuario: usuario;
   public identity;
@@ -23,7 +28,6 @@ export class AddSongComponent implements OnInit {
   public alertMessage;
   public url;
   public status: string;
-  public filesToUpload: Array<File>;
   public title: string;
   public songs: cancion[];
   
@@ -31,6 +35,7 @@ export class AddSongComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
+    private fileService: FileService,
     private _filesService: FilesService,
     private _songService: SongService
   ) { 
@@ -43,53 +48,36 @@ export class AddSongComponent implements OnInit {
     this.url = GLOBAL.url;
   }
   ngOnInit(){
-    
+    // Titulo del album al que añadir canciones.
+    this.tituloAlbum = localStorage.getItem('album');
   }
 
-  onSubmit(){
-
-		this._route.params.forEach((params: Params) => {
-			let album_id = params['album'];
-			this.cancion.album = album_id;
-
-			this._songService.addSong(this.prueba).subscribe(
-				response => {
-					
-					if(!response.cancion){
-						this.status = 'error';
-					}else{
-						this.cancion = response.cancion;
-           
-            if(!this.filesToUpload){
-							this.status = 'error';
-						}else{
-							// Subir el fichero de audio
-							this._filesService.makeFileRequest(this.url+'upload-file-song/'+album_id, [], this.filesToUpload, this.token)
-								.then(
-									(result) => {
-										this._router.navigate(['/album', response.song.album]);
-									},
-									(error) => {
-										console.log(error);
-									}
-								);
-						}
-					}
-
-				},
-				error => {
-					var errorMessage = <any>error;
-			        if(errorMessage != null){
-			          this.status = 'error';
-			          console.log(error);
-			        }
-				}	
-			);
-		});
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
-  
-  fileChangeEvent(fileInput: any){
-    this.filesToUpload = <Array<File>>fileInput.target.files;
+
+  uploadSong(){
+    this.currentFile = this.selectedFiles.item(0);
+    console.log(this.currentFile);
+    this.fileService.uploadFile(this.token,this.tituloAlbum,this.nombreCancion,this.currentFile).subscribe(
+      response => {
+        if(response) {
+          //Canción añadida correctamente al album.
+          this.status = "success";
+        }
+        else {
+          //Hubo algún problema.
+          this.status = "error";
+        }
+      },
+      error => {
+          console.log(<any> error);
+          var errorMessage = <any> error;
+          if (errorMessage != null) {
+              this.status = 'error';
+          }
+      }
+    );
   }
+
 }
-

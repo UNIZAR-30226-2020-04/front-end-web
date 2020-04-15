@@ -14,13 +14,16 @@ export class UploadComponent implements OnInit {
 
   constructor(private fileService: FileService) { }
 
+  ngOnInit(): void {
+  }
+
   selectFile(event) {
   	this.selectedFiles = event.target.files;
   }
 
   upload() {
   	this.currentFile = this.selectedFiles.item(0);
-  	this.fileService.uploadFile(this.currentFile).subscribe(response => {
+  	this.fileService.uploadFile(this.currentFile,this.currentFile,this.currentFile,this.currentFile).subscribe(response => {
 
   		if (response instanceof HttpResponse) {
   			this.msg = response.body;
@@ -29,7 +32,4 @@ export class UploadComponent implements OnInit {
   	});
   }
 
-  ngOnInit(): void {
-  }
-
-} 
+}

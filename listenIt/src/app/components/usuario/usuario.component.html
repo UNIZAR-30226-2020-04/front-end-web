@@ -19,11 +19,11 @@
             </p>
             <p>
                 <label>Correo:</label>
-                <input type="email" value="{{identity.correo}}" name="correo" #correo="ngModel" class="form-control" [(ngModel)]="usuario.correo" required />
+                <input type="email" value="{{identity.correo}}" name="email" #email="ngModel" class="form-control" [(ngModel)]="usuario.correo" required />
             </p>
             <p>
                 <label>Fecha de nacimiento:</label>
-                <input type="date" name="nacimiento" #nacimiento="ngModel" class="form-control" [(ngModel)]="usuario.nacimiento" required />
+                <input type="text" value="{{identity.fNacimiento}}" name="nacimiento" #nacimiento="ngModel" class="form-control" [(ngModel)]="usuario.nacimiento" required />
             </p>
 
             <p>
@@ -37,11 +37,26 @@
             <p>
                 <label>Subir foto de perfil:</label>
                 <br/>
-                <input type="file" placeholder="Subir foto..." (change)="fileChangeEvent($event)" name="fecha" required />
-            </p>-->
-            <input  type="submit" value="GUARDAR CAMBIOS" class="btn btn-success" [disabled]="!UserForm.form.valid" />
-        </form> 
-        <br/>
+                <input type="file" placeholder="Subir foto..." (change)="fileChangeEvent($event)" name="foto" #foto="ngModel" [(ngModel)]="usuario.foto" required />
+            </p>
+            <input  type="submit" value="GUARDAR CAMBIOS" class="btn btn-success" />
+        </form>
+        <h1>Eliminar cuenta</h1>
+        <form #DeleteForn="ngForm" (ngSubmit)="delete()" class="col-lg-16" >
+            <p>
+                <label>Introduzca su correo, por favor:</label>
+                <input type="email" name="email" #email="ngModel" class="form-control" [(ngModel)]="myEmail" required />
+            </p>
+            <p>
+                <label>Introduzca su contraseña, por favor:</label>
+                <input type="password" name="pass" #pass="ngModel" class="form-control" [(ngModel)]="myPassA" required />
+            </p>
+            <p>
+                <label>Vuelva a introducir su contraseña, por favor:</label>
+                <input type="password" name="pass" #pass="ngModel" class="form-control" [(ngModel)]="myPassB" required />
+            </p>
+            <input  type="submit" value="ELIMINAR CUENTA" class="btn btn-danger" />
+        </form>
     </div>
 </div>
 

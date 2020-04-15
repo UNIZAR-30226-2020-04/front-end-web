@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.usuario= new usuario("","","","","","");
    }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
   }
@@ -35,10 +35,12 @@ export class LoginComponent implements OnInit {
       response => {
         if (response.correo == null) {
           this.status = 'error';
+          console.log(this.status);
         }
         else {
           this.status = 'success';
           this.identity = response;
+          console.log(this.identity);
           localStorage.setItem('identity', JSON.stringify(this.identity));
           localStorage.setItem('token', this.identity.correo);
           this._router.navigate[('/Inicio')];
