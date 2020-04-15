@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlbumService } from '../../services/album.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { album } from '../../models/album';
 
 @Component({
   selector: 'app-del-album',
@@ -12,54 +13,83 @@ export class DelAlbumComponent implements OnInit {
 
   public title: string;
   public selected:Array<number>;
+  public selectedAlbum: string[];
   public status;
   public token;
-  public selectedFiles:Array<string>
+  public albums: album[];
+  public selectedFiles:Array<string>;
 
   constructor(
     private _userService: UserService,
     private _albumService: AlbumService,
     private _router: Router,
     ) { 
-    
-    this.title= "Añadir canciones"
+    this.albums=[new album("","","Entre poetas y presos","","La Raíz"),new album("","","Guerra al silencio","","La Raíz"),new album("","","Bajo la piel","","SFDK")]
+    this.title= "Borrar álbum"
     this.token = this._userService.getToken();
     this.selected= new Array<number>();
-    this.selected[1] = 0;
-    this.selected[2] = 0;
-    this.selected[3] = 0;
-    this.selected[4] = 0;
+    this.selectedAlbum=[];
   }
 
   ngOnInit(): void {
-
-  }
-
-  addSelected(nombreAlbum){
-    this.selectedFiles;
-  }
-  quitSelected(){
-  }
-
-  deleteAlbum(){
-    var nombreAlbum: string;
-    this._albumService.deleteAlbum(this.token, nombreAlbum).subscribe(
+    this._albumService.getAlbums(this.token).subscribe(
       response => {
-        if(nombreAlbum == null){
-          this.status = 'error';
+        if(response != null){
+          this.status = 'succes';
+          this.albums = response.albums;
         }else{						
-          this.status = 'success';
+          this.status = 'error2';
           //this._router.navigate(['/verAlbum']);
         }
       },
       error => {
         console.log(<any> error);
-        var errorMessage = <any> error;
-        if (errorMessage != null) {
-            this.status = 'error';
-        }
-    }	
+          this.status = 'error2';
+      }	
     );
   }
+   num(album: album): number{
+    return this.albums.indexOf( album );
+  }
+
+  addSelected(album: album){
+    var i = this.albums.indexOf( album );
+    if (this.selected[i] != 0){
+      this.selectedAlbum.push(album.nombre);
+      this.selected[i]= 0;
+    }
+    console.log(this.selectedAlbum);
+
+    
+  }
+  quitSelected(album: album){
+    var i = this.selectedAlbum.indexOf( album.nombre );
+    var j = this.albums.indexOf( album );
+    if (this.selected[j] == 0){
+      this.selectedAlbum.splice( i, 1 );
+      this.selected[j]= 1;
+    }
+    console.log(this.selectedAlbum);
+  }
+
+  deleteAlbum(){
+    this.selectedAlbum.forEach(element => {
+      this._albumService.deleteAlbum(this.token, element).subscribe(
+        response => {
+          if(response){
+            this.status = 'success';
+            //this._router.navigate(['/verAlbum']);
+          }else{						
+            this.status = 'error';
+          }
+        },
+        error => {
+          console.log(<any> error);
+            this.status = 'error';
+        }	
+      );
+    });
+  }
+
 
 }

@@ -25,6 +25,7 @@ export class AddSongComponent implements OnInit {
   public status: string;
   public filesToUpload: Array<File>;
   public title: string;
+  public songs: cancion[];
   
   constructor(
     private _route: ActivatedRoute,
@@ -34,6 +35,7 @@ export class AddSongComponent implements OnInit {
     private _songService: SongService
   ) { 
     this.title= "Añadir canciones"
+    this.songs=[new cancion("","","ohohohohohoho","","oh","oh"),new cancion("","","la","","la","la"),new cancion("","","sisisisi","","isisisiis","sisisisiis"),new cancion("","","memememme","","mememmememe","mememememme"),new cancion("","","dododododod","","dodododoododododo","rererererer")];
     this.album = new album("","","","","");
     this.cancion = new cancion("1","Pop","Y volar","","","");
     this.identity = this._userService.getIdentity();

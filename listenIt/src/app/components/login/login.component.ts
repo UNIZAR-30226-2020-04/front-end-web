@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private _userService: UserService
   ) {
     this.title = 'Inicio de sesión';
-    this.usuario= new usuario("","Pepe","","","Pepe12345","11-1-1998");
+    this.usuario= new usuario("","","","","","");
    }
 
   ngOnInit(): void { 
@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
           this.identity = response;
           localStorage.setItem('identity', JSON.stringify(this.identity));
           localStorage.setItem('token', this.identity.correo);
+          this._router.navigate[('/Inicio')];
         }
       },
       error => {

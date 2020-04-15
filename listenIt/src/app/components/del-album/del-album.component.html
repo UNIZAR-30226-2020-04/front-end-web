@@ -2,85 +2,38 @@
 <br/>
 <div id="conMenu">
     <div class="col-sm-8">
-        <div class="row">
-            <div class="col-sm-2">
-                <i class="fas fa-heart fa-7x"></i>
-            </div>
-            <div class="col-sm-7">
-                <h3>tituloAlbum</h3>
-                <h3>autorAlbum</h3>
-                <h3>duracionAlbum</h3>
-            </div>
-        </div>
-        <div class="container">
+        <div class="container" *ngIf="albums">
             <table class="table table-dark table-hover">
                 <thead>
                     <tr>
                         <th>Imagen</th>
                         <th>Título</th>
-                        <th>Duración</th>
+                        <th>Autor</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <div *ngIf="selected[1] == 0">
-                        <a (click)="selected[1] = 1; addSelected('nombreAlbum')"><tr id="notSelected">
+                <tbody *ngFor="let album of albums" >
+                        <tr *ngIf="selected[num(album)] != 0" (click)="addSelected(album)">
                             <td><i class="fas fa-music"></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <div *ngIf="selected[1] == 1">
-                        <a (click)="selected[1] = 0; quitSelected()"><tr id="selected">
+                            <td>{{album.nombre}}</td>
+                            <td>{{album.autor}}</td>
+                        </tr>
+                        <tr (click)="quitSelected(album)" *ngIf="selected[num(album)] == 0" id="selected" >
                             <td><i class="fas fa-music" ></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <div *ngIf="selected[2] == 0">
-                        <a (click)="selected[2] = 1; addSelected('nombreAlbum')"><tr id="notSelected">
-                            <td><i class="fas fa-music"></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <div *ngIf="selected[2] == 1">
-                        <a (click)="selected[2] = 0; quitSelected()"><tr id="selected">
-                            <td><i class="fas fa-music" ></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <div *ngIf="selected[3] == 0">
-                        <a (click)="addSelected('nombreAlbum')"><tr id="notSelected">
-                            <td><i class="fas fa-music"></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <div *ngIf="selected[3] == 1">
-                        <a (click)="quitSelected()"><tr id="selected">
-                            <td><i class="fas fa-music" ></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <div *ngIf="selected[4] == 0">
-                        <a (click)="addSelected('nombreAlbum')"><tr id="notSelected">
-                            <td><i class="fas fa-music"></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <div *ngIf="selected[4] == 1">
-                        <a (click)="quitSelected()"><tr id="selected">
-                            <td><i class="fas fa-music" ></i></td>
-                            <td>nombre album</td>
-                            <td>duración de la canción</td>
-                        </tr></a>
-                    </div>
-                    <input type="submit" value="Borrar seleccionados" (click)="deleteAlbum()" class="btn btn-success" />
+                            <td>{{album.nombre}}</td>
+                            <td>{{album.autor}}</td>
+                        </tr>
                 </tbody>
+                <input type="submit" value="Borrar seleccionados" (click)="deleteAlbum()" class="btn btn-success" />
             </table>
+            <div class="alert alert-success" *ngIf="status == 'success'">
+                Se han borrado correctamente
+            </div>
+            <div class="alert alert-danger" *ngIf="status == 'error2'">
+                Error al coger albums del usuario.
+            </div>
+            <div class="alert alert-danger" *ngIf="status == 'error'">
+                Error al borrar un album.
+            </div>
         </div>
     </div>
 </div>

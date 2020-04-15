@@ -1,5 +1,3 @@
-import { usuario } from './usuario';
-
 export class cancion {
     constructor(
         public _id: string,

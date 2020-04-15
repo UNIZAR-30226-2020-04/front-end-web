@@ -6,5 +6,6 @@ export class usuario {
         public contrasena: string,
         public nick: string,
         public nacimiento: string
+        
     ){}
 }

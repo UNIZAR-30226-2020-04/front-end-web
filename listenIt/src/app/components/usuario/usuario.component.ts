@@ -33,20 +33,17 @@ export class UsuarioComponent implements OnInit {
   onSubmit() {
     this._userService.update(this.usuario).subscribe(
       response => {
-        if (!response.usuario) {
-            this.status = 'error';
-        } else {
+        if (response) {
             this.status = 'success';
+            this.usuario = response;
             localStorage.setItem('identity', JSON.stringify(this.usuario));
-
+        } else {
+          this.status = 'error';
         }
     },
     error => {
       console.log(<any> error);
-      var errorMessage = <any> error;
-      if (errorMessage != null) {
           this.status = 'error';
-      }
   }
   ); 
   }

@@ -1,39 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { GLOBAL } from './global';
-import { album } from '../models/album';
+import { podcast } from '../models/podcast';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlbumService {
+export class PodcastService {
   public url: string;
 
   constructor(private _http: HttpClient){
 		this.url = GLOBAL.url;
   }
   
-  getAlbums(token) : Observable<any> {
+  getPodcasts(token) : Observable<any> {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 		return this._http.get(this.url+'songs/'+ token, {headers: headers});
 	}
 
-  addAlbum(token, album: album){
-    let data = {email: token, name: album.nombre, date: album.fecha};
+  addPodcast(token, podcast: podcast){
+    let data = {email: token, name: podcast.nombre, date: podcast.fecha};
     console.log(data);
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json');
 
-    return this._http.post(this.url+ 'createAlbum', data, {headers: headers});
+    return this._http.post(this.url+ 'createPodcast', data, {headers: headers});
   }
 
-  deleteAlbum(token, nombreAlbum: string){
-    let data = {email: token, name: nombreAlbum};
+  deletePodcast(token, nombrePodcast: string){
+    let data = {email: token, name: nombrePodcast};
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
 
-    return this._http.delete(this.url+'Album/'+ data, {headers: headers});
+    return this._http.delete(this.url+'Podcast/'+ data, {headers: headers});
 	}
 }

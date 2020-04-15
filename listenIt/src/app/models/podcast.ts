@@ -1,4 +1,5 @@
-export class album {
+
+export class podcast {
     constructor(
         public _id: string,
         public foto: string,

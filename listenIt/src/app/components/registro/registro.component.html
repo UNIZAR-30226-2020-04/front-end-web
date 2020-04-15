@@ -27,13 +27,13 @@
 
             <p>
                 <label>Fecha de nacimiento:</label>
-                <input type="date" #nacimiento="ngModel" name="fecha" class="form-control" [(ngModel)]="usuario.nacimiento" required />
+                <input type="date" #nacimiento="ngModel" name="nacimiento" class="form-control" [(ngModel)]="usuario.nacimiento" required />
             </p>
 
             <p>
                 <label>Contraseña:</label>
-                <input type="password" name="pass" #pass="ngModel" class="form-control" [(ngModel)]="usuario.contrasena" required />
-                <span *ngIf="!pass.valid && pass.touched" >La contraseña es obligatoria.</span>
+                <input type="password" name="contrasena" #contrasena="ngModel" class="form-control" [(ngModel)]="usuario.contrasena" required />
+                <span *ngIf="!contrasena.valid && contrasena.touched" >La contraseña es obligatoria.</span>
             </p>
             <input  type="submit" value="REGISTRARSE" class="btn btn-success" [disabled]="!RegistroForm.form.valid" />
         </form> 

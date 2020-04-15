@@ -15,22 +15,21 @@ export class SongService{
 	}
 
 
-	getSong(token, id: string){
-		let headers = new HttpHeaders()
-		.set('Content-Type', 'application/json')
-		.set('Authorization', token);
-
-		return this._http.get(this.url+'cancion/'+id, {headers: headers})
-	}
-
-	addSong(cancion) : Observable<any> {
-		console.log(cancion);
-    	let params = JSON.stringify(cancion);
+	getSongs(token, AlbumId: string){
 		let headers = new HttpHeaders()
 		.set('Content-Type', 'application/json');
 
-		return this._http.post(this.url+ 'uploadSong', params, {headers: headers});
+		return this._http.get(this.url+'songs/'+ AlbumId, {headers: headers});
 	}
-	  
+
+
+	addSong(cancion) : Observable<any> {
+		console.log(cancion);
+    	let data = { id: cancion.id, genero: cancion.genero, nombre: cancion.nombre, mp3: cancion.mp3, autor:cancion.autor, album: cancion.album };
+		let headers = new HttpHeaders()
+		.set('Content-Type', 'application/json');
+
+		return this._http.post(this.url+ 'uploadSong', data, {headers: headers});
+	}
 
 }
