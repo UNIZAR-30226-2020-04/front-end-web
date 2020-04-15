@@ -8,10 +8,12 @@ export class FileService {
 
   constructor(private http: HttpClient) {}
 
-  uploadFile(file: File): Observable<HttpEvent<{}>> {
+  uploadFile(correo,titAlbum,titCancion,file: File): Observable<HttpEvent<{}>> {
 		const formdata: FormData = new FormData();
 		formdata.append('file', file);
-		const req = new HttpRequest('POST', GLOBAL.url + 'uploadSong', formdata, {
+		let data = {email: correo, tituloAl: titAlbum, tituloCanc: titCancion, mp3: formdata};
+		console.log(data);
+		const req = new HttpRequest('POST', GLOBAL.url + 'uploadSong', data, {
 			  reportProgress: true,
 			  responseType: 'text'
 		});

@@ -45,20 +45,11 @@ export class SubirAlbum1Component implements OnInit {
   onSubmit(){
 			this._albumService.addAlbum(this.token, this.album).subscribe(
 				response => {
-					if(!this.album){
+					if(!response){
 						this.status = 'Error';
-					}else{						
-            
-           /* // Subir la imagen del album
-							this.makeFileRequest(this.url+'upload-image-album/'+ id, [], this.filesToUpload, this.token, 'image')
-              .then(
-                (result) => {
-                },
-                (error) => {
-                  console.log(error);
-                }
-              );
-            */
+					}
+          else {
+            localStorage.setItem('album', this.album.nombre);
             this._router.navigate(['/subirCanc']);
 					}
 				},
