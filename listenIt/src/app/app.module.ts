@@ -23,9 +23,8 @@ import { SidebarModule } from 'ng-sidebar';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
 import { CrearPlaylistComponent } from './components/crear-playlist/crear-playlist.component';
-import { CrearPlaylist1Component } from './components/crear-playlist1/crear-playlist1.component';
-import { CrearPlaylist2Component } from './components/crear-playlist2/crear-playlist2.component';
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
+import { SubirPodcastComponent } from './components/subir-podcast/subir-podcast.component';
 import { VerAlbumComponent } from './components/ver-album/ver-album.component';
 import { VerPlaylistComponent } from './components/ver-playlist/ver-playlist.component';
 import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
@@ -56,8 +55,6 @@ import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podca
     BibliotecaComponent,
     SubirAlbum1Component,
     CrearPlaylistComponent,
-    CrearPlaylist1Component,
-    CrearPlaylist2Component,
     PrincipalComponent,
     VerAlbumComponent,
     VerPlaylistComponent,
@@ -71,7 +68,8 @@ import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podca
     BuscarAlbumComponent,
     BuscarPlaylistComponent,
     BuscarUsuarioComponent,
-    BuscarPodcastComponent
+    BuscarPodcastComponent,
+    SubirPodcastComponent
   ],
   imports: [
     BrowserModule,

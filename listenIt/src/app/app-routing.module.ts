@@ -12,6 +12,7 @@ import { VerAlbumComponent } from './components/ver-album/ver-album.component';
 import { VerPlaylistComponent } from './components/ver-playlist/ver-playlist.component';
 import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
+import { SubirPodcastComponent } from './components/subir-podcast/subir-podcast.component';
 import { AddSongComponent } from './components/add-song/add-song.component';
 import { BuscarPlaylistComponent } from './components/buscar-playlist/buscar-playlist.component';
 import { BuscarAlbumComponent } from './components/buscar-album/buscar-album.component';
@@ -41,7 +42,7 @@ const routes: Routes = [
 
   { path: 'CrearPlay', component: CrearPlaylistComponent },
   { path: 'SubirAlbum', component: SubirAlbum1Component },
-  { path: 'SubirPodcast', component: SubirAlbum1Component },
+  { path: 'SubirPodcast', component: SubirPodcastComponent },
 
   { path: 'BorrarPlay', component: DelPlaylistComponent },
   { path: 'BorrarAlbum', component: DelAlbumComponent },

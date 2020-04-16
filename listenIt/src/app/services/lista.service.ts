@@ -45,12 +45,12 @@ export class ListaService {
   
   getListas(token) : Observable<any> {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
 		return this._http.get(this.url+'songs/'+ token, {headers: headers});
 	}
 
   addLista(token, lista: lista){
     let data = {email: token, name: lista.nombre, date: lista.fecha};
+    console.log(data);
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json');
 
@@ -59,6 +59,7 @@ export class ListaService {
 
   deleteLista(token, nombreLista: string){
     let data = {email: token, name: nombreLista};
+    console.log(data);
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
 

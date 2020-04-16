@@ -5,10 +5,6 @@
             <label>Nombre de la canción:</label>
             <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCancion" required />
         </p>
-        <p>
-            <label>Género:</label>
-            <input type="text" name="genero" #genero="ngModel" class="form-control" [(ngModel)]="cancion.genero" required />
-        </p>
         <div style="text-align:center">
             <div [innerHtml]='msg'></div>
             <label>

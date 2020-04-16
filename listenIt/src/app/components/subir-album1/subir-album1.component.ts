@@ -29,7 +29,6 @@ export class SubirAlbum1Component implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _albumService: AlbumService,
-    //private _artistService: ArtistService
   ) { 
     this.album = new album("","","","","");
     this.cancion = new cancion("","","","","","");
@@ -50,7 +49,7 @@ export class SubirAlbum1Component implements OnInit {
 					}
           else {
             localStorage.setItem('album', this.album.nombre);
-            this._router.navigate(['/subirCanc']);
+            this._router.navigate(['/SubirCanc']);
 					}
 				},
 				error => {

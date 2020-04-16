@@ -5,15 +5,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-crear-playlist',
-  templateUrl: './crear-playlist.component.html'
+  selector: 'app-subir-podcast',
+  templateUrl: './subir-podcast.component.html'
 })
-export class CrearPlaylistComponent implements OnInit {
+export class SubirPodcastComponent implements OnInit {
 
   public title: string;
   public status;
 
-  public tituloPlaylist;
+  public tituloPodcast;
   public email;
 
   constructor(
@@ -23,15 +23,15 @@ export class CrearPlaylistComponent implements OnInit {
   	private router: Router
   	) {
 
-    this.title = 'Crear playlist';
+    this.title = 'Subir podcast';
   }
 
   ngOnInit(): void {
   	this.email = this.userService.getToken();
   }
 
-  newPlaylist() {
-    this.fileService.createPlaylist(this.email,this.tituloPlaylist).subscribe(
+  newPodcast() {
+    this.fileService.createPodcast(this.email,this.tituloPodcast).subscribe(
       response => {
         if (response) {
         	this.status = "success";

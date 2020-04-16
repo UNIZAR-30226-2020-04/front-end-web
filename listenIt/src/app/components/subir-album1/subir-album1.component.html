@@ -1,9 +1,8 @@
 <h1 class="h1-strong">{{title}}</h1>
-<br/>
 <div id="conMenu">
     <div class="col-lg-8">
         <div class="alert alert-success" *ngIf="status == 'success'">
-            SU álbum ha sido creado!
+            Su álbum ha sido creado!
         </div>
         <div class="alert alert-danger" *ngIf="status == 'error'">
             Error al crear álbum.
@@ -16,12 +15,10 @@
             </p>
             <p>
                 <label>Imagen del álbum:</label>
-                <br/>
                 <input type="file" placeholder="Subir foto..."/>
             </p>
             <input type="submit" value="SUBIR ÁLBUM" class="btn btn-success" [disabled]="!subirAlbum.form.valid" />
         </form> 
-        <br/>
         <input type="submit" value="SALIR" routerLink="/Principal" class="btn btn-success"/>
     </div>
 </div>
