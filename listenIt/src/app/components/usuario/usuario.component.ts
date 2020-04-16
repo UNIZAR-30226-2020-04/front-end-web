@@ -47,13 +47,16 @@ export class UsuarioComponent implements OnInit {
     },
     error => {
       console.log(<any> error);
-          this.status = 'error';
-  }
+        this.status = 'error';
+
+    }
+);
+}
 
   // Elimina la cuenta del usuario.
   delete() {
     this._userService.deleteAccount(this.myEmail,this.myPassA,this.myPassB).subscribe(
-      response => {
+      (response: any) => {
         if(response) {
           // Cuenta eliminada.
           this.status = "success";
@@ -64,7 +67,7 @@ export class UsuarioComponent implements OnInit {
           this.status = "error";
         }
       },
-      error => {
+      (      error: any) => {
         console.log(<any> error);
         var errorMessage = <any> error;
         if (errorMessage != null) {

@@ -36,7 +36,7 @@ export class DelPodcastComponent implements OnInit {
       response => {
         if(response != null){
           this.status = 'succes';
-          this.podcasts = response.podcasts;
+          this.podcasts = response;
         }else{						
           this.status = 'error2';
           //this._router.navigate(['/verPodcast']);

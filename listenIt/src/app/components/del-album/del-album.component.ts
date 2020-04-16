@@ -36,7 +36,7 @@ export class DelAlbumComponent implements OnInit {
       response => {
         if(response != null){
           this.status = 'succes';
-          this.albums = response.albums;
+          this.albums = response;
         }else{						
           this.status = 'error2';
           //this._router.navigate(['/verAlbum']);

@@ -15,11 +15,11 @@ export class SongService{
 	}
 
 
-	getSongs(token, AlbumId: string){
+	getSongs(token, Album: string) : Observable<any> {
 		let headers = new HttpHeaders()
 		.set('Content-Type', 'application/json');
 
-		return this._http.get(this.url+'songs/'+ AlbumId, {headers: headers});
+		return this._http.get(this.url+'songs/'+ Album, {headers: headers});
 	}
 
 

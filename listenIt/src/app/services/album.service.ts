@@ -9,11 +9,22 @@ import { Observable } from 'rxjs';
 })
 export class AlbumService {
   public url: string;
+  public album: album;
 
   constructor(private _http: HttpClient){
 		this.url = GLOBAL.url;
   }
   
+  getAlbum(){
+    let album = JSON.parse(localStorage.getItem('actualAlbum'));
+    if (album != "undefined") {
+        this.album = album;
+    } else {
+        this.album = null;
+    }
+    return this.album;
+  }
+
   getAlbums(token) : Observable<any> {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 

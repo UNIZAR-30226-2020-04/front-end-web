@@ -1,4 +1,12 @@
-div#inicio{
-    background-color: #49507a;
-    text-align: center;
+div#img{
+    height: 100%;
+    width: 100%;
+    background-image: url("/assets/índice.jpeg");
+}
+input#inicio{
+
+}
+
+input#registro{
+    background-color: rgb(206, 92, 92);
 }

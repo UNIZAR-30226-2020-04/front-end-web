@@ -9,9 +9,38 @@ import { Observable } from 'rxjs';
 })
 export class PodcastService {
   public url: string;
+  public podcast: podcast;
 
   constructor(private _http: HttpClient){
 		this.url = GLOBAL.url;
+  }
+
+  seguir(token,podcast){
+    let data = {email: token, name: podcast};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(this.url+ 'seguirPodcast', data, {headers: headers});
+  }
+  
+  dejarSeguir(token,podcast){
+    let data = {email: token, name: podcast};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(this.url+ 'dejarSeguirPodcast', data, {headers: headers});
+	}
+
+  seguido(token,podcast){
+    let data = {email: token, name: podcast};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(this.url+ 'seguidoPodcast', data, {headers: headers});
+  }
+
+  getPodcast(){
+    let podcast = JSON.parse(localStorage.getItem('actualPodcast'));
+    if (podcast != "undefined") {
+        this.podcast = podcast;
+    } else {
+        this.podcast = null;
+    }
+    return this.podcast;
   }
   
   getPodcasts(token) : Observable<any> {

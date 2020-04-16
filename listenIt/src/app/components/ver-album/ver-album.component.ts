@@ -6,6 +6,7 @@ import { AlbumService } from '../../services/album.service';
 import { UserService } from '../../services/user.service';
 import { cancion } from 'src/app/models/cancion';
 import { GLOBAL } from '../../services/global';
+import { SongService } from 'src/app/services/song.service';
 
 @Component({
   selector: 'app-ver-album',
@@ -17,6 +18,7 @@ export class VerAlbumComponent implements OnInit {
   public usuario: usuario;
   public identity;
   public songs: cancion[];
+  public status;
   public token;
 
   constructor(
@@ -24,12 +26,30 @@ export class VerAlbumComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _albumService: AlbumService,
+    private _songService: SongService,
   ) {
+    this.album = this._albumService.getAlbum();
     this.songs=[new cancion("","","ohohohohohoho","","ohohoh",""),new cancion("","","lalalalallala","","la",""),new cancion("","","sisisisi","","isisisiis",""),new cancion("","","memememme","","mememmememe",""),new cancion("","","dododododododododo","","dodododoododododo","")];
     this.album = new album("","","Un secreto a voces","2019","La pegatina");
+    this.token = this._userService.getToken();
    }
 
   ngOnInit(): void {
+    this._songService.getSongs(this.token,this.album.nombre).subscribe(
+      response => {
+        if(response != null){
+          this.status = 'succes';
+          this.songs = response;
+        }else{						
+          this.status = 'error';
+          //this._router.navigate(['/verAlbum']);
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
   }
   
 }

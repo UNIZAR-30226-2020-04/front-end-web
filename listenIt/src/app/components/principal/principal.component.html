@@ -1,7 +1,5 @@
+<app-sidebar></app-sidebar>
 <div class="row">
-	<div class="col-sm-3">
-		<app-sidebar></app-sidebar>
-	</div>
 	<div class="col-sm-7">
 		<div class="container">
 			<h2>Últimas canciones escuchadas...</h2>
@@ -23,7 +21,7 @@
 						</a>
 					</li>
 					<li class="list-inline-item">
-						<a class="text-light" href="/verUser">
+						<a class="text-light" routerLink="/verUsuario">
 							<div class="container text-center">
 									<h2><i class="fas fa-heart"></i></h2>
 									<h2>usuario</h2>
@@ -31,15 +29,15 @@
 						</a>
 					</li>
 					<li class="list-inline-item">
-						<a class="text-light" href="/verAlbum">
+						<a class="text-light" routerLink="/verPodcast">
 							<div class="container text-center">
 									<h2><i class="fas fa-heart"></i></h2>
-									<h2>Patata</h2>
+									<h2>Podcast</h2>
 							</div>
 						</a>
 					</li>
 					<li class="list-inline-item">
-						<a class="text-light" href="/verAlbum">
+						<a class="text-light" routerLink="/verAlbum">
 							<div class="container text-center">
 									<h2><i class="fas fa-heart"></i></h2>
 									<h2>Patata</h2>
@@ -57,19 +55,19 @@
 	</div>
 	<div class="col-sm-2">
 		 <div id="opPrin" class="list-group">
-			  <a href="/modificar" class="text-center list-group-item list-group-item-action list-group-item-dark">Modificar perfil
+			  <a href="/Perfil" class="text-center list-group-item list-group-item-action list-group-item-dark">Modificar perfil
 			  </a>
-			  <a href="/crearPlay" class="text-center list-group-item list-group-item-action list-group-item-dark">Crear playlist
+			  <a href="/CrearPlay" class="text-center list-group-item list-group-item-action list-group-item-dark">Crear playlist
 			  </a>
-			  <a href="/subirAlb" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir álbum
+			  <a href="/SubirAlbum" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir álbum
 			  </a>
-			  <a href="#" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir podcast
+			  <a href="/SubirPodcast" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir podcast
 			  </a>
-			  <a href="#" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar playlist
+			  <a href="/BorrarPlay" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar playlist
 			  </a>
-			  <a href="#" class="text-center list-group-item list-group-item-action list-group-item-dark">Eliminar álbum
+			  <a href="/BorrarAlbum" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar álbum
 			  </a>
-			  <a href="#" class="text-center list-group-item list-group-item-action list-group-item-dark">Eliminar podcast
+			  <a href="/BorrarPodcast" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar podcast
 			  </a>
 		</div> 
 	</div>

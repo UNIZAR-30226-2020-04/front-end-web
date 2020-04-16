@@ -13,23 +13,46 @@ import { VerPlaylistComponent } from './components/ver-playlist/ver-playlist.com
 import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.component';
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
 import { AddSongComponent } from './components/add-song/add-song.component';
+import { BuscarPlaylistComponent } from './components/buscar-playlist/buscar-playlist.component';
+import { BuscarAlbumComponent } from './components/buscar-album/buscar-album.component';
+import { BuscarUsuarioComponent } from './components/buscar-usuario/buscar-usuario.component';
+import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podcast.component';
+import { DelPlaylistComponent } from './components/del-playlist/del-playlist.component';
+import { DelAlbumComponent } from './components/del-album/del-album.component';
+import { DelPodcastComponent } from './components/del-podcast/del-podcast.component';
+import { VerPodcastComponent } from './components/ver-podcast/ver-podcast.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  { path: 'Inicio', component: InicioComponent },
+  
   { path: 'Principal', component: PrincipalComponent },
   { path: 'Biblioteca', component: BibliotecaComponent },
-  { path: 'Buscar', component: NavbarComponent },
-  { path: 'Seguidos', component: UsuarioComponent },
-  { path: 'Login', component: LoginComponent },
+  { path: 'BuscarPlay', component: BuscarPlaylistComponent },
+  { path: 'BuscarAlbum', component: BuscarAlbumComponent },
+  { path: 'BuscarUsuario', component: BuscarUsuarioComponent },
+  { path: 'BuscarPodcast', component: BuscarPodcastComponent },
+  { path: 'Seguidos', component: VerUsuarioComponent },
+
+  { path: '', component: InicioComponent},
+  { path: 'Login', component: LoginComponent},
   { path: 'Registro', component: RegistroComponent },
-  { path: 'modificar', component: UsuarioComponent },
-  { path: 'crearPlay', component: CrearPlaylistComponent },
-  { path: 'subirAlb', component: SubirAlbum1Component },
-  { path: 'verAlbum', component: VerAlbumComponent },
-  { path: 'verPlaylist', component: VerPlaylistComponent },
-  { path: 'verUser', component: VerUsuarioComponent },
-  { path: 'subirCanc', component: AddSongComponent }
+
+
+  { path: 'Perfil', component: UsuarioComponent },
+
+  { path: 'CrearPlay', component: CrearPlaylistComponent },
+  { path: 'SubirAlbum', component: SubirAlbum1Component },
+  { path: 'SubirPodcast', component: SubirAlbum1Component },
+
+  { path: 'BorrarPlay', component: DelPlaylistComponent },
+  { path: 'BorrarAlbum', component: DelAlbumComponent },
+  { path: 'BorrarPodcast', component: DelPodcastComponent },
+
+  { path: 'VerAlbum', component: VerAlbumComponent },
+  { path: 'VerPlay', component: VerPlaylistComponent },
+  { path: 'Verpodcast', component: VerPodcastComponent },
+  { path: 'VerUsuario', component: VerUsuarioComponent },
+
+  { path: 'SubirCanc', component: AddSongComponent }
 ];
 
 @NgModule({
