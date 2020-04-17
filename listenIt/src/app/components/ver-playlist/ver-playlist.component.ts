@@ -30,8 +30,8 @@ export class VerPlaylistComponent implements OnInit {
     private _songService: SongService,
   ) {
     this.lista = this._listaService.getLista();
-    this.songs=[new cancion("","","ohohohohohoho","","ohohoh",""),new cancion("","","lalalalallala","","la",""),new cancion("","","sisisisi","","isisisiis",""),new cancion("","","memememme","","mememmememe",""),new cancion("","","dododododododododo","","dodododoododododo","")];
-    this.lista = new lista("","","Un secreto a voces","2019","La pegatina");
+    this.songs=[new cancion("","","My blood","","TØP",""),new cancion("","","Neon Gravestones","","TØP",""),new cancion("","","Entre Poetas y Presos","","La Raíz",""),new cancion("","","Y Volar","","La Pegatina",""),new cancion("","","A la Sombra de la Sierra","","La Raíz","")];
+    this.lista = new lista("","","Mi playlist","2020","Sara");
     this.token = this._userService.getToken();
    }
 

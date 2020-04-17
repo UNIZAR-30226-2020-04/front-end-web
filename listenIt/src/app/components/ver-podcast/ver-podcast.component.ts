@@ -29,8 +29,8 @@ export class VerPodcastComponent implements OnInit {
     private _songService: SongService,
   ) {
     this.podcast = this._podcastService.getPodcast();
-    this.songs=[new cancion("","","ohohohohohoho","","ohohoh",""),new cancion("","","lalalalallala","","la",""),new cancion("","","sisisisi","","isisisiis",""),new cancion("","","memememme","","mememmememe",""),new cancion("","","dododododododododo","","dodododoododododo","")];
-    this.podcast = new podcast("","","Un secreto a voces","2019","La pegatina");
+    this.songs=[new cancion("","","Capitulo 1","","Ruben",""),new cancion("","","Capitulo 2","","Ruben",""),new cancion("","","Capitulo 3","","Ruben",""),new cancion("","","Capitulo 4","","Ruben",""),new cancion("","","Capitulo 5","","Ruben","")];
+    this.podcast = new podcast("","","El podcast","2010","Ruben");
     this.token = this._userService.getToken();
    }
 

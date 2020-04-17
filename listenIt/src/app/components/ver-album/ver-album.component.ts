@@ -29,7 +29,7 @@ export class VerAlbumComponent implements OnInit {
     private _songService: SongService,
   ) {
     this.album = this._albumService.getAlbum();
-    this.songs=[new cancion("","","ohohohohohoho","","ohohoh",""),new cancion("","","lalalalallala","","la",""),new cancion("","","sisisisi","","isisisiis",""),new cancion("","","memememme","","mememmememe",""),new cancion("","","dododododododododo","","dodododoododododo","")];
+    this.songs=[new cancion("","","Y volar","","La Pegatina",""),new cancion("","","Saber que tu","","La Pegatina",""),new cancion("","","Lloverá y yo veré","","La Pegatina",""),new cancion("","","La ciudad de los gatos negros","","La Pegatina",""),new cancion("","","Mari Carmen","","La Pegatina","")];
     this.album = new album("","","Un secreto a voces","2019","La pegatina");
     this.token = this._userService.getToken();
    }
