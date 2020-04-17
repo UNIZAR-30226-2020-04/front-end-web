@@ -38,6 +38,7 @@ import { BuscarAlbumComponent } from './components/buscar-album/buscar-album.com
 import { BuscarPlaylistComponent } from './components/buscar-playlist/buscar-playlist.component';
 import { BuscarUsuarioComponent } from './components/buscar-usuario/buscar-usuario.component';
 import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podcast.component';
+import { SeguidosComponent } from './components/seguidos/seguidos.component';
 
 
 
@@ -69,7 +70,8 @@ import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podca
     BuscarPlaylistComponent,
     BuscarUsuarioComponent,
     BuscarPodcastComponent,
-    SubirPodcastComponent
+    SubirPodcastComponent,
+    SeguidosComponent
   ],
   imports: [
     BrowserModule,

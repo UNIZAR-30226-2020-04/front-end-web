@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReproductorComponent implements OnInit {
 
-	msbapTitle = 'Una canción que me he encontrado por ahí';
+	msbapTitle = 'Una canción';
 	msbapAudioUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 
 	msbapDisplayTitle = true;

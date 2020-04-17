@@ -22,6 +22,7 @@ import { DelPlaylistComponent } from './components/del-playlist/del-playlist.com
 import { DelAlbumComponent } from './components/del-album/del-album.component';
 import { DelPodcastComponent } from './components/del-podcast/del-podcast.component';
 import { VerPodcastComponent } from './components/ver-podcast/ver-podcast.component';
+import { SeguidosComponent } from './components/seguidos/seguidos.component';
 
 const routes: Routes = [
   
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'BuscarAlbum', component: BuscarAlbumComponent },
   { path: 'BuscarUsuario', component: BuscarUsuarioComponent },
   { path: 'BuscarPodcast', component: BuscarPodcastComponent },
-  { path: 'Seguidos', component: VerUsuarioComponent },
+  { path: 'Seguidos', component: SeguidosComponent },
 
   { path: '', component: InicioComponent},
   { path: 'Login', component: LoginComponent},

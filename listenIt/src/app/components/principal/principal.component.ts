@@ -8,6 +8,9 @@ import { album } from 'src/app/models/album';
 })
 export class PrincipalComponent implements OnInit {
   public album;
+  
+
+  
   constructor() {
     this.album= new album("","","Entre poetas y presos","","La Raíz");
   }
