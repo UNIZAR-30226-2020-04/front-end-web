@@ -30,6 +30,7 @@ export class AddSongComponent implements OnInit {
   public status: string;
   public title: string;
   public songs: cancion[];
+  public idAlbum;
   
   constructor(
     private _route: ActivatedRoute,
@@ -50,6 +51,7 @@ export class AddSongComponent implements OnInit {
   ngOnInit(){
     // Titulo del album al que añadir canciones.
     this.tituloAlbum = localStorage.getItem('album');
+    this.idAlbum = localStorage.getItem('idAlbum');
   }
 
   selectFile(event) {
@@ -59,7 +61,7 @@ export class AddSongComponent implements OnInit {
   uploadSong(){
     this.currentFile = this.selectedFiles.item(0);
     console.log(this.currentFile);
-    this.fileService.uploadFile(this.token,this.tituloAlbum,this.nombreCancion,this.currentFile).subscribe(
+    this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.currentFile).subscribe(
       response => {
         if(response) {
           //Canción añadida correctamente al album.

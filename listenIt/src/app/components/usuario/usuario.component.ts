@@ -16,6 +16,8 @@ export class UsuarioComponent implements OnInit {
   public identity;
   public token;
   public myEmail;
+  public newName;
+  public newNick
   public myPassA;
   public myPassB;
   public filesToUpload: Array<File>;
@@ -34,24 +36,65 @@ export class UsuarioComponent implements OnInit {
     console.log(this.identity);
   }
 
-  onSubmit() {
-    this._userService.update(this.usuario).subscribe(
+  cambiarNombre() {
+    this._userService.changeName(this.token,this.usuario.nombre,this.newName).subscribe(
       response => {
-        if (response) {
-            this.status = 'success';
-            this.usuario = response;
-            localStorage.setItem('identity', JSON.stringify(this.usuario));
-        } else {
+        if(response) {
+          this.status = 'success';
+        }
+        else {
           this.status = 'error';
         }
-    },
-    error => {
-      console.log(<any> error);
-        this.status = 'error';
+      },
+      (error: any) => {
+        console.log(<any> error);
+        var errorMessage = <any> error;
+        if (errorMessage != null) {
+            this.status = 'error';
+        }
+      }
+    );
+  }
 
-    }
-);
-}
+  cambiarNick() {
+    this._userService.changeNick(this.token,this.usuario.nick,this.newNick).subscribe(
+      response => {
+        if(response) {
+          this.status = 'success';
+        }
+        else {
+          this.status = 'error';
+        }
+      },
+      (error: any) => {
+        console.log(<any> error);
+        var errorMessage = <any> error;
+        if (errorMessage != null) {
+            this.status = 'error';
+        }
+      }
+    );
+  }
+
+  cambiarPass() {
+    this._userService.changePass(this.token,this.myPassA,this.myPassB).subscribe(
+      response => {
+        if(response) {
+          this.status = 'success';
+        }
+        else {
+          this.status = 'error';
+        }
+      },
+      (error: any) => {
+        console.log(<any> error);
+        var errorMessage = <any> error;
+        if (errorMessage != null) {
+            this.status = 'error';
+        }
+      }
+    );
+  }
 
   // Elimina la cuenta del usuario.
   delete() {
@@ -65,9 +108,9 @@ export class UsuarioComponent implements OnInit {
         }
         else {
           this.status = "error";
-        }
+        } 
       },
-      (      error: any) => {
+      (error: any) => {
         console.log(<any> error);
         var errorMessage = <any> error;
         if (errorMessage != null) {

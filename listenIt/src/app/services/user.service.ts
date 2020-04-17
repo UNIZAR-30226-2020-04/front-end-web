@@ -29,11 +29,26 @@ export class UserService {
         return this._http.post(this.url + 'registerUser', data, {headers: headers});
 	}
 
-	update(user: usuario): Observable<any> {
-		let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
+	changeName(email,name,newName): Observable<any> {
+		let data = {user: email, name: name, newName: newName};
+		console.log(data);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'updateUser', data, {headers: headers});
-    }
+        return this._http.post(this.url + 'cambiarNombre', data, {headers: headers});
+	}
+
+	changeNick(email,nick,newNick): Observable<any> {
+		let data = {user: email, nick: nick, newNick: newNick};
+		console.log(data);
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.post(this.url + 'cambiarNick', data, {headers: headers});
+	}
+
+	changePass(email,pass,newPass): Observable<any> {
+		let data = {user: email, pass: pass, newPass: newPass};
+		console.log(data);
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.post(this.url + 'cambiarPass', data, {headers: headers});
+	}
 
     deleteAccount(emailD,passA,passB): Observable<any> {
     	let data = {email: emailD, pass: passA, confPass: passB};

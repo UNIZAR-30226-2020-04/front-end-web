@@ -1,45 +1,31 @@
+<input type="submit" value="Principal" routerLink="/Principal" class="btn btn-success" />
 <div id="conMenu" >
     <div class="col-lg-8">
         <h1 class="h1-strong">{{title}}</h1>
-        <br/>
-        <div class="alert alert-success" *ngIf="status == 'success'">
-            Ya estás registrado! Bienvenido!
-        </div>
-        <div class="alert alert-danger" *ngIf="status == 'error'">
-            Error al registrarse. Este usuario ya existe.
-        </div>
-        <form #UserForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16" >
+        <form #changeNombreForm="ngForm" (ngSubmit)="cambiarNombre()" class="col-lg-16" >
             <p>
                 <label>Nombre:</label>
-                <input type="text" value="{{identity.nombre}}" name="nombre" #name="ngModel" class="form-control" [(ngModel)]="usuario.nombre" required />
+                <input type="text" value="{{identity.nombre}}" name="nombre" #name="ngModel" class="form-control" [(ngModel)]="newName" required />
             </p>
+            <input  type="submit" value="Cambiar nombre" class="btn btn-success" />
+        </form>
+        <form #changeNickForm="ngForm" (ngSubmit)="cambiarNick()" class="col-lg-16" >
             <p>
                 <label>Nombre de usuario:</label>
-                <input type="text" value="{{identity.nick}}" name="nick" #nick="ngModel" class="form-control" [(ngModel)]="usuario.nick" required />
+                <input type="text" value="{{identity.nick}}" name="nick" #nick="ngModel" class="form-control" [(ngModel)]="newNick" required />
             </p>
-            <p>
-                <label>Correo:</label>
-                <input type="email" value="{{identity.correo}}" name="email" #email="ngModel" class="form-control" [(ngModel)]="usuario.correo" required />
-            </p>
-            <p>
-                <label>Fecha de nacimiento:</label>
-                <input type="text" value="{{identity.fNacimiento}}" name="nacimiento" #nacimiento="ngModel" class="form-control" [(ngModel)]="usuario.nacimiento" required />
-            </p>
-
+            <input  type="submit" value="Cambiar nick" class="btn btn-success" />
+        </form>
+        <form #changePassForm="ngForm" (ngSubmit)="cambiarPass()" class="col-lg-16" >
             <p>
                 <label>Contraseña:</label>
-                <input type="password" name="pass" #contrasena="ngModel" class="form-control" [(ngModel)]="usuario.contrasena" required />
+                <input type="password" name="pass" #contrasena="ngModel" class="form-control" [(ngModel)]="myPassA" required />
             </p>
-
-            <!--<div class="image_for_edit" *ngIf="usuario.foto && usuario.foto != 'null' ">
-                    <img src=""/>
-            </div>-->
             <p>
-                <label>Subir foto de perfil:</label>
-                <br/>
-                <input type="file" placeholder="Subir foto..." (change)="fileChangeEvent($event)" name="foto" #foto="ngModel" [(ngModel)]="usuario.foto" required />
+                <label>Nueva contraseña:</label>
+                <input type="password" name="pass" #contrasena="ngModel" class="form-control" [(ngModel)]="myPassB" required />
             </p>
-            <input  type="submit" value="GUARDAR CAMBIOS" class="btn btn-success" />
+            <input  type="submit" value="Cambiar contraseña" class="btn btn-success" />
         </form>
         <h1>Eliminar cuenta</h1>
         <form #DeleteForn="ngForm" (ngSubmit)="delete()" class="col-lg-16" >

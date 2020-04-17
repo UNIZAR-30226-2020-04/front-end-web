@@ -28,14 +28,17 @@ export class FileService {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
 		return this.http.post(this.url + 'crearPodcast', data, {headers: headers});
-  }
+  } 
  
-  uploadFile(correo,titAlbum,titCancion,file: File): Observable<HttpEvent<{}>> {
+  uploadFile(correo,idAlbum,titCancion,file: File): Observable<HttpEvent<{}>> {
 		const formdata: FormData = new FormData();
 		formdata.append('file', file);
-		let data = {email: correo, tituloAl: titAlbum, tituloCanc: titCancion, mp3: formdata};
-		console.log(data);
-		const req = new HttpRequest('POST', GLOBAL.url + 'uploadSong', data, {
+		formdata.append('idalbum',idAlbum);
+		formdata.append('user',correo);
+		formdata.append('nombreC',titCancion);
+		//let data = {email: correo, tituloAl: idAlbum, tituloCanc: titCancion, mp3: formdata};
+		//console.log(data);
+		const req = new HttpRequest('POST', GLOBAL.url + 'subirCancion', formdata, {
 			  reportProgress: true,
 			  responseType: 'text'
 		});
