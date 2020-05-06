@@ -19,4 +19,12 @@ export class ReproductorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Actualizar la canción del reproductor si se requiere.
+  ngDoCheck() {
+    //this.msbapTitle = localStorage.getItem("titulo-reprod");
+    console.log("Actualizando reproductor");
+    this.msbapTitle = "The Hype";
+    this.msbapAudioUrl = localStorage.getItem("URL-reprod");
+  }
+
 }

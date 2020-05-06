@@ -44,5 +44,15 @@ export class FileService {
 		});
 		return this.http.request(req);
    }
+
+   getURL(idAlbum,idCancion,email): Observable<any> {
+   	console.log(idAlbum + ", " + idCancion + ", " + email)
+   	const formdata: FormData = new FormData();
+   	formdata.append('idalbum',idAlbum);
+   	formdata.append('idcancion',idCancion);
+   	formdata.append('user',email);
+   	let headers = new HttpHeaders().set('Content-Type', 'application/json');
+   	return this.http.post(this.url + 'URLCancion', formdata, {headers: headers});
+   }
    
 }
