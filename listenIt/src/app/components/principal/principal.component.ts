@@ -35,9 +35,9 @@ export class PrincipalComponent implements OnInit {
   	this.idCancRep = "1";
     this.fileService.getURL(this.idAlbumRep,this.idCancRep,this.email).subscribe(
       response => {
-        if (response) {
-        	console.log("Respuesta: " + response);
-        	localStorage.setItem("URL-reprod",response);
+        if (response.body) {
+          console.log("Respuesta(body): " + response.body);
+        	localStorage.setItem("URL-reprod",response.body);
         	this.status = "success";
         }
         else {
