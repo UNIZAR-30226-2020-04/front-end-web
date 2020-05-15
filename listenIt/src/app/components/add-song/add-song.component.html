@@ -1,9 +1,15 @@
 <h1 class="h1-strong">{{title}} a {{tituloAlbum}}</h1>
+<br/>
+<br/>
 <div id="izq" class="col-lg-8">
     <form #subirCancion="ngForm" (ngSubmit)="uploadSong()" class="col-lg-16">
         <p>
             <label>Nombre de la canción:</label>
             <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCancion" required />
+        </p>
+        <p>
+            <label>Genero de la canción:</label>
+            <input type="text" name="genero" #name="ngModel" class="form-control" [(ngModel)]="genero" required />
         </p>
         <div style="text-align:center">
             <div [innerHtml]='msg'></div>
@@ -18,36 +24,21 @@
 </div>
 
 
-<div id="izq" class="col-sm-9">
+<div id="izq" >
     <div class="container">
         <table class="table table-dark table-hover">
             <thead>
                 <tr>
                     <th>Imagen</th>
                     <th>Título</th>
-                    <th>Duración</th>
+                    <th>Género</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let song of songs" >
                 <tr>
                     <td><i class="fas fa-music"></i></td>
-                    <td>titulo canción</td>
-                    <td>duración de la canción</td>
-                </tr>
-                <tr>
-                    <td><i class="fas fa-music"></i></td>
-                    <td >{{cancion.nombre}}</td>
-                    <td>duración de la canción</td>
-                </tr>
-                <tr>
-                    <td><i class="fas fa-music"></i></td>
-                    <td>titulo canción</td>
-                    <td>duración de la canción</td>
-                </tr>
-                <tr>
-                    <td><i class="fas fa-music"></i></td>
-                    <td>titulo canción</td>
-                    <td>duración de la canción</td>
+                    <td>{{song.nombre}}</td>
+                    <td>{{song.genero}}</td>
                 </tr>
             </tbody>
         </table>

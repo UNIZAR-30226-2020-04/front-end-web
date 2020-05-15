@@ -29,13 +29,12 @@ export class VerAlbumComponent implements OnInit {
     private _songService: SongService,
   ) {
     this.album = this._albumService.getAlbum();
-    this.songs=[new cancion("","","Y volar","","La Pegatina",""),new cancion("","","Saber que tu","","La Pegatina",""),new cancion("","","Lloverá y yo veré","","La Pegatina",""),new cancion("","","La ciudad de los gatos negros","","La Pegatina",""),new cancion("","","Mari Carmen","","La Pegatina","")];
-    this.album = new album("","","Un secreto a voces","2019","La pegatina");
+    this.songs=[];
     this.token = this._userService.getToken();
    }
 
   ngOnInit(): void {
-    this._songService.getSongs(this.token,this.album.nombre).subscribe(
+    this._songService.getSongs(this.album).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';

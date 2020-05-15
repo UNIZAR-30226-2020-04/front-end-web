@@ -25,26 +25,26 @@ export class AlbumService {
     return this.album;
   }
 
-  getAlbums(token) : Observable<any> {
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this._http.get(this.url+'songs/'+ token, {headers: headers});
+  getAlbums(token : String) : Observable<any> {
+    let data = {user: token};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url+ 'getAlbumsByUser', data , {headers: headers});
 	}
 
   addAlbum(token, album: album){
-    let data = {email: token, name: album.nombre, date: album.fecha};
+    let data = {email: token, name: album.nombre};
     console.log(data);
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json');
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this._http.post(this.url+ 'createAlbum', data, {headers: headers});
   }
 
-  deleteAlbum(token, nombreAlbum: string){
-    let data = {email: token, name: nombreAlbum};
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-
-    return this._http.delete(this.url+'Album/'+ data, {headers: headers});
+  deleteAlbum(token, album: album){
+    console.log("pido borrar");
+    console.log(album);
+    console.log(album.idAlbum);
+    let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id)};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+    return this._http.post(this.url+ 'deleteAlbum' , data, {headers: headers});
 	}
 }

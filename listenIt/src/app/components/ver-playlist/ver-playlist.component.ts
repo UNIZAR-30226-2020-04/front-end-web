@@ -31,12 +31,12 @@ export class VerPlaylistComponent implements OnInit {
   ) {
     this.lista = this._listaService.getLista();
     this.songs=[new cancion("","","My blood","","TØP",""),new cancion("","","Neon Gravestones","","TØP",""),new cancion("","","Entre Poetas y Presos","","La Raíz",""),new cancion("","","Y Volar","","La Pegatina",""),new cancion("","","A la Sombra de la Sierra","","La Raíz","")];
-    this.lista = new lista("","","Mi playlist","2020","Sara");
+    this.lista = new lista(null,"","Mi playlist","2020","Sara");
     this.token = this._userService.getToken();
    }
 
    ngOnInit(): void {
-    this._songService.getSongs(this.token,this.lista.nombre).subscribe(
+    this._songService.getSongs(this.lista).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           console.log(this.identity);
           localStorage.setItem('identity', JSON.stringify(this.identity));
           localStorage.setItem('token', this.identity.correo);
-          this._router.navigate[('/Inicio')];
+          this._router.navigate(['/Principal']);
         }
       },
       error => {

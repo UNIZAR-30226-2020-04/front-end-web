@@ -22,7 +22,7 @@ export class PrincipalComponent implements OnInit {
   	private fileService: FileService
   	) {
 
-    this.album= new album("","","Entre poetas y presos","","La Raíz");
+    this.album= new album(null,"","Entre poetas y presos","","La Raíz");
   }
 
   ngOnInit(): void {

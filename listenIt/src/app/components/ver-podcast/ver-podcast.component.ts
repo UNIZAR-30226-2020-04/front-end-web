@@ -30,12 +30,12 @@ export class VerPodcastComponent implements OnInit {
   ) {
     this.podcast = this._podcastService.getPodcast();
     this.songs=[new cancion("","","Capitulo 1","","Ruben",""),new cancion("","","Capitulo 2","","Ruben",""),new cancion("","","Capitulo 3","","Ruben",""),new cancion("","","Capitulo 4","","Ruben",""),new cancion("","","Capitulo 5","","Ruben","")];
-    this.podcast = new podcast("","","El podcast","2010","Ruben");
+    this.podcast = new podcast(null,"","El podcast","2010","Ruben");
     this.token = this._userService.getToken();
    }
 
   ngOnInit(): void {
-    this._songService.getSongs(this.token,this.podcast.nombre).subscribe(
+    this._songService.getSongs(this.podcast).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';

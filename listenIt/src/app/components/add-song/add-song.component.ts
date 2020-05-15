@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { usuario } from '../../models/usuario';
 import { album } from '../../models/album';
 import { FileService } from '../../services/file.service';
-import { FilesService } from '../../services/files.service';
 import { UserService } from '../../services/user.service';
 import { SongService } from '../../services/song.service';
 import { cancion } from 'src/app/models/cancion';
@@ -20,6 +19,7 @@ export class AddSongComponent implements OnInit {
   public msg;
   public tituloAlbum;
   public nombreCancion;
+  public genero;
   public album: album;
   public usuario: usuario;
   public identity;
@@ -29,7 +29,7 @@ export class AddSongComponent implements OnInit {
   public url;
   public status: string;
   public title: string;
-  public songs: cancion[];
+  public songs:Array<cancion>;
   public idAlbum;
   
   constructor(
@@ -37,13 +37,11 @@ export class AddSongComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private fileService: FileService,
-    private _filesService: FilesService,
     private _songService: SongService
   ) { 
     this.title= "Añadir canciones"
-    this.songs=[new cancion("","","ohohohohohoho","","oh","oh"),new cancion("","","la","","la","la"),new cancion("","","sisisisi","","isisisiis","sisisisiis"),new cancion("","","memememme","","mememmememe","mememememme"),new cancion("","","dododododod","","dodododoododododo","rererererer")];
-    this.album = new album("","","","","");
-    this.cancion = new cancion("1","Pop","Y volar","","","");
+    this.songs=[];
+    this.album = new album(null,"","","","");
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;
@@ -80,6 +78,7 @@ export class AddSongComponent implements OnInit {
           }
       }
     );
+    if (this.status = 'success' ) this.songs.push(new cancion("",this.genero,this.nombreCancion,"","",""));
   }
 
 }

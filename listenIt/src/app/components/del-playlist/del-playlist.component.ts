@@ -24,7 +24,7 @@ export class DelPlaylistComponent implements OnInit {
     private _listaService: ListaService,
     private _router: Router,
     ) { 
-    this.listas=[new lista("","","Entre poetas y presos","","La Raíz"),new lista("","","Guerra al silencio","","La Raíz"),new lista("","","Bajo la piel","","SFDK")]
+    this.listas=[new lista(null,"","Entre poetas y presos","","La Raíz"),new lista(null,"","Guerra al silencio","","La Raíz"),new lista(null,"","Bajo la piel","","SFDK")]
     this.title= "Borrar playlist"
     this.token = this._userService.getToken();
     this.selected= new Array<number>();

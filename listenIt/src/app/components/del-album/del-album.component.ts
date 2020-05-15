@@ -13,18 +13,16 @@ export class DelAlbumComponent implements OnInit {
 
   public title: string;
   public selected:Array<number>;
-  public selectedAlbum: string[];
+  public selectedAlbum: album[];
   public status;
   public token;
   public albums: album[];
-  public selectedFiles:Array<string>;
 
   constructor(
     private _userService: UserService,
     private _albumService: AlbumService,
     private _router: Router,
     ) { 
-    this.albums=[new album("","","Entre poetas y presos","","La Raíz"),new album("","","Guerra al silencio","","La Raíz"),new album("","","Bajo la piel","","SFDK")]
     this.title= "Borrar álbum"
     this.token = this._userService.getToken();
     this.selected= new Array<number>();
@@ -37,9 +35,10 @@ export class DelAlbumComponent implements OnInit {
         if(response != null){
           this.status = 'succes';
           this.albums = response;
+          ///TEMPORAL PARA HACER PRUEBAS CON ALBUMS REALES
+          localStorage.setItem('actualAlbum', JSON.stringify(this.albums[1]));
         }else{						
           this.status = 'error2';
-          //this._router.navigate(['/verAlbum']);
         }
       },
       error => {
@@ -48,14 +47,15 @@ export class DelAlbumComponent implements OnInit {
       }	
     );
   }
-   num(album: album): number{
+  
+  num(album: album): number{
     return this.albums.indexOf( album );
   }
 
   addSelected(album: album){
     var i = this.albums.indexOf( album );
     if (this.selected[i] != 0){
-      this.selectedAlbum.push(album.nombre);
+      this.selectedAlbum.push(album);
       this.selected[i]= 0;
     }
     console.log(this.selectedAlbum);
@@ -63,7 +63,7 @@ export class DelAlbumComponent implements OnInit {
     
   }
   quitSelected(album: album){
-    var i = this.selectedAlbum.indexOf( album.nombre );
+    var i = this.selectedAlbum.indexOf( album);
     var j = this.albums.indexOf( album );
     if (this.selected[j] == 0){
       this.selectedAlbum.splice( i, 1 );
@@ -78,7 +78,9 @@ export class DelAlbumComponent implements OnInit {
         response => {
           if(response){
             this.status = 'success';
-            //this._router.navigate(['/verAlbum']);
+            this.selectedAlbum = [];
+            this.selected = [];
+            this.ngOnInit();
           }else{						
             this.status = 'error';
           }

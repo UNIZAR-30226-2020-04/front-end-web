@@ -24,7 +24,7 @@ export class DelPodcastComponent implements OnInit {
     private _podcastService: PodcastService,
     private _router: Router,
     ) { 
-    this.podcasts=[new podcast("","","Entre poetas y presos","","La Raíz"),new podcast("","","Guerra al silencio","","La Raíz"),new podcast("","","Bajo la piel","","SFDK")]
+    this.podcasts=[new podcast(null,"","Entre poetas y presos","","La Raíz"),new podcast(null,"","Guerra al silencio","","La Raíz"),new podcast(null,"","Bajo la piel","","SFDK")]
     this.title= "Borrar podcast"
     this.token = this._userService.getToken();
     this.selected= new Array<number>();

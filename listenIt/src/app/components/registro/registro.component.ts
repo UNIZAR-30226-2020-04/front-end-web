@@ -30,10 +30,9 @@ export class RegistroComponent implements OnInit {
       response => {
         if (response) {
             this.status = 'success';
-            this.usuario = response;
             localStorage.setItem('identity', JSON.stringify(this.usuario));
             localStorage.setItem('token', this.usuario.correo);
-            this._router.navigate[('/Inicio')];
+            this._router.navigate(['/Principal']);
         } else {
             this.status = 'error';
         }

@@ -31,7 +31,7 @@ export class SubirAlbum1Component implements OnInit {
     private _userService: UserService,
     private _albumService: AlbumService,
   ) { 
-    this.album = new album("","","","","");
+    this.album = new album(null,"","","","");
     this.cancion = new cancion("","","","","","");
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
