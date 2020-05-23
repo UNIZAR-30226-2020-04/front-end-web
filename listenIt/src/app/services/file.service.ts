@@ -40,8 +40,14 @@ export class FileService {
    	formdata.append('idalbum',idAlbum);
    	formdata.append('idcancion',idCancion);
    	formdata.append('user',email);
-   	let headers = new HttpHeaders().set('Content-Type', 'application/json');
-   	return this.http.post(this.url + 'URLCancion', formdata, {headers: headers});
+   	//let headers = new HttpHeaders().set('Content-Type', 'application/json');
+   	//return this.http.post(this.url + 'URLCancion', formdata, {headers: headers});
+
+		const req = new HttpRequest('POST', GLOBAL.url + 'URLCancion', formdata, {
+			  reportProgress: true,
+			  responseType: 'text'
+		});
+		return this.http.request(req);
    }
    
 }
