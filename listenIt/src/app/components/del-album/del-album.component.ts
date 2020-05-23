@@ -35,8 +35,6 @@ export class DelAlbumComponent implements OnInit {
         if(response != null){
           this.status = 'succes';
           this.albums = response;
-          ///TEMPORAL PARA HACER PRUEBAS CON ALBUMS REALES
-          localStorage.setItem('actualAlbum', JSON.stringify(this.albums[1]));
         }else{						
           this.status = 'error2';
         }

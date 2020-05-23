@@ -16,10 +16,16 @@ export class UserService {
 	constructor(public _http: HttpClient) { 
 		this.url = GLOBAL.url;
 	}
+
+	seguir(user: usuario): Observable<any> {
+		let data = {email: user.correo, password: user.contrasena};
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url + 'suscribeUser', data, {headers: headers});
+	}
+
 	signup(user: usuario): Observable<any> {
 		let data = {email: user.correo, password: user.contrasena};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
 		return this._http.post(this.url + 'loginUser', data, {headers: headers});
 	}
 
