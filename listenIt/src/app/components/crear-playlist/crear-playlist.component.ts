@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { FileService } from '../../services/file.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
+import { ListaService } from 'src/app/services/lista.service';
 
 @Component({
   selector: 'app-crear-playlist',
@@ -14,26 +15,29 @@ export class CrearPlaylistComponent implements OnInit {
   public status;
 
   public tituloPlaylist;
-  public email;
+  public token;
 
   constructor(
   	private userService: UserService,
-  	private fileService: FileService,
+  	private listaService: ListaService,
   	private route: ActivatedRoute,
-  	private router: Router
+  	private _router: Router
   	) {
 
     this.title = 'Crear playlist';
   }
 
   ngOnInit(): void {
-  	this.email = this.userService.getToken();
+    this.token = this.userService.getToken(); 
   }
 
   newPlaylist() {
-    this.fileService.createPlaylist(this.email,this.tituloPlaylist).subscribe(
+    this.listaService.createLista(this.token,this.tituloPlaylist).subscribe(
       response => {
         if (response) {
+          this._router.navigate(['/AddToLista']);
+          localStorage.setItem('idLista', response.l_id);
+          localStorage.setItem('lista',this.tituloPlaylist);
         	this.status = "success";
         }
         else {

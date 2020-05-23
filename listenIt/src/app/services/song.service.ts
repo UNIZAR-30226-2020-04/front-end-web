@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { cancion } from '../models/cancion';
 import { album } from '../models/album';
 import { idAlbum } from '../models/album';
+import { lista } from '../models/lista';
 
 
 @Injectable()
@@ -15,7 +16,11 @@ export class SongService{
 	constructor(private _http: HttpClient){
 		this.url = GLOBAL.url;
 	}
-
+	getSongsL(lista: lista) : Observable<any> {
+		let data = { user: lista.idRep.u, idalbum: JSON.stringify(lista.idRep.l_id) };
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
+		return this._http.post(this.url+ 'listSongsAlbum', data, {headers: headers});
+	}
 
 	getSongs(album: album) : Observable<any> {
 		let data = { user: album.idAlbum.u, idalbum: JSON.stringify(album.idAlbum.l_id) };

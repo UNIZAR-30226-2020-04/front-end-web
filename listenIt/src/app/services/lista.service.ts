@@ -44,25 +44,27 @@ export class ListaService {
   }
   
   getListas(token) : Observable<any> {
+    let data = {token};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.get(this.url+'songs/'+ token, {headers: headers});
-	}
-
-  addLista(token, lista: lista){
-    let data = {email: token, name: lista.nombre, date: lista.fecha};
-    console.log(data);
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json');
-
-    return this._http.post(this.url+ 'createLista', data, {headers: headers});
+		return this._http.post(this.url+'getPlaylistByUser',data, {headers: headers});
+  }
+  
+  createLista(email,titulo): Observable<any>{
+    let data = {user: email, playlist: titulo};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(this.url + 'createPlaylist', data, {headers: headers});
   }
 
-  deleteLista(token, nombreLista: string){
-    let data = {email: token, name: nombreLista};
-    console.log(data);
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
+  addToLista(token,nombre,autor,idA,idP,idC){
+    let data = {user: token, nombre: nombre, usercancion: autor,idalbum : idA,idplaylist: idP,idcancion: idC};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(this.url+ 'addToPlaylist', data, {headers: headers});
+  }
 
-    return this._http.delete(this.url+'Lista/'+ data, {headers: headers});
-	}
+  deleteLista(token, lista: lista){
+    let data = {user: token, idplaylist: JSON.stringify(lista.idRep.l_id)};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+    return this._http.post(this.url+'deletePlaylist', data, {headers: headers});
+  }
+  
 }

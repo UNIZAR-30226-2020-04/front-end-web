@@ -1,4 +1,4 @@
-<h1 class="h1-strong">{{title}} a {{tituloAlbum}}</h1>
+<h1 class="h1-strong">{{title}} a {{tituloLista}}</h1>
 <br/>
 <br/>
 <div id="izq" class="col-lg-8">
@@ -8,17 +8,10 @@
             <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCancion" required />
         </p>
         <p>
-            <label>Genero de la canción:</label>
-            <input type="text" name="genero" #name="ngModel" class="form-control" [(ngModel)]="genero" required />
+            <label>Usuario de la canción:</label>
+            <input type="text" name="genero" #name="ngModel" class="form-control" [(ngModel)]="usuario" required />
         </p>
-        <div style="text-align:center">
-            <div [innerHtml]='msg'></div>
-            <label>
-                <input type="file" (change)="selectFile($event)">
-                </label>
-        </div>
-
-        <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!selectedFiles || !subirCancion.form.valid"/>
+        <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success"/>
     </form>
 </div>
 

@@ -36,7 +36,7 @@ export class VerPlaylistComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    this._songService.getSongs(this.lista).subscribe(
+    this._songService.getSongsL(this.lista).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';

@@ -58,7 +58,6 @@ export class DelAlbumComponent implements OnInit {
       this.selectedAlbum.push(album);
       this.selected[i]= 0;
     }
-    console.log(this.selectedAlbum);
 
     
   }
@@ -69,7 +68,6 @@ export class DelAlbumComponent implements OnInit {
       this.selectedAlbum.splice( i, 1 );
       this.selected[j]= 1;
     }
-    console.log(this.selectedAlbum);
   }
 
   deleteAlbum(){

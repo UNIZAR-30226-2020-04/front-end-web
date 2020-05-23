@@ -39,6 +39,7 @@ import { BuscarPlaylistComponent } from './components/buscar-playlist/buscar-pla
 import { BuscarUsuarioComponent } from './components/buscar-usuario/buscar-usuario.component';
 import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podcast.component';
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
+import { AddToListaComponent } from './components/add-to-lista/add-to-lista.component';
 
 
 
@@ -71,7 +72,8 @@ import { SeguidosComponent } from './components/seguidos/seguidos.component';
     BuscarUsuarioComponent,
     BuscarPodcastComponent,
     SubirPodcastComponent,
-    SeguidosComponent
+    SeguidosComponent,
+    AddToListaComponent
   ],
   imports: [
     BrowserModule,
