@@ -1,0 +1,57 @@
+<app-sidebar></app-sidebar>
+<div class="row">
+	<div class="col-sm-12">
+ 		<div id="navbar">
+		  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		      <ul class="navbar-nav mr-auto">
+		        <li class="nav-item">
+		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(1)">Playlist</button>
+		        </li>
+		        <li class="nav-item">
+		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(2)">Artistas</button>
+		        </li>
+		        <li class="nav-item">
+		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(3)">Álbumes</button>
+		        </li>
+		        <li class="nav-item">
+		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(4)">Podcast</button>
+		        </li>
+		      </ul>
+		      <form #searchForm="ngForm" (ngSubmit)="busqueda()" class="form-inline my-2 my-lg-0">
+		        <input type="search" #search="ngModel" name="search" [(ngModel)]="texto" required class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search">
+		        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!searchForm.form.valid">Buscar</button>
+		      </form>
+		    </div>
+		  </nav>
+		</div>
+ 		<div class="container" *ngIf="buscado">
+
+			<h2>Lista encontrada de {{view}}:</h2>
+			<ul class="list-inline">
+				<li class="list-inline-item" *ngFor= "let elem of lista">
+					<a class="text-light" (click)=verElem(elem)>
+						<div class="container text-center">
+								<div *ngIf="elem.foto">
+									<img src="elem.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h3>{{elem.nombre}}</h3>
+								</div>
+								<div *ngIf="!elem.foto">
+									<img src="assets/album.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h3>{{elem.nombre}}</h3>
+								</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="container" *ngIf="!buscado">
+			<h2>Se requiere buscar {{view}} primero...</h2>
+		</div>
+	</div>
+</div>
+
+
+
+
+
