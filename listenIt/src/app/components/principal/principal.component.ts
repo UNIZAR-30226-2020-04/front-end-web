@@ -22,7 +22,8 @@ export class PrincipalComponent implements OnInit {
   	private userService: UserService,
   	private fileService: FileService) 
   {
-    this.album= new album(null,"","Entre poetas y presos","","La Raíz");
+    this.albums= [new album(null,"","Entre poetas ","","La Raíz"),new album(null,"","Entre poetas","","La Raíz"),new album(null,"","Entre poetas","","La Raíz")];
+    this.listas= [new lista(null,"","Entre poetas","","La Raíz"),new lista(null,"","Entre poetas","","La Raíz"),new lista(null,"","Entre poetas ","","La Raíz")];
   }
 
   ngOnInit(): void {
