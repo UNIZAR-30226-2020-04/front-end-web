@@ -1,93 +1,84 @@
 <app-sidebar></app-sidebar>
 <div class="row">
-	<div class="col-sm-6 bg-dark">
-		 <div class="btn-group">
-		  <button type="button" (click)="select = 1" class="btn btn-outline-secondary text-light">Playlists</button>
+	<div class="col-sm-10">
+		 <div id="menuBiblio" class="btn-group">
+		  <button type="button" (click)="select = 1; mostrarListas();" class="btn btn-outline-secondary text-light">Playlists</button>
 		  <button type="button" (click)="select = 2" class="btn btn-outline-secondary text-light">Artistas</button>
-		  <button type="button" (click)="select = 3" class="btn btn-outline-secondary text-light">Álbumes</button>
+		  <button type="button" (click)="select = 3; mostrarAlbums();" class="btn btn-outline-secondary text-light">Álbumes</button>
 		  <button type="button" (click)="select = 4" class="btn btn-outline-secondary text-light">Podcasts</button>
 		</div> 
-		<div class="container">
-			<div *ngIf="select == 1">
-				
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerPlay">
-							<div class="container text-center">
-									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Mi playlist</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerPlay">
-							<div class="container text-center">
-									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Mis canciones</h3>
-							</div>
-						</a>
-					</li>
-				</ul>
+		<div id="listaBiblio" class="container-fluid">
+			<div class="row" *ngIf="select == 1" >
+				<div id="celdaBiblio" class="col-xs-10" *ngFor="let lista of listas" >
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{lista.nombre}}</h5>
+						</div>
+					</a>
+				</div>
+				<div id="celdaBiblio" class="col-xs-10" *ngFor="let lista of listas">
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{lista.nombre}}</h5>
+						</div>
+					</a>
+				</div>
 			</div>
-			<div *ngIf="select == 2">
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerUsuario">
-							<div class="container text-center">
-									<img src="assets/uuser.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>ruben</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerUsuario">
-							<div class="container text-center">
-									<img src="assets/uuser.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>sara</h3>
-							</div>
-						</a>
-					</li>
-				</ul>
+			<div class="row" *ngIf="select == 2" >
+				<div id="celdaBiblio" class="col-xs-9" *ngFor="let usuario of usuarios">
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{usuario.nombre}}</h5>
+						</div>
+					</a>
+				</div>
+				<div id="celdaBiblio" class="col-xs-9" *ngFor="let usuario of usuarios">
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{usuario.nombre}}</h5>
+						</div>
+					</a>
+				</div>
 			</div>
-			<div *ngIf="select == 3">
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerAlbum">
-							<div class="container text-center">
-									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Trench</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerAlbum">
-							<div class="container text-center">
-									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Guerra al silencio</h3>
-							</div>
-						</a>
-					</li>
-				</ul>
+			<div class="row" *ngIf="select == 3" >
+				<div id="celdaBiblio" class="col-xs-9" *ngFor="let album of albums">
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{album.nombre}}</h5>
+						</div>
+					</a>
+				</div>
+				<div id="celdaBiblio" class="col-xs-9" *ngFor="let album of albums">
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{album.nombre}}</h5>
+						</div>
+					</a>
+				</div>
 			</div>
-			<div *ngIf="select == 4">
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/Verpodcast">
-							<div class="container text-center">
-									<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Un podcast</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/Verpodcast">
-							<div class="container text-center">
-									<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Otro podcast</h3>
-							</div>
-						</a>
-					</li>
-				</ul>
+			<div class="row" *ngIf="select == 4" >
+				<div id="celdaBiblio" class="col-xs-9" *ngFor="let podcast of podcasts">
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{podcast.nombre}}</h5>
+						</div>
+					</a>
+				</div>
+				<div id="celdaBiblio" class="col-xs-9" *ngFor="let podcast of podcasts">
+					<a class="text-light" routerLink="/VerPlay">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{podcast.nombre}}</h5>
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

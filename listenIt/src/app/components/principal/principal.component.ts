@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { album } from 'src/app/models/album';
 import { UserService } from '../../services/user.service';
 import { FileService } from '../../services/file.service';
+import { lista } from 'src/app/models/lista';
 
 @Component({
   selector: 'app-principal',
@@ -14,19 +15,21 @@ export class PrincipalComponent implements OnInit {
   public idAlbumRep;
   public idCancRep;
   public email;
-  
-
-  
+  public albums: album[];
+  public listas: lista[];
+    
   constructor(
   	private userService: UserService,
-  	private fileService: FileService
-  	) {
-
+  	private fileService: FileService) 
+  {
     this.album= new album(null,"","Entre poetas y presos","","La Raíz");
   }
 
   ngOnInit(): void {
   	this.email = this.userService.getToken();
+  }
+  local(lista){
+    
   }
 
   //Obtiene la URL de la cancion solicitada.

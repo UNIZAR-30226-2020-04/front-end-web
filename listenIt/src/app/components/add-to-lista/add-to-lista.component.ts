@@ -39,7 +39,7 @@ export class AddToListaComponent implements OnInit {
     private _listaService: ListaService
   ) { 
     this.title= "Añadir canciones"
-    this.cancion=new cancion("1","","jamas","","sara@sara","1")
+    this.cancion=new cancion("1","","jamas","","e@e","1");
     this.songs=[];
     this.lista = new lista(null,"","","","");
     this.identity = this._userService.getIdentity();
@@ -60,7 +60,6 @@ export class AddToListaComponent implements OnInit {
     this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.autor,this.cancion.album,this.idLista,this.cancion._id).subscribe(
       response => {
         if(response) {
-          console.log("holi");
           //Canción añadida correctamente al lista.
           this.status = "success";
         }

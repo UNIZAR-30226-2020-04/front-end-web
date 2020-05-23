@@ -10,14 +10,6 @@ export class FileService {
   constructor(private http: HttpClient) {
   	this.url = GLOBAL.url;
   }
-
-  createPodcast(email,titulo): Observable<any>{
-		let data = {email: email, podcast: titulo};
-		console.log(data);
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this.http.post(this.url + 'crearPodcast', data, {headers: headers});
-  } 
  
   uploadFile(correo,idAlbum,titCancion,file: File): Observable<HttpEvent<{}>> {
 		const formdata: FormData = new FormData();

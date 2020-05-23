@@ -1,51 +1,44 @@
 <app-sidebar></app-sidebar>
 <div class="row">
-	<div class="col-sm-7">
-		<div class="container">
-			<h2>Últimas canciones escuchadas...</h2>
+	<div class="col-sm-10">
+		<div id="listaPrinci" class="container">
+			<h3>Últimas canciones escuchadas...</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item">
-						<a class="text-light" (click)="reproducir()">
+						<a class="text-light" >
 							<div class="container text-center">
 									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>The Hype</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerAlbum">
-							<div class="container text-center">
-									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Guerra al silencio</h3>
+									<h5>The Hype</h5>
 							</div>
 						</a>
 					</li>
 					<li class="list-inline-item">
 						<a class="text-light" routerLink="/VerAlbum">
 							<div class="container text-center">
+									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h5>Guerra al silencio</h5>
+							</div>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-light" routerLink="/VerAlbum" >
+							<div class="container text-center">
 									<img src="assets/portadas/deathofabachelor.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Victorious</h3>
+									<h5>Victorious</h5>
 							</div>
 						</a>
 					</li>
 				</ul>
-			</div>
-		<div class="container">
-			<h2>Tus playlist</h2>
+		</div>
+
+		<div id="listaPrinci" class="container">
+			<h3>Tus playlist</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item">
-						<a class="text-light" href="/VerPlay">
+						<a class="text-light"routerLink="/VerPlay">
 							<div class="container text-center">
 									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Canciones</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerPlay">
-							<div class="container text-center">
-									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Stay Home</h3>
+									<h5>Canciones</h5>
 							</div>
 						</a>
 					</li>
@@ -53,32 +46,75 @@
 						<a class="text-light" routerLink="/VerPlay">
 							<div class="container text-center">
 									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Nueva lista</h3>
+									<h5>Stay Home</h5>
+							</div>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-light" routerLink="/VerPlay">
+							<div class="container text-center">
+									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h5>Nueva lista</h5>
 							</div>
 						</a>
 					</li>
 				</ul>
-
-
-
 		</div>
 
+		<div id="listaPrinci" class="container">
+			<h3>Tus playlist</h3>
+				<ul class="list-inline">
+					<li class="list-inline-item">
+						<a class="text-light"routerLink="/VerPlay">
+							<div class="container text-center">
+									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h5>Canciones</h5>
+							</div>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-light" routerLink="/VerPlay">
+							<div class="container text-center">
+									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h5>Stay Home</h5>
+							</div>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a class="text-light" routerLink="/VerPlay">
+							<div class="container text-center">
+									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h5>Nueva lista</h5>
+							</div>
+						</a>
+					</li>
+				</ul>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+
 	</div>
-	<div class="col-sm-2">
-		 <div id="opPrin" class="list-group">
-			  <a routerLink="/Perfil" class="text-center list-group-item list-group-item-action list-group-item-dark">Modificar perfil
+	<div>
+		 <div id="barraIzq" class="list-group">
+			  <a id="color" routerLink="/Perfil" class="text-center list-group-item list-group-item-action list-group-item-dark">Modificar perfil
 			  </a>
-			  <a routerLink="/CrearPlay" class="text-center list-group-item list-group-item-action list-group-item-dark">Crear playlist
+			  <a id="color" routerLink="/CrearPlay" class="text-center list-group-item list-group-item-action list-group-item-dark">Crear playlist
 			  </a>
-			  <a routerLink="/SubirAlbum" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir álbum
+			  <a id="color" routerLink="/SubirAlbum" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir álbum
 			  </a>
-			  <a routerLink="/SubirPodcast" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir podcast
+			  <a id="color" routerLink="/SubirPodcast" class="text-center list-group-item list-group-item-action list-group-item-dark">Subir podcast
 			  </a>
-			  <a routerLink="/BorrarPlay" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar playlist
+			  <a id="color" routerLink="/BorrarPlay" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar playlist
 			  </a>
-			  <a routerLink="/BorrarAlbum" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar álbum
+			  <a id="color" routerLink="/BorrarAlbum" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar álbum
 			  </a>
-			  <a routerLink="/BorrarPodcast" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar podcast
+			  <a id="color" routerLink="/BorrarPodcast" class="text-center list-group-item list-group-item-action list-group-item-dark">Borrar podcast
 			  </a>
 		</div> 
 	</div>
