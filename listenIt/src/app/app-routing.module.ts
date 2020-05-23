@@ -14,10 +14,7 @@ import { VerUsuarioComponent } from './components/ver-usuario/ver-usuario.compon
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
 import { SubirPodcastComponent } from './components/subir-podcast/subir-podcast.component';
 import { AddSongComponent } from './components/add-song/add-song.component';
-import { BuscarPlaylistComponent } from './components/buscar-playlist/buscar-playlist.component';
-import { BuscarAlbumComponent } from './components/buscar-album/buscar-album.component';
-import { BuscarUsuarioComponent } from './components/buscar-usuario/buscar-usuario.component';
-import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podcast.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
 import { DelPlaylistComponent } from './components/del-playlist/del-playlist.component';
 import { DelAlbumComponent } from './components/del-album/del-album.component';
 import { DelPodcastComponent } from './components/del-podcast/del-podcast.component';
@@ -29,10 +26,7 @@ const routes: Routes = [
   
   { path: 'Principal', component: PrincipalComponent },
   { path: 'Biblioteca', component: BibliotecaComponent },
-  { path: 'BuscarPlay', component: BuscarPlaylistComponent },
-  { path: 'BuscarAlbum', component: BuscarAlbumComponent },
-  { path: 'BuscarUsuario', component: BuscarUsuarioComponent },
-  { path: 'BuscarPodcast', component: BuscarPodcastComponent },
+  { path: 'Buscar', component: BuscarComponent },
   { path: 'Seguidos', component: SeguidosComponent },
 
   { path: '', component: InicioComponent},
