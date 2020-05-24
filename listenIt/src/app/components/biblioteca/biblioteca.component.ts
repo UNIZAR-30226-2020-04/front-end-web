@@ -49,6 +49,27 @@ export class BibliotecaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  local(elemento){
+  	localStorage.setItem('elemento', JSON.stringify(elemento));
+  }
+
+  mostrarListas(): void {
+    this._listaService.getListas(this.token).subscribe(
+      response => {
+        if(response != null){
+          this.status = 'succes';
+          this.listas = response;
+        }else{						
+          this.status = 'error2';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error2';
+      }	
+    );
+  }
+
   mostrarAlbums(): void {
     this._albumService.getAlbums(this.token).subscribe(
       response => {

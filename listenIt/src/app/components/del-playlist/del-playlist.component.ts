@@ -13,18 +13,17 @@ export class DelPlaylistComponent implements OnInit {
 
   public title: string;
   public selected:Array<number>;
-  public selectedLista: string[];
+  public selectedLista: lista[];
   public status;
   public token;
   public listas: lista[];
-  public selectedFiles:Array<string>;
 
   constructor(
     private _userService: UserService,
     private _listaService: ListaService,
     private _router: Router,
     ) { 
-    this.listas=[new lista(null,"","Entre poetas y presos","","La Raíz"),new lista(null,"","Guerra al silencio","","La Raíz"),new lista(null,"","Bajo la piel","","SFDK")]
+    this.listas=[]
     this.title= "Borrar playlist"
     this.token = this._userService.getToken();
     this.selected= new Array<number>();
@@ -37,7 +36,6 @@ export class DelPlaylistComponent implements OnInit {
         if(response != null){
           this.status = 'succes';
           this.listas = response;
-          //this._router.navigate(['/verLista']);
         }else{						
           this.status = 'error2';
         }
@@ -55,21 +53,17 @@ export class DelPlaylistComponent implements OnInit {
   addSelected(lista: lista){
     var i = this.listas.indexOf( lista );
     if (this.selected[i] != 0){
-      this.selectedLista.push(lista.nombre);
+      this.selectedLista.push(lista);
       this.selected[i]= 0;
-    }
-    console.log(this.selectedLista);
-
-    
+    }    
   }
   quitSelected(lista: lista){
-    var i = this.selectedLista.indexOf( lista.nombre );
+    var i = this.selectedLista.indexOf( lista );
     var j = this.listas.indexOf( lista );
     if (this.selected[j] == 0){
       this.selectedLista.splice( i, 1 );
       this.selected[j]= 1;
     }
-    console.log(this.selectedLista);
   }
 
   deleteLista(){
@@ -78,6 +72,9 @@ export class DelPlaylistComponent implements OnInit {
         response => {
           if(response){
             this.status = 'success';
+            this.selectedLista = [];
+            this.selected = [];
+            this.ngOnInit();
             //this._router.navigate(['/verLista']);
           }else{						
             this.status = 'error';

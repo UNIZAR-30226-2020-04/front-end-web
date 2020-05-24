@@ -2,7 +2,7 @@
 <div class="row">
 	<div id="listaPrinci" class="col-sm-8"  *ngIf="albums">
 		<div class="container">
-			<h2>Sus álbumes...</h2>
+			<h3>Sus álbumes...</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item" *ngFor="let album of albums">
 						<a class="text-light" href="/VerAlbum" (click)="local(album)">

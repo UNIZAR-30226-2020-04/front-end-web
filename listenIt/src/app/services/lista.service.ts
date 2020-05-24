@@ -34,7 +34,7 @@ export class ListaService {
   }
 
   getLista(){
-    let lista = JSON.parse(localStorage.getItem('actualLista'));
+    let lista = JSON.parse(localStorage.getItem('elemento'));
     if (lista != "undefined") {
         this.lista = lista;
     } else {
@@ -59,21 +59,17 @@ export class ListaService {
     return this._http.post(this.url + 'createPlaylist', data, {headers: headers});
   }
 
-  addLista(token, lista: lista){
-    let data = {email: token, name: lista.nombre, date: lista.fecha};
-    console.log(data);
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json');
-
-    return this._http.post(this.url+ 'createLista', data, {headers: headers});
+  addToLista(token,nombre,autor,idA,idP,idC){
+    console.log("holi  ",token,nombre,autor,idA,idP,idC);
+    let data = {user: token, nombre: nombre, usercancion: autor,idalbum : JSON.stringify(idA),idplaylist: idP,idcancion: JSON.stringify(idC)};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post(this.url+ 'addToPlaylist', data, {headers: headers});
   }
 
-  deleteLista(token, nombreLista: string){
-    let data = {email: token, name: nombreLista};
-    console.log(data);
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-
-    return this._http.delete(this.url+'Lista/'+ data, {headers: headers});
-	}
+  deleteLista(token, lista: lista){
+    let data = {user: token, idplaylist: JSON.stringify(lista.idRep.l_id)};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+    return this._http.post(this.url+'deletePlaylist', data, {headers: headers});
+  }
+  
 }

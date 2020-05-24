@@ -1,14 +1,13 @@
-
-
 body{
-    background-color: #352b2b;
+    background-color: #201e1e;
     color: white; 
+    font-family: Helvetica;
+    font-weight: 200;
 }
 div#conMenu{
     width: 75%;
     float: right;
 }
-
 div#sinMenu{
     width: 100%;
 }
@@ -33,4 +32,55 @@ div#der{
 }
 h1{
     text-align: center;
+}
+div#listaBiblio{
+    margin-top: 4%;
+    margin-left: 3%;
+}
+div#menuBiblio{
+    margin-left: 15%;
+    width: 70%;
+}
+div#barraIzq{
+    margin-right: 0%;
+}
+a#color{
+    color: white; 
+    background-color: #0f0f0f;
+}
+div#cancion{
+    color: #000000;
+}
+div#listAct{
+    color: #000000;
+}
+div#letraP{
+    font-size: small;
+}
+div#celdaBiblio{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+div#listaPrinci{
+    margin-top: 7%;
+    margin-bottom: 3%;
+}
+div#navbar{
+    width: 65%;
+    float: right;
+    margin-right: 12%;
+}
+
+div#resultado{
+    width: 50%;
+    float: left;
+    margin-right: 2%;
+}
+
+div#logo{
+    float: center;
+    margin-left: 25%;
+    margin-right: 25%;
 }

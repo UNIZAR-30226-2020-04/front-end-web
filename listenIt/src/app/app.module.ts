@@ -34,11 +34,9 @@ import { DelPlaylistComponent } from './components/del-playlist/del-playlist.com
 import { DelPodcastComponent } from './components/del-podcast/del-podcast.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { VerPodcastComponent } from './components/ver-podcast/ver-podcast.component';
-import { BuscarAlbumComponent } from './components/buscar-album/buscar-album.component';
-import { BuscarPlaylistComponent } from './components/buscar-playlist/buscar-playlist.component';
-import { BuscarUsuarioComponent } from './components/buscar-usuario/buscar-usuario.component';
-import { BuscarPodcastComponent } from './components/buscar-podcast/buscar-podcast.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
+import { AddToListaComponent } from './components/add-to-lista/add-to-lista.component';
 
 
 
@@ -66,12 +64,10 @@ import { SeguidosComponent } from './components/seguidos/seguidos.component';
     DelPodcastComponent,
     UploadComponent,
     VerPodcastComponent,
-    BuscarAlbumComponent,
-    BuscarPlaylistComponent,
-    BuscarUsuarioComponent,
-    BuscarPodcastComponent,
+    BuscarComponent,
     SubirPodcastComponent,
-    SeguidosComponent
+    SeguidosComponent,
+    AddToListaComponent
   ],
   imports: [
     BrowserModule,

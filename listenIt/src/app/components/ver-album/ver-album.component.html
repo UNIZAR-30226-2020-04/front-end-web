@@ -1,4 +1,5 @@
 <app-sidebar></app-sidebar>
+<br/>
 <div class="row">
 	<div class="col-sm-9" >
 		<div class="row">
@@ -17,14 +18,20 @@
 					<tr>
 						<th>Imagen</th>
 						<th>Título</th>
-						<th>Autor</th>
+						<th>Género</th>
 					</tr>
 				</thead>
 				<tbody *ngFor="let cancion of songs">
 					<tr>
 						<td><i class="fas fa-music"></i></td>
 						<td>{{cancion.nombre}}</td>
-						<td>{{cancion.idCancion.u}}</td>
+						<td>{{cancion.genero}}</td>
+						<td *ngIf="liked==0">
+							<img src="assets/like.png" class="img-responsive" (click)="like()" style="width:20px !important; height:20px !important"/>
+						</td>
+						<td *ngIf="liked==1">
+							<img src="assets/unlike.png" class="img-responsive" (click)="like()" style="width:20px !important; height:20px !important"/>
+						</td>
 					</tr>
 				</tbody>
 			</table>

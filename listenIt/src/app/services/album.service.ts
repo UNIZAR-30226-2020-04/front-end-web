@@ -16,7 +16,7 @@ export class AlbumService {
   }
   
   getAlbum(){
-    let album = JSON.parse(localStorage.getItem('actualAlbum'));
+    let album = JSON.parse(localStorage.getItem('elemento'));
     if (album != "undefined") {
         this.album = album;
     } else {
@@ -26,7 +26,6 @@ export class AlbumService {
   }
 
   getAlbums(token : String) : Observable<any> {
-    let data = {user: token};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'getAlbumsByUser', JSON.stringify(token), {headers: headers});
   }
@@ -36,18 +35,14 @@ export class AlbumService {
 		return this._http.post(this.url+ 'getAlbumsBiblio', JSON.stringify(token), {headers: headers});
 	}
 
-  addAlbum(token, album: album){
+  addAlbum(token, album: album) : Observable<any> {
+    console.log(token,album.nombre)
     let data = {email: token, name: album.nombre};
-    console.log(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
     return this._http.post(this.url+ 'createAlbum', data, {headers: headers});
   }
 
   deleteAlbum(token, album: album){
-    console.log("pido borrar");
-    console.log(album);
-    console.log(album.idAlbum);
     let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
     return this._http.post(this.url+ 'deleteAlbum' , data, {headers: headers});

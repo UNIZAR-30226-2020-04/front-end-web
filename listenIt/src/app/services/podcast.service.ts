@@ -15,6 +15,13 @@ export class PodcastService {
 		this.url = GLOBAL.url;
   }
 
+  createPodcast(email,titulo): Observable<any>{
+    let data = {user: email, podcast: titulo};
+    console.log(email,titulo);
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url + 'createPodcast',data, {headers: headers});
+  } 
+
   seguir(token,podcast){
     let data = {email: token, name: podcast};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');

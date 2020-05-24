@@ -23,7 +23,6 @@ export class SubirAlbum1Component implements OnInit {
   public status: string;
   public filesToUpload: Array<File>;
   public title;
-  public cosa;
   
   constructor(
     private _route: ActivatedRoute,
@@ -49,10 +48,7 @@ export class SubirAlbum1Component implements OnInit {
 						this.status = 'Error';
 					}
           else {
-            this.cosa = response;
-            console.log(this.cosa);
-            console.log(this.cosa.u);
-            localStorage.setItem('idAlbum', this.cosa.l_id);
+            localStorage.setItem('idAlbum', response.l_id);
             localStorage.setItem('album',this.album.nombre);
             this._router.navigate(['/SubirCanc']);
 					}

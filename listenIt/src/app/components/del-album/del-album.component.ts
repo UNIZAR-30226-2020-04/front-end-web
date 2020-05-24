@@ -35,8 +35,6 @@ export class DelAlbumComponent implements OnInit {
         if(response != null){
           this.status = 'succes';
           this.albums = response;
-          ///TEMPORAL PARA HACER PRUEBAS CON ALBUMS REALES
-          localStorage.setItem('actualAlbum', JSON.stringify(this.albums[1]));
         }else{						
           this.status = 'error2';
         }
@@ -58,7 +56,6 @@ export class DelAlbumComponent implements OnInit {
       this.selectedAlbum.push(album);
       this.selected[i]= 0;
     }
-    console.log(this.selectedAlbum);
 
     
   }
@@ -69,7 +66,6 @@ export class DelAlbumComponent implements OnInit {
       this.selectedAlbum.splice( i, 1 );
       this.selected[j]= 1;
     }
-    console.log(this.selectedAlbum);
   }
 
   deleteAlbum(){

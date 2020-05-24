@@ -49,7 +49,6 @@ export class UserService {
 	signup(user: usuario): Observable<any> {
 		let data = {email: user.correo, password: user.contrasena};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
 		return this._http.post(this.url + 'loginUser', data, {headers: headers});
 	}
 

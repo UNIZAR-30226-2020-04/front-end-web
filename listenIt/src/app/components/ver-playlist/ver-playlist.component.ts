@@ -34,21 +34,20 @@ export class VerPlaylistComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    this._songService.getSongs(this.lista).subscribe(
+    /*this._songService.getSongsL(this.lista).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.songs = response;
         }else{						
           this.status = 'error';
-          //this._router.navigate(['/verLista']);
         }
       },
       error => {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );
+    );*/
   }
 
   seguir(){
@@ -84,7 +83,7 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   seguido(): number{
-      this._listaService.seguido(this.token, this.lista.nombre).subscribe(
+     /* this._listaService.seguido(this.token, this.lista.nombre).subscribe(
       response => {
         if(response){
           return 1;
@@ -96,7 +95,7 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );
+    );*/
     return 0;
   }
   

@@ -20,6 +20,7 @@ export class VerAlbumComponent implements OnInit {
   public songs;
   public status;
   public token;
+  public liked;
 
   constructor(
     private _route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class VerAlbumComponent implements OnInit {
   ) {
     this.album = this._albumService.getAlbum();
     this.token = this._userService.getToken();
+    this.liked=0;
    }
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class VerAlbumComponent implements OnInit {
         if(response != null){
           this.status = 'succes';
           this.songs = response;
+          console.log(response);
         }else{						
           this.status = 'error';
           //this._router.navigate(['/verAlbum']);
@@ -48,6 +51,11 @@ export class VerAlbumComponent implements OnInit {
           this.status = 'error';
       }	
     );
+  }
+
+  like(){
+    if (this.liked==1) this.liked=0;
+    else this.liked=1;
   }
   
 }

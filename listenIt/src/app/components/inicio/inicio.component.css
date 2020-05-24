@@ -1,12 +1,7 @@
-div#img{
-    height: 100%;
-    width: 100%;
-    background-image: url("/assets/índice.jpeg");
-}
-input#inicio{
-
-}
-
 input#registro{
-    background-color: rgb(206, 92, 92);
+    background-color: rgb(56, 46, 92);
+}
+div#botones{
+    width: 20%;
+    margin-left: 50%;
 }
