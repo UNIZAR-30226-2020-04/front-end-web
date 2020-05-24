@@ -84,26 +84,28 @@ export class BuscarComponent implements OnInit {
   }
 
   verElem(elem) {
-  	let elemento = JSON.stringify(elem);
-  	console.log(elemento);
+	  let elemento = JSON.stringify(elem);
+	  
   	// Guardar elemento al que se hace click.
-  	localStorage.setItem('elemento', elemento);
-
   	if( this.view == "playlist") {
-  		// Ver playlist
+		  // Ver playlist
+		localStorage.setItem('verLista', elemento);
   		this.router.navigate(['/VerPlay']);
   	}
   	else if(this.view == "artistas") {
-  		// Ver Artistas
+		  // Ver Artistas
+		localStorage.setItem('verUsuario', elemento);
   		this.router.navigate(['/VerUsuario']);
   	}
   	else if(this.view == "albumes") {
-  		// Ver albumes
+		  // Ver albumes
+		localStorage.setItem('verAlbum', elemento);
   		this.router.navigate(['/VerAlbum']);
   	}
   	else {
   		// this.view = "podcast"
-  		// Ver podcast
+		  // Ver podcast
+		localStorage.setItem('verPodcast', elemento);
   		this.router.navigate(['/Verpodcast']);
   	}
   }

@@ -19,7 +19,7 @@ export class UserService {
 	}
 
 	getUsuario(){
-		let usuario = JSON.parse(localStorage.getItem('elemento'));
+		let usuario = JSON.parse(localStorage.getItem('verUsuario'));
 		if (usuario != "undefined") {
 			this.usuario = usuario;
 		} else {

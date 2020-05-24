@@ -32,12 +32,11 @@ export class DelPodcastComponent implements OnInit {
   ngOnInit(): void {
     this._podcastService.getPodcasts(this.token).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.podcasts = response;
         }else{						
           this.status = 'error2';
-          //this._router.navigate(['/verPodcast']);
         }
       },
       error => {
@@ -46,7 +45,7 @@ export class DelPodcastComponent implements OnInit {
       }	
     );
   }
-   num(podcast: podcast): number{
+  num(podcast: podcast): number{
     return this.podcasts.indexOf( podcast );
   }
 
@@ -69,7 +68,7 @@ export class DelPodcastComponent implements OnInit {
 
   deletePodcast(){
     this.selectedPodcast.forEach(element => {
-      this._podcastService.deletePodcast(this.token, element).subscribe(
+      this._podcastService.deletePodcast(this.token, element.idPodcast.l_id).subscribe(
         response => {
           if(response){
             this.status = 'success';
@@ -87,6 +86,4 @@ export class DelPodcastComponent implements OnInit {
       );
     });
   }
-
-
 }

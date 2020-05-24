@@ -34,7 +34,7 @@ export class ListaService {
   }
 
   getLista(){
-    let lista = JSON.parse(localStorage.getItem('elemento'));
+    let lista = JSON.parse(localStorage.getItem('verLista'));
     if (lista != "undefined") {
         this.lista = lista;
     } else {

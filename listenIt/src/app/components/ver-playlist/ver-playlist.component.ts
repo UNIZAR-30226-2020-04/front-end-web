@@ -21,6 +21,7 @@ export class VerPlaylistComponent implements OnInit {
   public songs: cancion[];
   public token;
   public status;
+  public likes: boolean[];
 
   constructor(
     private _route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class VerPlaylistComponent implements OnInit {
         if(response != null){
           this.status = 'succes';
           this.songs = response;
+          this.isLiked();
         }else{						
           this.status = 'error';
         }
@@ -48,6 +50,48 @@ export class VerPlaylistComponent implements OnInit {
           this.status = 'error';
       }	
     );*/
+  }
+
+  isLiked(){
+    //Comprueba que canciones del álbum te gustan, y cuáles no
+    /*this.songs.forEach(element => {
+      this._songService.getLike(this.token,element.idCancion.l_id.l_id,element.idCancion.c_id).subscribe(
+        response => {
+          if(response != null){
+            this.status = 'succes';
+            var i = this.num(element);
+            this.likes[i]=response;
+          }else{						
+            this.status = 'error';
+          }
+        },
+        error => {
+          console.log(<any> error);
+            this.status = 'error';
+        }	
+      );
+    });*/
+  }
+
+  like(song){
+    /*this._songService.likeL(this.token,song.idCancion.l_id.l_id,song.idCancion.c_id).subscribe(
+      response => {
+        if(response != null){
+          this.status = 'succes';
+          this.isLiked();
+        }else{						
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );*/
+  }
+
+  num(song): number{
+    return this.songs.indexOf(song);
   }
 
   seguir(){

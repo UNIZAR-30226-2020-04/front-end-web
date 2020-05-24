@@ -32,6 +32,12 @@
 						<td><i class="fas fa-music"></i></td>
 						<td>{{cancion.nombre}}</td>
 						<td>{{cancion.autor}}</td>
+						<td *ngIf="likes[num(cancion)] = true">
+							<img src="assets/likew.png" class="img-responsive" (click)="like(cancion)" style="width:20px !important; height:20px !important"/>
+						</td>
+						<td *ngIf="likes[num(cancion)] = false">
+							<img src="assets/unlikew.png" class="img-responsive" (click)="like(cancion)" style="width:20px !important; height:20px !important"/>
+						</td>
 					</tr>
 				</tbody>
 			</table>

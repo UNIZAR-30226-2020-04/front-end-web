@@ -12,6 +12,7 @@
 				<h3>{{album.fecha}}</h3>
 			</div>
 		</div>
+		<br/>
 		<div class="container" *ngIf="songs">
 			<table class="table table-dark table-hover">
 				<thead>
@@ -26,11 +27,11 @@
 						<td><i class="fas fa-music"></i></td>
 						<td>{{cancion.nombre}}</td>
 						<td>{{cancion.genero}}</td>
-						<td *ngIf="liked==0">
-							<img src="assets/like.png" class="img-responsive" (click)="like()" style="width:20px !important; height:20px !important"/>
+						<td *ngIf="likes[num(cancion)] = true">
+							<img src="assets/likew.png" class="img-responsive" (click)="like(cancion)" style="width:20px !important; height:20px !important"/>
 						</td>
-						<td *ngIf="liked==1">
-							<img src="assets/unlike.png" class="img-responsive" (click)="like()" style="width:20px !important; height:20px !important"/>
+						<td *ngIf="likes[num(cancion)] = false">
+							<img src="assets/unlikew.png" class="img-responsive" (click)="like(cancion)" style="width:20px !important; height:20px !important"/>
 						</td>
 					</tr>
 				</tbody>

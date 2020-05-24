@@ -31,14 +31,14 @@ export class VerUsuarioComponent implements OnInit {
     this.usuario = this._userService.getUsuario();
   }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
     //Busca los albumes del artista
-    this._albumService.getAlbums(this.usuario.idUser.u_id).subscribe(
+    this._albumService.getAlbums(this.usuario.correo).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.albums = response;
+          console.log(response)
         }else{						
           this.status = 'error';
         }
@@ -48,9 +48,8 @@ export class VerUsuarioComponent implements OnInit {
           this.status = 'error';
       }	
     );
-
     //Busca las listas del artista
-    this._listaService.getListas(this.usuario.idUser.u_id).subscribe(
+    this._listaService.getListas(this.usuario.correo).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -66,7 +65,7 @@ export class VerUsuarioComponent implements OnInit {
     );
 
     //Busca los podcast del artista
-    this._podcastService.getPodcasts(this.usuario.idUser.u_id).subscribe(
+    /*this._podcastService.getPodcasts(this.usuario.idUser.u_id).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -80,12 +79,21 @@ export class VerUsuarioComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );
+    );*/
 
   }
 
-  local(elemento){
-  	localStorage.setItem('elemento', JSON.stringify(elemento));
+  localL(lista){
+  	localStorage.setItem('verLista', JSON.stringify(lista));
+  }
+  localA(album){
+  	localStorage.setItem('verAlbum', JSON.stringify(album));
+  }
+  localP(podcast){
+  	localStorage.setItem('verPodcast', JSON.stringify(podcast));
+  }
+  localU(usuario){
+  	localStorage.setItem('verUsuario', JSON.stringify(usuario));
   }
 
   seguir(){

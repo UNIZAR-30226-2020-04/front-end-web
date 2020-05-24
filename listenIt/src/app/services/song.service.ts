@@ -16,10 +16,25 @@ export class SongService{
 	constructor(private _http: HttpClient){
 		this.url = GLOBAL.url;
 	}
+
+	//Dar like a una canción 
+	like(token,album,song) : Observable<any> {
+		let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id), song: JSON.stringify(song.idCancion.c_id) };
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
+		return this._http.post(this.url+ 'likeL', data, {headers: headers});
+	}
+
+	//Obtener si le has dado like a una cancion de un album
+	getLike(token,album,song) : Observable<any> {
+		let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id),song: song };
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
+		return this._http.post(this.url+ 'getLike', data, {headers: headers});
+	}
+
 	getSongsL(lista: lista) : Observable<any> {
 		let data = { user: lista.idRep.u, idalbum: JSON.stringify(lista.idRep.l_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
-		return this._http.post(this.url+ 'listSongsAlbum', data, {headers: headers});
+		return this._http.post(this.url+ 'listSongsLista', data, {headers: headers});
 	}
 
 	getSongs(album: album) : Observable<any> {

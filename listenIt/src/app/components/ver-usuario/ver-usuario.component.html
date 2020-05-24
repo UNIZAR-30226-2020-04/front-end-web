@@ -1,11 +1,11 @@
 <app-sidebar></app-sidebar>
 <div class="row">
-	<div id="listaPrinci" class="col-sm-8"  *ngIf="albums">
+	<div id="listaPrinci" class="col-sm-7"  *ngIf="albums">
 		<div class="container">
 			<h3>Sus álbumes...</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item" *ngFor="let album of albums">
-						<a class="text-light" href="/VerAlbum" (click)="local(album)">
+						<a class="text-light" href="/VerAlbum" (click)="localA(album)">
 							<div class="container text-center">
 									<img src="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<h5>{{album.nombre}}</h5>
@@ -14,36 +14,36 @@
 					</li>
 				</ul>
 		</div>
+		<div class="container">
+		<h3>Sus playlist...</h3>
+			<ul class="list-inline" *ngIf="listas">
+				<li class="list-inline-item" *ngFor="let lista of listas">
+					<a class="text-light" href="/VerPlay" (click)="localL(lista)">
+						<div class="container text-center">
+								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{lista.nombre}}</h5>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="container">
+		<h3>Sus podcast...</h3>
+			<ul class="list-inline" *ngIf="podcasts">
+				<li class="list-inline-item" *ngFor="let podcast of podcasts">
+					<a class="text-light" href="/Verpodcast" (click)="localP(podcast)">
+						<div class="container text-center">
+								<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h5>{{podcast.nombre}}</h5>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
-		<div  id="listaPrinci" class="col-sm-9" *ngIf="listas">
-			<h3>Sus playlist...</h3>
-				<ul class="list-inline">
-					<li class="list-inline-item" *ngFor="let lista of listas">
-						<a class="text-light" href="/VerPlay" (click)="local(lista)">
-							<div class="container text-center">
-									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h5>{{lista.nombre}}</h5>
-							</div>
-						</a>
-					</li>
-				</ul>
-		</div>
-		<div id="listaPrinci" class="col-sm-9" *ngIf="podcasts">
-			<h3>Sus podcast...</h3>
-				<ul class="list-inline">
-					<li class="list-inline-item" *ngFor="let podcast of podcasts">
-						<a class="text-light" href="/Verpodcast" (click)="local(podcast)">
-							<div class="container text-center">
-									<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h5>{{podcast.nombre}}</h5>
-							</div>
-						</a>
-					</li>
-				</ul>
-		</div>
 	<div class="col-sm-2 text-center">
 		<i class="fas fa-user fa-7x"></i>
-		<h4>Sara</h4>
+		<h4>{{usuario.nombre}}</h4>
 		<div *ngIf="seguido()==0" >
 			<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
 		</div>

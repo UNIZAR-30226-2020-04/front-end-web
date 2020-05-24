@@ -3,6 +3,8 @@ import { album } from 'src/app/models/album';
 import { UserService } from '../../services/user.service';
 import { FileService } from '../../services/file.service';
 import { lista } from 'src/app/models/lista';
+import { ListaService } from 'src/app/services/lista.service';
+import { AlbumService } from 'src/app/services/album.service';
 
 @Component({
   selector: 'app-principal',
@@ -14,30 +16,63 @@ export class PrincipalComponent implements OnInit {
   public album;
   public idAlbumRep;
   public idCancRep;
-  public email;
+  public token;
   public albums: album[];
   public listas: lista[];
     
   constructor(
-  	private userService: UserService,
+    private userService: UserService,
+    private _listaService: ListaService,
+    private _albumService: AlbumService,
   	private fileService: FileService) 
   {
-    this.albums= [new album(null,"","Entre poetas ","","La Raíz"),new album(null,"","Entre poetas","","La Raíz"),new album(null,"","Entre poetas","","La Raíz")];
-    this.listas= [new lista(null,"","Entre poetas","","La Raíz"),new lista(null,"","Entre poetas","","La Raíz"),new lista(null,"","Entre poetas ","","La Raíz")];
+    this.token = this.userService.getToken();
   }
 
   ngOnInit(): void {
-  	this.email = this.userService.getToken();
+    this._listaService.getListas(this.token).subscribe(
+      response => {
+        if(response != null){
+          this.status = 'succes';
+          this.listas = response;
+        }else{						
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
+
+
+    /*this._albumService.getAlbumsBiblio(this.token).subscribe(
+      response => {
+        if(response != null){
+          this.status = 'succes';
+          this.albums = response;
+        }else{						
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );*/
   }
-  local(elemento){
-  	localStorage.setItem('elemento', JSON.stringify(elemento));
+  localL(lista){
+  	localStorage.setItem('verLista', JSON.stringify(lista));
+  }
+  localA(album){
+  	localStorage.setItem('verAlbum', JSON.stringify(album));
   }
 
   //Obtiene la URL de la cancion solicitada.
   reproducir() {
   	this.idAlbumRep = "1";
   	this.idCancRep = "1";
-    this.fileService.getURL(this.idAlbumRep,this.idCancRep,this.email).subscribe(
+    this.fileService.getURL(this.idAlbumRep,this.idCancRep,this.token).subscribe(
       response => {
         if (response.body) {
           console.log("Respuesta(body): " + response.body);

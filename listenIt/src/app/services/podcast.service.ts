@@ -41,7 +41,7 @@ export class PodcastService {
   }
 
   getPodcast(){
-    let podcast = JSON.parse(localStorage.getItem('elemento'));
+    let podcast = JSON.parse(localStorage.getItem('verPodcast'));
     if (podcast != "undefined") {
         this.podcast = podcast;
     } else {
@@ -58,7 +58,7 @@ export class PodcastService {
   
   getPodcasts(token) : Observable<any> {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.get(this.url+'podcast/'+ token, {headers: headers});
+		return this._http.post(this.url+'getPodcastsByUser', JSON.stringify(token), {headers: headers});
 	}
 
   getPodcastsBiblio(token) : Observable<any> {
@@ -75,11 +75,10 @@ export class PodcastService {
     return this._http.post(this.url+ 'createPodcast', data, {headers: headers});
   }
 
-  deletePodcast(token, nombrePodcast: string){
-    let data = {email: token, name: nombrePodcast};
+  deletePodcast(token, podcast){
+    let data = {user: token, idpodcast: JSON.stringify(podcast)};
     let headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
-
-    return this._http.delete(this.url+'Podcast/'+ data, {headers: headers});
+    return this._http.post(this.url+'deletePodcast', data, {headers: headers});
 	}
 }
