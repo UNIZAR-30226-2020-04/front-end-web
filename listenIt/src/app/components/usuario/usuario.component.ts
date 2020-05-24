@@ -41,6 +41,8 @@ export class UsuarioComponent implements OnInit {
       response => {
         if(response) {
           this.status = 'success';
+          this.identity.nombre = this.newName;
+          localStorage.setItem("identity",JSON.stringify(this.identity));
         }
         else {
           this.status = 'error';
@@ -61,6 +63,8 @@ export class UsuarioComponent implements OnInit {
       response => {
         if(response) {
           this.status = 'success';
+          this.identity.nick = this.newNick;
+          localStorage.setItem("identity",JSON.stringify(this.identity));
         }
         else {
           this.status = 'error';
@@ -81,6 +85,8 @@ export class UsuarioComponent implements OnInit {
       response => {
         if(response) {
           this.status = 'success';
+          this.identity.pass = this.myPassB;
+          localStorage.setItem("identity",JSON.stringify(this.identity));
         }
         else {
           this.status = 'error';

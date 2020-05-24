@@ -29,6 +29,7 @@ export class VerUsuarioComponent implements OnInit {
   ) { 
     this.token = this._userService.getToken();
     this.usuario = this._userService.getUsuario();
+    console.log(this.usuario);
   }
 
   ngOnInit() {
@@ -64,8 +65,8 @@ export class VerUsuarioComponent implements OnInit {
       }	
     );
 
-    //Busca los podcast del artista
-    /*this._podcastService.getPodcasts(this.usuario.idUser.u_id).subscribe(
+    /*//Busca los podcast del artista
+    this._podcastService.getPodcasts(this.usuario.idUser.u_id).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -97,7 +98,7 @@ export class VerUsuarioComponent implements OnInit {
   }
 
   seguir(){
-   this._userService.seguir(this.token,this.usuario.idUser.u_id).subscribe(
+   this._userService.seguir(this.token,this.usuario.correo).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -113,7 +114,7 @@ export class VerUsuarioComponent implements OnInit {
   }
 
   dejarSeguir(){
-    this._userService.dejarSeguir(this.token,this.usuario.idUser.u_id).subscribe(
+    this._userService.dejarSeguir(this.token,this.usuario.correo).subscribe(
        response => {
          if(response != null){
            this.status = 'succes';
