@@ -1,6 +1,6 @@
 <app-sidebar></app-sidebar>
 <div class="row">
-	<div id="listaPrinci" class="col-sm-8"  *ngIf="albums">
+	<div id="listaPrinci" class="col-sm-9"  *ngIf="albums">
 		<div class="container">
 			<h3>Sus álbumes...</h3>
 				<ul class="list-inline">
@@ -42,8 +42,14 @@
 				</ul>
 		</div>
 	<div class="col-sm-2 text-center">
-		<i class="fas fa-user fa-7x"></i>
-		<h4>Sara</h4>
+		<div *ngIf="usuario.foto">
+			<img src="usuario.foto" class="img-responsive" style="width:100px !important; height:100px !important"/>
+			<h3>{{usuario.nombre}}</h3>
+		</div>
+		<div *ngIf="!usuario.foto">
+			<img src="assets/uuser.png" class="img-responsive" style="width:100px !important; height:100px !important"/>
+			<h3>{{usuario.nombre}}</h3>
+		</div>
 		<div *ngIf="seguido()==0" >
 			<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
 		</div>

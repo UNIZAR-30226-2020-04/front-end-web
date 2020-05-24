@@ -74,12 +74,13 @@ export class UserService {
 
 	changePass(email,pass,newPass): Observable<any> {
 		let data = {user: email, pass: pass, newPass: newPass};
+		console.log(data);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'cambiarPass', data, {headers: headers});
 	}
 
     deleteAccount(emailD,passA,passB): Observable<any> {
-    	let data = {email: emailD, pass: passA, confPass: passB};
+    	let data = {user: emailD, pass: passA, passCheck: passB};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'deleteUser', data, {headers: headers});
 	}
