@@ -34,7 +34,7 @@ export class PodcastService {
   }
 
   getPodcast(){
-    let podcast = JSON.parse(localStorage.getItem('actualPodcast'));
+    let podcast = JSON.parse(localStorage.getItem('elemento'));
     if (podcast != "undefined") {
         this.podcast = podcast;
     } else {
@@ -42,13 +42,23 @@ export class PodcastService {
     }
     return this.podcast;
   }
+
+  getCapitulos(token,podcast) : Observable<any> {
+    let data = {user: token, podcast: podcast};
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.get(this.url+'podcast/'+ token, {headers: headers});
+	}
   
   getPodcasts(token) : Observable<any> {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-		return this._http.get(this.url+'songs/'+ token, {headers: headers});
+		return this._http.get(this.url+'podcast/'+ token, {headers: headers});
 	}
 
+  getPodcastsBiblio(token) : Observable<any> {
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.get(this.url+'podcastBiblio/'+ token, {headers: headers});
+  }
+  
   addPodcast(token, podcast: podcast){
     let data = {email: token, name: podcast.nombre, date: podcast.fecha};
     console.log(data);

@@ -17,7 +17,7 @@ export class VerAlbumComponent implements OnInit {
   public album: album;
   public usuario: usuario;
   public identity;
-  public songs: cancion[];
+  public songs;
   public status;
   public token;
 
@@ -29,7 +29,6 @@ export class VerAlbumComponent implements OnInit {
     private _songService: SongService,
   ) {
     this.album = this._albumService.getAlbum();
-    this.songs=[];
     this.token = this._userService.getToken();
    }
 

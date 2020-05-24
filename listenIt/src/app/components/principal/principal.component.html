@@ -12,8 +12,14 @@
 							</div>
 						</a>
 					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerAlbum">
+				</ul>
+		</div>
+
+		<div id="listaPrinci" class="container">
+			<h3>Tus albums</h3>
+				<ul class="list-inline">
+					<li class="list-inline-item" *ngFor="let album of albums">
+						<a class="text-light" routerLink="/VerAlbum" (click)="local(album)">
 							<div class="container text-center">
 									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<h3>Guerra al silencio</h3>

@@ -13,18 +13,16 @@ export class DelPodcastComponent implements OnInit {
 
   public title: string;
   public selected:Array<number>;
-  public selectedPodcast: string[];
+  public selectedPodcast;
   public status;
   public token;
   public podcasts: podcast[];
-  public selectedFiles:Array<string>;
 
   constructor(
     private _userService: UserService,
     private _podcastService: PodcastService,
     private _router: Router,
     ) { 
-    this.podcasts=[new podcast(null,"","Entre poetas y presos","","La Raíz"),new podcast(null,"","Guerra al silencio","","La Raíz"),new podcast(null,"","Bajo la piel","","SFDK")]
     this.title= "Borrar podcast"
     this.token = this._userService.getToken();
     this.selected= new Array<number>();
@@ -55,21 +53,18 @@ export class DelPodcastComponent implements OnInit {
   addSelected(podcast: podcast){
     var i = this.podcasts.indexOf( podcast );
     if (this.selected[i] != 0){
-      this.selectedPodcast.push(podcast.nombre);
+      this.selectedPodcast.push(podcast);
       this.selected[i]= 0;
     }
-    console.log(this.selectedPodcast);
-
-    
   }
+
   quitSelected(podcast: podcast){
-    var i = this.selectedPodcast.indexOf( podcast.nombre );
-    var j = this.podcasts.indexOf( podcast );
+    var i = this.selectedPodcast.indexOf(podcast);
+    var j = this.podcasts.indexOf(podcast);
     if (this.selected[j] == 0){
       this.selectedPodcast.splice( i, 1 );
       this.selected[j]= 1;
     }
-    console.log(this.selectedPodcast);
   }
 
   deletePodcast(){
@@ -78,7 +73,9 @@ export class DelPodcastComponent implements OnInit {
         response => {
           if(response){
             this.status = 'success';
-            //this._router.navigate(['/verPodcast']);
+            this.selectedPodcast = [];
+            this.selected = [];
+            this.ngOnInit();
           }else{						
             this.status = 'error';
           }

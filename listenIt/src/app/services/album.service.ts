@@ -28,7 +28,12 @@ export class AlbumService {
   getAlbums(token : String) : Observable<any> {
     let data = {user: token};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+ 'getAlbumsByUser', data , {headers: headers});
+		return this._http.post(this.url+ 'getAlbumsByUser', JSON.stringify(token), {headers: headers});
+  }
+  
+  getAlbumsBiblio(token : String) : Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url+ 'getAlbumsBiblio', JSON.stringify(token), {headers: headers});
 	}
 
   addAlbum(token, album: album){

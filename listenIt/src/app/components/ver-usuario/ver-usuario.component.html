@@ -1,70 +1,55 @@
 <app-sidebar></app-sidebar>
 <div class="row">
-	<div class="col-sm-9">
+	<div id="listaPrinci" class="col-sm-8"  *ngIf="albums">
 		<div class="container">
 			<h2>Sus álbumes...</h2>
 				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerAlbum">
+					<li class="list-inline-item" *ngFor="let album of albums">
+						<a class="text-light" href="/VerAlbum" (click)="local(album)">
 							<div class="container text-center">
 									<img src="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Album 1</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerAlbum">
-							<div class="container text-center">
-									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Album 2</h3>
+									<h5>{{album.nombre}}</h5>
 							</div>
 						</a>
 					</li>
 				</ul>
-			<h2>Sus podcast...</h2>
+		</div>
+	</div>
+		<div  id="listaPrinci" class="col-sm-9" *ngIf="listas">
+			<h3>Sus playlist...</h3>
 				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/Verpodcast">
-							<div class="container text-center">
-									<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Podcast 1</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/Verpodcast">
-							<div class="container text-center">
-									<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Podcast 2</h3>
-							</div>
-						</a>
-					</li>
-				</ul>
-			<h2>Sus playlist...</h2>
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerPlay">
+					<li class="list-inline-item" *ngFor="let lista of listas">
+						<a class="text-light" href="/VerPlay" (click)="local(lista)">
 							<div class="container text-center">
 									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Playlist 1</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerPlay">
-							<div class="container text-center">
-									<img src="assets/portadas/deathofabachelor.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>Playlist 2</h3>
+									<h5>{{lista.nombre}}</h5>
 							</div>
 						</a>
 					</li>
 				</ul>
-			</div>
-	</div>
+		</div>
+		<div id="listaPrinci" class="col-sm-9" *ngIf="podcasts">
+			<h3>Sus podcast...</h3>
+				<ul class="list-inline">
+					<li class="list-inline-item" *ngFor="let podcast of podcasts">
+						<a class="text-light" href="/Verpodcast" (click)="local(podcast)">
+							<div class="container text-center">
+									<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<h5>{{podcast.nombre}}</h5>
+							</div>
+						</a>
+					</li>
+				</ul>
+		</div>
 	<div class="col-sm-2 text-center">
 		<i class="fas fa-user fa-7x"></i>
 		<h4>Sara</h4>
-		<button type="button" class="btn btn-dark">Seguir</button>
+		<div *ngIf="seguido()==0" >
+			<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
+		</div>
+		<div *ngIf="seguido()==1">
+			<input type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
+		</div>
 	</div>
 
 </div>

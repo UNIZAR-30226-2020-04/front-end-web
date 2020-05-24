@@ -30,8 +30,6 @@ export class VerPlaylistComponent implements OnInit {
     private _songService: SongService,
   ) {
     this.lista = this._listaService.getLista();
-    this.songs=[new cancion("","","My blood","","TØP",""),new cancion("","","Neon Gravestones","","TØP",""),new cancion("","","Entre Poetas y Presos","","La Raíz",""),new cancion("","","Y Volar","","La Pegatina",""),new cancion("","","A la Sombra de la Sierra","","La Raíz","")];
-    this.lista = new lista(null,"","Mi playlist","2020","Sara");
     this.token = this._userService.getToken();
    }
 
@@ -59,12 +57,12 @@ export class VerPlaylistComponent implements OnInit {
           if(response){
             this.status = 'succes';
           }else{						
-            this.status = 'error2';
+            this.status = 'error';
           }
         },
         error => {
           console.log(<any> error);
-            this.status = 'error2';
+            this.status = 'error';
         }	
       );
   }
@@ -75,12 +73,12 @@ export class VerPlaylistComponent implements OnInit {
           if(response){
             this.status = 'succes';
           }else{						
-            this.status = 'error2';
+            this.status = 'error';
           }
         },
         error => {
           console.log(<any> error);
-            this.status = 'error2';
+            this.status = 'error';
         }	
       );
   }
@@ -89,15 +87,14 @@ export class VerPlaylistComponent implements OnInit {
       this._listaService.seguido(this.token, this.lista.nombre).subscribe(
       response => {
         if(response){
-          this.status = 'succes';
           return 1;
         }else{						
-          this.status = 'error2';
+          return 0;
         }
       },
       error => {
         console.log(<any> error);
-          this.status = 'error2';
+          this.status = 'error';
       }	
     );
     return 0;

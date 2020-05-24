@@ -17,7 +17,7 @@
 				<input type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
 			</div>
 		</div>
-		<div class="container" *ngIf="songs">
+		<div class="container" *ngIf="capitulos">
 			<table class="table table-dark table-hover">
 				<thead>
 					<tr>
@@ -26,11 +26,11 @@
 						<th>Autor</th>
 					</tr>
 				</thead>
-				<tbody *ngFor="let cancion of songs">
+				<tbody *ngFor="let cap of capitulos">
 					<tr>
 						<td><i class="fas fa-music"></i></td>
-						<td>{{cancion.nombre}}</td>
-						<td>{{cancion.autor}}</td>
+						<td>{{cap.nombre}}</td>
+						<td>{{cap.autor}}</td>
 					</tr>
 				</tbody>
 			</table>

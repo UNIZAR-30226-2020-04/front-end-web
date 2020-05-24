@@ -1,23 +1,14 @@
 <app-sidebar></app-sidebar>
-
-		<div class="container">
-			<h2>Usuarios que has seguido:</h2>
-				<ul class="list-inline">
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerUsuario">
-							<div class="container text-center">
-									<img src="assets/uuser.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>ruben</h3>
-							</div>
-						</a>
-					</li>
-					<li class="list-inline-item">
-						<a class="text-light" href="/VerUsuario">
-							<div class="container text-center">
-									<img src="assets/uuser.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>sara</h3>
-							</div>
-						</a>
-					</li>
-				</ul>
-			</div>
+	<div class="container">
+		<h2>Usuarios que has seguido:</h2>
+			<ul class="list-inline" *ngIf="seguidos">
+				<li class="list-inline-item" *ngFor="let user of seguidos">
+					<a class="text-light" href="/VerUsuario" (click)="local(user)">
+						<div class="container text-center">
+								<img src="assets/uuser.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h3>{{user.nombre}}</h3>
+						</div>
+					</a>
+				</li>
+			</ul>
+	</div>
