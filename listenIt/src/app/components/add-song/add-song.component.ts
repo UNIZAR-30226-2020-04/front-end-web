@@ -58,7 +58,6 @@ export class AddSongComponent implements OnInit {
 
   uploadSong(){
     this.currentFile = this.selectedFiles.item(0);
-    console.log(this.currentFile);
     this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.currentFile).subscribe(
       response => {
         if(response) {
@@ -78,7 +77,7 @@ export class AddSongComponent implements OnInit {
           }
       }
     );
-    if (this.status = 'success' ) this.songs.push(new cancion("",this.genero,this.nombreCancion,"","",""));
+    if (this.status == 'success' ) this.songs.push(new cancion("",this.genero,this.nombreCancion,"","",""));
   }
 
 }

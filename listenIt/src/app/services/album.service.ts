@@ -16,7 +16,7 @@ export class AlbumService {
   }
   
   getAlbum(){
-    let album = JSON.parse(localStorage.getItem('idAlbum'));
+    let album = JSON.parse(localStorage.getItem('elemento'));
     if (album != "undefined") {
         this.album = album;
     } else {

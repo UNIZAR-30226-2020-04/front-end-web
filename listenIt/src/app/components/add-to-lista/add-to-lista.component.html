@@ -2,17 +2,25 @@
 <br/>
 <br/>
 <div id="izq" class="col-lg-8">
-    <form #subirCancion="ngForm" (ngSubmit)="uploadSong()" class="col-lg-16">
-        <p>
-            <label>Nombre de la canción:</label>
-            <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCancion" required />
-        </p>
-        <p>
-            <label>Usuario de la canción:</label>
-            <input type="text" name="genero" #name="ngModel" class="form-control" [(ngModel)]="usuario" required />
-        </p>
-        <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success"/>
+    <form #subirCancion="ngForm" class="col-lg-16">
+        <form #searchForm="ngForm" (ngSubmit)="busqueda()" class="form-inline my-2 my-lg-0">
+            <input type="search" #search="ngModel" name="search" [(ngModel)]="texto" required class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!searchForm.form.valid">Buscar</button>
+        </form>
+        <br/>
     </form>
+    <div id="resultado" class="container">
+        <table class="table table-dark table-hover">
+            <tbody *ngFor="let res of resultado" >
+                <tr (click)="seleccionar(res)">
+                    <td><i class="fas fa-music"></i></td>
+                    <td>{{res.nombre}}</td>
+                    <td>{{res.autor}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <input type="submit" value="AÑADIR CANCIÓN" (click)="uploadSong()" class="btn btn-success"/>
 </div>
 
 

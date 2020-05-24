@@ -29,8 +29,8 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
   	this.email = this.userService.getToken();
   }
-  local(lista){
-    
+  local(elemento){
+  	localStorage.setItem('elemento', JSON.stringify(elemento));
   }
 
   //Obtiene la URL de la cancion solicitada.

@@ -1,32 +1,19 @@
 <app-sidebar></app-sidebar>
+<div id="navbar" class="btn-group">
+	<button type="button" class="btn btn-outline-secondary text-light" (click)="cambiarVista(1)">Playlists</button>
+	<button type="button" class="btn btn-outline-secondary text-light" (click)="cambiarVista(2)">Artistas</button>
+	<button type="button"  class="btn btn-outline-secondary text-light" (click)="cambiarVista(3)">Álbumes</button>
+	<button type="button"  class="btn btn-outline-secondary text-light" (click)="cambiarVista(4)">Podcasts</button>
+	<form #searchForm="ngForm" (ngSubmit)="busqueda()" class="form-inline my-2 my-lg-0">
+		<input type="search" #search="ngModel" name="search" [(ngModel)]="texto" required class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!searchForm.form.valid">Buscar</button>
+	</form>
+</div> 
+<br/>
+<br/>
 <div class="row">
 	<div class="col-sm-12">
- 		<div id="navbar">
-		  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		      <ul class="navbar-nav mr-auto">
-		        <li class="nav-item">
-		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(1)">Playlist</button>
-		        </li>
-		        <li class="nav-item">
-		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(2)">Artistas</button>
-		        </li>
-		        <li class="nav-item">
-		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(3)">Álbumes</button>
-		        </li>
-		        <li class="nav-item">
-		        	<button type="button" class="btn btn-secondary" (click)="cambiarVista(4)">Podcast</button>
-		        </li>
-		      </ul>
-		      <form #searchForm="ngForm" (ngSubmit)="busqueda()" class="form-inline my-2 my-lg-0">
-		        <input type="search" #search="ngModel" name="search" [(ngModel)]="texto" required class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search">
-		        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!searchForm.form.valid">Buscar</button>
-		      </form>
-		    </div>
-		  </nav>
-		</div>
  		<div class="container" *ngIf="buscado">
-
 			<h2>Lista encontrada de {{view}}:</h2>
 			<ul class="list-inline">
 				<li class="list-inline-item" *ngFor= "let elem of lista">

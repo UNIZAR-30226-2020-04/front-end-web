@@ -31,26 +31,24 @@ export class VerPlaylistComponent implements OnInit {
   ) {
     this.lista = this._listaService.getLista();
     this.songs=[new cancion("","","My blood","","TØP",""),new cancion("","","Neon Gravestones","","TØP",""),new cancion("","","Entre Poetas y Presos","","La Raíz",""),new cancion("","","Y Volar","","La Pegatina",""),new cancion("","","A la Sombra de la Sierra","","La Raíz","")];
-    this.lista = new lista(null,"","Mi playlist","2020","Sara");
     this.token = this._userService.getToken();
    }
 
    ngOnInit(): void {
-    this._songService.getSongsL(this.lista).subscribe(
+    /*this._songService.getSongsL(this.lista).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.songs = response;
         }else{						
           this.status = 'error';
-          //this._router.navigate(['/verLista']);
         }
       },
       error => {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );
+    );*/
   }
 
   seguir(){
@@ -86,7 +84,7 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   seguido(): number{
-      this._listaService.seguido(this.token, this.lista.nombre).subscribe(
+     /* this._listaService.seguido(this.token, this.lista.nombre).subscribe(
       response => {
         if(response){
           this.status = 'succes';
@@ -99,7 +97,7 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error2';
       }	
-    );
+    );*/
     return 0;
   }
   

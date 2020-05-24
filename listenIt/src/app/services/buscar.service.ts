@@ -32,4 +32,9 @@ export class BuscarService {
   	}
   }
 
+  searchSong(texto): Observable<any> {
+	let headers = new HttpHeaders().set('Content-Type', 'application/json');
+	return this.http.post(this.url + 'searchSong', texto, {headers: headers});
+  }
+
 }

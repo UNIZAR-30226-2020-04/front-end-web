@@ -34,7 +34,7 @@ export class ListaService {
   }
 
   getLista(){
-    let lista = JSON.parse(localStorage.getItem('actualLista'));
+    let lista = JSON.parse(localStorage.getItem('elemento'));
     if (lista != "undefined") {
         this.lista = lista;
     } else {
@@ -55,8 +55,8 @@ export class ListaService {
   }
 
   addToLista(token,nombre,autor,idA,idP,idC){
-    console.log(token,nombre,autor,idA,idP,idC);
-    let data = {user: token, nombre: nombre, usercancion: autor,idalbum : idA,idplaylist: idP,idcancion: idC};
+    console.log("holi  ",token,nombre,autor,idA,idP,idC);
+    let data = {user: token, nombre: nombre, usercancion: autor,idalbum : JSON.stringify(idA),idplaylist: idP,idcancion: JSON.stringify(idC)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url+ 'addToPlaylist', data, {headers: headers});
   }

@@ -67,3 +67,14 @@ div#listaPrinci{
     margin-top: 7%;
     margin-bottom: 3%;
 }
+div#navbar{
+    width: 65%;
+    float: right;
+    margin-right: 12%;
+}
+
+div#resultado{
+    width: 50%;
+    float: left;
+    margin-right: 2%;
+}

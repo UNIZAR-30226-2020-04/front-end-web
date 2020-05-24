@@ -7,6 +7,7 @@ import { UserService } from '../../services/user.service';
 import { cancion } from 'src/app/models/cancion';
 import { GLOBAL } from '../../services/global';
 import { ListaService } from 'src/app/services/lista.service';
+import { BuscarService } from 'src/app/services/buscar.service';
 
 @Component({
   selector: 'app-add-to-lista',
@@ -23,7 +24,7 @@ export class AddToListaComponent implements OnInit {
   public lista: lista;
   public usuario: usuario;
   public identity;
-  public cancion: cancion;
+  public cancion;
   public token;
   public alertMessage;
   public url;
@@ -31,40 +32,76 @@ export class AddToListaComponent implements OnInit {
   public title: string;
   public songs:Array<cancion>;
   public idLista;
+  public buscado;
+	public select;
+  public texto;
+  public resultado;
+  
   
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _listaService: ListaService
+    private _listaService: ListaService,
+    private buscarService: BuscarService
   ) { 
-    this.title= "Añadir canciones"
-    this.cancion=new cancion("1","","jamas","","e@e","1");
+    this.title= "Añadir canciones";
     this.songs=[];
     this.lista = new lista(null,"","","","");
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;
+    this.buscado = false;
+  	this.select = 1;
   }
+
   ngOnInit(){
     // Titulo del lista al que añadir canciones.
     this.tituloLista = localStorage.getItem('lista');
     this.idLista = localStorage.getItem('idLista');
   }
 
+  busqueda() {
+    console.log(this.texto)
+  	this.buscarService.searchSong(this.texto).subscribe(
+  		response => {
+  			if(response) {
+  				this.status = 'success';
+  				this.resultado = response;
+  				console.log(this.resultado);
+  				this.buscado = true;
+  			}
+  			else {
+  				this.status = 'error';
+  			}
+  		},
+  		error => {
+	      console.log(<any> error);
+	      var errorMessage = <any> error;
+	      if (errorMessage != null) {
+	          this.status = 'error';
+	      }  			
+  		}
+  	);
+  }
+
+seleccionar(elegido){
+  this.cancion = elegido;
+  this.resultado= [this.cancion];
+}
+
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
 
   uploadSong(){
-    this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.autor,this.cancion.album,this.idLista,this.cancion._id).subscribe(
+    this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.idCancion.l_id.u,this.cancion.idCancion.l_id.l_id,this.idLista,this.cancion.idCancion.c_id).subscribe(
       response => {
         if(response) {
-          //Canción añadida correctamente al lista.
           this.status = "success";
+          this.resultado=[];
         }
         else {
-          //Hubo algún problema.
           this.status = "error";
         }
       },
@@ -76,6 +113,7 @@ export class AddToListaComponent implements OnInit {
           }
       }
     );
+    if (this.status = 'success' ) this.songs.push(this.cancion);
   }
 
 }

@@ -5,7 +5,7 @@
 			<h3>Últimas canciones escuchadas...</h3>
 				<ul class="list-inline" >
 					<li class="list-inline-item" *ngFor="let lista of listas">
-						<a class="text-light" (click)=local(lista)>
+						<a class="text-light" routerLink="/VerPlay" (click)="local(lista)">
 							<div class="container text-center">
 									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{lista.nombre}}</a>
@@ -19,7 +19,7 @@
 			<h3>Tus playlist</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item" *ngFor="let album of albums">
-						<a class="text-light" routerLink="/VerPlay">
+						<a class="text-light" routerLink="/VerAlbum" (click)="local(album)">
 							<div class="container text-center">
 									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{album.nombre}}</a>
@@ -33,7 +33,7 @@
 			<h3>Tus playlist</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item" *ngFor="let lista of listas">
-						<a class="text-light"routerLink="/VerPlay">
+						<a class="text-light" routerLink="/VerPlay" (click)="local(lista)">
 							<div class="container text-center">
 									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{lista.nombre}}</a>
