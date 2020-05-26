@@ -10,6 +10,8 @@ import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http'
   providers: [UserService]
 })
 export class UsuarioComponent implements OnInit {
+  selectedFiles: FileList;
+  currentFile: File;
   public title: string;
   public usuario: usuario;
   public status: string;
@@ -34,6 +36,10 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.identity);
+  }
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
   cambiarNombre() {
@@ -71,6 +77,27 @@ export class UsuarioComponent implements OnInit {
         }
       },
       (error: any) => {
+        console.log(<any> error);
+        var errorMessage = <any> error;
+        if (errorMessage != null) {
+            this.status = 'error';
+        }
+      }
+    );
+  }
+
+  cambiarFoto() {
+    this.currentFile = this.selectedFiles.item(0);
+    this._userService.changePhoto(this.token,this.currentFile).subscribe(
+      response => {
+        if(response) {
+          this.status = 'success';
+        }
+        else {
+          this.status = 'error';
+        }
+      },
+      error => {
         console.log(<any> error);
         var errorMessage = <any> error;
         if (errorMessage != null) {

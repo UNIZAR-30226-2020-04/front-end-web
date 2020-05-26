@@ -13,6 +13,8 @@ import { GLOBAL } from '../../services/global';
   templateUrl: './subir-album1.component.html'
 })
 export class SubirAlbum1Component implements OnInit {
+  selectedFiles: FileList;
+  currentFile: File;
   public album: album;
   public usuario: usuario;
   public identity;
@@ -41,26 +43,31 @@ export class SubirAlbum1Component implements OnInit {
   ngOnInit(): void {
   }
 
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
   onSubmit(){
-			this._albumService.addAlbum(this.token, this.album).subscribe(
-				response => {
-					if(!response){
-						this.status = 'Error';
-					}
-          else {
-            localStorage.setItem('idAlbum', response.l_id);
-            localStorage.setItem('album',this.album.nombre);
-            this._router.navigate(['/SubirCanc']);
-					}
-				},
-				error => {
-          console.log(<any> error);
-          var errorMessage = <any> error;
-          if (errorMessage != null) {
-              this.status = 'error';
-          }
+    this.currentFile = this.selectedFiles.item(0); 
+		this._albumService.addAlbum(this.token, this.album,this.currentFile).subscribe(
+			response => {
+				if(!response){
+					this.status = 'Error';
+				}
+        else {
+          localStorage.setItem('idAlbum', response.l_id);
+          localStorage.setItem('album',this.album.nombre);
+          this._router.navigate(['/SubirCanc']);
+				}
+			},
+			error => {
+        console.log(<any> error);
+        var errorMessage = <any> error;
+        if (errorMessage != null) {
+            this.status = 'error';
+        }
       }	
-			);
+		);
   }
   
   //recoge del input la imagen

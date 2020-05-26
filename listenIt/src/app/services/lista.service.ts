@@ -53,8 +53,9 @@ export class ListaService {
 		return this._http.post(this.url+'getPlaylistBiblio', JSON.stringify(token), {headers: headers});
   }
   
-  createLista(email,titulo): Observable<any>{
-    let data = {user: email, playlist: titulo};
+  createLista(email,titulo,imagen): Observable<any>{
+    let data = {user: email, playlist: titulo, image: imagen};
+    console.log(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url + 'createPlaylist', data, {headers: headers});
   }
@@ -71,5 +72,5 @@ export class ListaService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
     return this._http.post(this.url+'deletePlaylist', data, {headers: headers});
   }
-  
+   
 }

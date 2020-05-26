@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     private _userService: UserService
   ) {
     this.title = 'Inicio de sesión';
-    this.usuario= new usuario("","","","","","");
+    this.usuario= new usuario("","",null,"","","");
    }
 
   ngOnInit(): void {

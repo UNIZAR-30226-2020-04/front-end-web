@@ -16,6 +16,15 @@
             </p>
             <input  type="submit" value="Cambiar nick" class="btn btn-success" />
         </form>
+        <form #changeFotoForm="ngForm" (ngSubmit)="cambiarFoto()" class="col-lg-16" >
+
+                <label>Nueva imagen de perfil:</label>
+                <h6>
+                    <input type="file" (change)="selectFile($event)">
+                </h6> 
+
+            <input  type="submit" value="Cambiar imagen" class="btn btn-success" />
+        </form>
         <form #changePassForm="ngForm" (ngSubmit)="cambiarPass()" class="col-lg-16" >
             <p>
                 <label>Contraseña:</label>

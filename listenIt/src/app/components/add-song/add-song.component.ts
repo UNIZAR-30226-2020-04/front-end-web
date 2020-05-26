@@ -63,6 +63,7 @@ export class AddSongComponent implements OnInit {
         if(response) {
           //Canción añadida correctamente al album.
           this.status = "success";
+          this.songs.push(new cancion("",this.genero,this.nombreCancion,"","",""));
         }
         else {
           //Hubo algún problema.
@@ -77,7 +78,5 @@ export class AddSongComponent implements OnInit {
           }
       }
     );
-    if (this.status == 'success' ) this.songs.push(new cancion("",this.genero,this.nombreCancion,"","",""));
   }
-
 }
