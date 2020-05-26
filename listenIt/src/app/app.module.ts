@@ -37,6 +37,8 @@ import { VerPodcastComponent } from './components/ver-podcast/ver-podcast.compon
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { AddToListaComponent } from './components/add-to-lista/add-to-lista.component';
+import { EditAlbumComponent } from './components/edit-album/edit-album.component';
+import { EditListaComponent } from './components/edit-lista/edit-lista.component';
 
 
 
@@ -67,7 +69,9 @@ import { AddToListaComponent } from './components/add-to-lista/add-to-lista.comp
     BuscarComponent,
     SubirPodcastComponent,
     SeguidosComponent,
-    AddToListaComponent
+    AddToListaComponent,
+    EditAlbumComponent,
+    EditListaComponent
   ],
   imports: [
     BrowserModule,

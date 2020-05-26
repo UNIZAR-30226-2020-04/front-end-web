@@ -21,6 +21,8 @@ import { DelPodcastComponent } from './components/del-podcast/del-podcast.compon
 import { VerPodcastComponent } from './components/ver-podcast/ver-podcast.component';
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { AddToListaComponent } from './components/add-to-lista/add-to-lista.component';
+import { EditListaComponent } from './components/edit-lista/edit-lista.component';
+import { EditAlbumComponent } from './components/edit-album/edit-album.component';
 
 const routes: Routes = [
   
@@ -50,7 +52,9 @@ const routes: Routes = [
   { path: 'VerUsuario', component: VerUsuarioComponent },
 
   { path: 'SubirCanc', component: AddSongComponent },
-  { path: 'AddToLista', component: AddToListaComponent }
+  { path: 'AddToLista', component: AddToListaComponent },
+  { path: 'EditAlbum', component: EditAlbumComponent },
+  { path: 'EditLista', component: EditListaComponent }
 ];
 
 @NgModule({

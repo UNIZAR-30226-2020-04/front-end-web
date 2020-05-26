@@ -84,3 +84,11 @@ div#logo{
     margin-left: 25%;
     margin-right: 25%;
 }
+
+tr#selected {
+    background-color: #7471cc;
+}
+nav#reproductor{
+    background-color: #7471cc;
+    margin-top: 15%;
+}

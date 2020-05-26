@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { GLOBAL } from './global';
@@ -19,7 +19,7 @@ export class SongService{
 
 	//Dar like a una canción 
 	like(token,album,song) : Observable<any> {
-		let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id), song: JSON.stringify(song.idCancion.c_id) };
+		let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id), idcancion: JSON.stringify(song.idCancion.c_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
 		return this._http.post(this.url+ 'likeL', data, {headers: headers});
 	}
@@ -43,4 +43,9 @@ export class SongService{
 		return this._http.post(this.url+ 'listSongsAlbum', data, {headers: headers});
 	}
 
+	deleteSong(album,song) : Observable<any> {
+		let data = { user: song.idCancion.l_id.u, idalbum: JSON.stringify(album.idAlbum.l_id), idcancion: JSON.stringify(song.idCancion.c_id) };
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
+		return this._http.post(this.url+ 'deleteCancion', data, {headers: headers});
+	}
 }

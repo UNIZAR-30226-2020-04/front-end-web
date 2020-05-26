@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { usuario } from './models/usuario';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,26 +13,21 @@ export class AppComponent {
   public title = 'listenIt';
   public identity;
   public usuario: usuario;
-  public location;
+  public ruta;
 
   constructor(
     private _router: Router,
   ) { 
-    this.location = _router.url;
+    this.ruta = _router.url;
   }
-  hiddenSide() : Boolean{
-    console.log(location);
-    if( this.location =='/Login' || this.location =='/Registro'){
+  sidebar() : Boolean{
+    console.log(this.ruta);
+    /*if( this.ruta == 'Buscar' || this.ruta =='Biblioteca' || this.ruta == 'Principal' || this.ruta =='Registro'){
+      console.log("YES")
       return true;
-    }
+    }*/
     return false;
   }
 
-  hiddenRep() : Boolean{
-    if( this.location !='/Login' || this.location !='/Registro'){
-      return true;
-    }
-    return false;
-  }
 
 }

@@ -32,6 +32,7 @@ export class BibliotecaComponent implements OnInit {
   public filesToUpload: Array<File>;
   public title;
   
+  
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
@@ -48,7 +49,7 @@ export class BibliotecaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   localL(lista){
   	localStorage.setItem('verLista', JSON.stringify(lista));
   }

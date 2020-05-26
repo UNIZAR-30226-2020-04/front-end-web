@@ -35,6 +35,9 @@ export class VerPlaylistComponent implements OnInit {
    }
 
    ngOnInit(): void {
+
+
+    localStorage.setItem('editAlbum', JSON.stringify(this.lista));
     /*this._songService.getSongsL(this.lista).subscribe(
       response => {
         if(response != null){

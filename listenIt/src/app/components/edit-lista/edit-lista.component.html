@@ -1,0 +1,54 @@
+<h1 class="h1-strong">{{title}} {{lista.nombre}}</h1>
+<br/>
+<br/>
+<div id="izq" class="col-lg-8">
+    <form #subirCancion="ngForm" class="col-lg-16">
+        <form #searchForm="ngForm" (ngSubmit)="busqueda()" class="form-inline my-2 my-lg-0">
+            <input type="search" #search="ngModel" name="search" [(ngModel)]="texto" required class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!searchForm.form.valid">Buscar</button>
+        </form>
+        <br/>
+    </form>
+    <div id="resultado" class="container">
+        <table class="table table-dark table-hover">
+            <tbody *ngFor="let res of resultado" >
+                <tr (click)="seleccionar(res)">
+                    <td><i class="fas fa-music"></i></td>
+                    <td>{{res.nombre}}</td>
+                    <td>{{res.autor}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <input type="submit" value="AÑADIR CANCIÓN" (click)="uploadSong()" class="btn btn-success"/>
+</div>
+
+
+<div id="izq" >
+    <div class="container">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Género</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let song of songs" >
+                <tr *ngIf="selected[num(song)] != 0 " (click)="addSelected(song)">
+                    <td><i class="fas fa-music"></i></td>
+                    <td>{{song.nombre}}</td>
+                    <td>{{song.genero}}</td>
+                </tr>
+                <tr *ngIf="selected[num(song)] == 0" (click)="quitSelected(song)" id="selected">
+                    <td><i class="fas fa-music" ></i></td>
+                    <td>{{song.nombre}}</td>
+                    <td>{{song.genero}}</td>
+                </tr>
+            </tbody>
+            <input type="submit" value="Borrar seleccionadas" (click)="deleteSong()" class="btn btn-success" />
+        </table>
+    </div>
+    <input type="submit" value="Finalizar" routerLink="/Principal" class="btn btn-success"/>
+</div>
+

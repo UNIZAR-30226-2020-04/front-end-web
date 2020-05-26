@@ -1,0 +1,53 @@
+<h1 class="h1-strong">{{title}} {{album.nombre}}</h1>
+<br/>
+<br/>
+<div id="izq" class="col-lg-8">
+    <form #subirCancion="ngForm" (ngSubmit)="uploadSong()" class="col-lg-16">
+        <p>
+            <label>Nombre de la canción:</label>
+            <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCancion" required />
+        </p>
+        <p>
+            <label>Genero de la canción:</label>
+            <input type="text" name="genero" #name="ngModel" class="form-control" [(ngModel)]="genero" required />
+        </p>
+        <div style="text-align:center">
+            <div [innerHtml]='msg'></div>
+            <label>
+                <input type="file" (change)="selectFile($event)">
+                </label>
+        </div>
+
+        <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!selectedFiles || !subirCancion.form.valid"/>
+    </form>
+</div>
+
+
+<div id="izq" >
+    <div class="container">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                    <th>Género</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let song of songs">
+                <tr *ngIf="selected[num(song)] != 0 " (click)="addSelected(song)">
+                    <td><i class="fas fa-music"></i></td>
+                    <td>{{song.nombre}}</td>
+                    <td>{{song.genero}}</td>
+                </tr>
+                <tr *ngIf="selected[num(song)] == 0" (click)="quitSelected(song)" id="selected">
+                    <td><i class="fas fa-music" ></i></td>
+                    <td>{{song.nombre}}</td>
+                    <td>{{song.genero}}</td>
+                </tr>
+            </tbody>
+            <input type="submit" value="Borrar seleccionadas" (click)="deleteSong()" class="btn btn-success" />
+        </table>
+    </div>
+    <input type="submit" value="Finalizar" routerLink="/Principal" class="btn btn-success"/>
+</div>
+

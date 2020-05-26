@@ -36,6 +36,10 @@ export class VerAlbumComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+    localStorage.setItem('editAlbum', JSON.stringify(this.album));
+
+
     //Obtiene las canciones del álbum
     this._songService.getSongs(this.album).subscribe(
       response => {

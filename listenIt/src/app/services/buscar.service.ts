@@ -19,16 +19,16 @@ export class BuscarService {
   	let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   	if(tipo == "playlist") {
-  		return this.http.post(this.url + 'searchPlaylist', texto, {headers: headers});
+  		return this.http.post(this.url + 'searchPlaylist', data, {headers: headers});
   	}
   	else if(tipo == "albumes") {
   		return this.http.post(this.url + 'searchAlbum', texto, {headers: headers});
   	}
   	else if(tipo == "podcast") {
-  		return this.http.post(this.url + 'searchPodcast', texto, {headers: headers});
+  		return this.http.post(this.url + 'searchPodcast', data, {headers: headers});
   	}
   	else {	// tipo == "artistas"
-  		return this.http.post(this.url + 'searchUser', texto, {headers: headers});
+  		return this.http.post(this.url + 'searchUser', data, {headers: headers});
   	}
   }
 
