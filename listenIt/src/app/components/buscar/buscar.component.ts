@@ -13,6 +13,7 @@ export class BuscarComponent implements OnInit {
 	public select;
 	public view;
 	public texto;
+  // Lista de elementos buscados.
 	public lista;
 	public status;
 

@@ -12,16 +12,24 @@
 		<div class="row" *ngIf="select == 1" >
 			<div id="celdaBiblio" class="col-xs-10" *ngFor="let lista of listas" >
 				<a class="text-light" routerLink="/VerPlay" (click)="localL(lista)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!lista.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{lista.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="lista.foto">
+							<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{lista.nombre}}</h5>
 					</div>
 				</a>
 			</div>
 			<div id="celdaBiblio" class="col-xs-10" *ngFor="let lista of listas">
 				<a class="text-light" routerLink="/VerPlay" (click)="localL(lista)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!lista.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{lista.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="lista.foto">
+							<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{lista.nombre}}</h5>
 					</div>
 				</a>
@@ -30,16 +38,24 @@
 		<div class="row" *ngIf="select == 2" >
 			<div id="celdaBiblio" class="col-xs-9" *ngFor="let usuario of usuarios">
 				<a class="text-light" routerLink="/VerUsuario" (click)="localU(usuario)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!usuario.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{usuario.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="usuario.foto">
+							<img src="usuario.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{usuario.nombre}}</h5>
 					</div>
 				</a>
 			</div>
 			<div id="celdaBiblio" class="col-xs-9" *ngFor="let usuario of usuarios">
 				<a class="text-light" routerLink="/VerUsuario" (click)="localU(usuario)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!usuario.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{usuario.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="usuario.foto">
+							<img src="usuario.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{usuario.nombre}}</h5>
 					</div>
 				</a>
@@ -48,16 +64,24 @@
 		<div class="row" *ngIf="select == 3" >
 			<div id="celdaBiblio" class="col-xs-9" *ngFor="let album of albums">
 				<a class="text-light" routerLink="/VerAlbum" (click)="localA(album)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!album.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{album.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="album.foto">
+							<img src="album.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{album.nombre}}</h5>
 					</div>
 				</a>
 			</div>
 			<div id="celdaBiblio" class="col-xs-9" *ngFor="let album of albums">
 				<a class="text-light" routerLink="/VerAlbum" (click)="localA(album)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!album.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{album.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="album.foto">
+							<img src="album.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{album.nombre}}</h5>
 					</div>
 				</a>
@@ -66,16 +90,24 @@
 		<div class="row" *ngIf="select == 4" >
 			<div id="celdaBiblio" class="col-xs-9" *ngFor="let podcast of podcasts">
 				<a class="text-light" routerLink="/Verpodcast" (click)="localP(podcast)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!podcast.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{podcast.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="podcast.foto">
+							<img src="podcast.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{podcast.nombre}}</h5>
 					</div>
 				</a>
 			</div>
 			<div id="celdaBiblio" class="col-xs-9" *ngFor="let podcast of podcasts">
 				<a class="text-light" routerLink="/Verpodcast" (click)="localP(podcast)">
-					<div class="container text-center">
+					<div class="container text-center" *ngIf="!podcast.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h5>{{podcast.nombre}}</h5>
+					</div>
+					<div class="container text-center" *ngIf="podcast.foto">
+							<img src="podcast.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h5>{{podcast.nombre}}</h5>
 					</div>
 				</a>

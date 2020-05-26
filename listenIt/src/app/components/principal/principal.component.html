@@ -6,8 +6,12 @@
 				<ul class="list-inline" >
 					<li class="list-inline-item" *ngFor="let lista of listas">
 						<a class="text-light" routerLink="/VerPlay" (click)="localL(lista)">
-							<div class="container text-center">
+							<div class="container text-center" *ngIf="!lista.foto">
 									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<br/><a>{{lista.nombre}}</a>
+							</div>
+							<div class="container text-center" *ngIf="lista.foto">
+									<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{lista.nombre}}</a>
 							</div>
 						</a>
@@ -20,8 +24,12 @@
 				<ul class="list-inline">
 					<li class="list-inline-item" *ngFor="let lista of listas">
 						<a class="text-light" routerLink="/VerPlay" (click)="localL(lista)">
-							<div class="container text-center">
+							<div class="container text-center" *ngIf="!lista.foto">
 									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<br/><a>{{lista.nombre}}</a>
+							</div>
+							<div class="container text-center" *ngIf="lista.foto">
+									<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{lista.nombre}}</a>
 							</div>
 						</a>
@@ -34,8 +42,12 @@
 				<ul class="list-inline">
 					<li class="list-inline-item" *ngFor="let album of albums">
 						<a class="text-light" routerLink="/VerAlbum" (click)="localA(album)">
-							<div class="container text-center">
+							<div class="container text-center" *ngIf="!album.foto">
 									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<br/><a>{{album.nombre}}</a>
+							</div>
+							<div class="container text-center" *ngIf="album.foto">
+									<img src="album.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{album.nombre}}</a>
 							</div>
 						</a>
