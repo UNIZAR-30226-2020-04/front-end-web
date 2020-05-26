@@ -16,6 +16,12 @@
                 <input type="text"  name="nick" #nick="ngModel" class="form-control" [(ngModel)]="usuario.nick" required />
                 <span *ngIf="!nick.valid && nick.touched" >El nombre de usuario es obligatorio.</span>
             </p>
+
+                <label>Imagen de perfil:</label>
+                <label>
+                    <input type="file" (change)="selectFile($event)">
+                </label> 
+
             <p>
                 <label>Correo:</label>
                 <input type="email" #email="ngModel" name="correo" [(ngModel)]="usuario.correo" class="form-control" required />

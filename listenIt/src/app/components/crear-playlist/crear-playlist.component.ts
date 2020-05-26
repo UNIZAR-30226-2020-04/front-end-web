@@ -10,7 +10,8 @@ import { ListaService } from 'src/app/services/lista.service';
   templateUrl: './crear-playlist.component.html'
 })
 export class CrearPlaylistComponent implements OnInit {
-
+  selectedFiles: FileList;
+  currentFile: File;
   public title: string;
   public status;
 
@@ -31,8 +32,13 @@ export class CrearPlaylistComponent implements OnInit {
     this.token = this.userService.getToken(); 
   }
 
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
   newPlaylist() {
-    this.listaService.createLista(this.token,this.tituloPlaylist).subscribe(
+    this.currentFile = this.selectedFiles.item(0);
+    this.listaService.createLista(this.token,this.tituloPlaylist,this.currentFile).subscribe(
       response => {
         if (response) {
           this._router.navigate(['/AddToLista']);

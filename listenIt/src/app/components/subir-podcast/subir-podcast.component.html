@@ -2,10 +2,10 @@
 <div id="conMenu">
     <div class="col-lg-8">
         <div class="alert alert-success" *ngIf="status == 'success'">
-            Su álbum ha sido creado!
+            Su podcast ha sido creado!
         </div>
         <div class="alert alert-danger" *ngIf="status == 'error'">
-            Error al crear álbum.
+            Error al crear podcast.
         </div>
         <form #subirPodcastForm="ngForm" (ngSubmit)="newPodcast()" class="col-lg-16">
             <p>
@@ -15,7 +15,9 @@
             </p>
             <p>
                 <label>Imagen del podcast:</label>
-                <input type="file" placeholder="Subir foto..."/>
+                <label>
+                    <input type="file" (change)="selectFile($event)">
+                </label>
             </p>
             <input type="submit" value="SUBIR PODCAST" class="btn btn-success" [disabled]="!subirPodcastForm.form.valid" />
         </form> 

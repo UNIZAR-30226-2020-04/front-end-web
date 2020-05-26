@@ -10,6 +10,8 @@ import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http'
   providers: [UserService]
 })
 export class RegistroComponent implements OnInit {
+  selectedFiles: FileList;
+  currentFile: File;
   public title: string;
   public usuario: usuario;
   public status: string;
@@ -19,13 +21,20 @@ export class RegistroComponent implements OnInit {
     private _userService: UserService
   ) { 
     this.title = 'Registro';
-    this.usuario= new usuario("","","","","","");
+    this.usuario= new usuario("","",null,"","","");
   }
 
   ngOnInit(): void {
   }
 
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
   onSubmit() {
+    this.currentFile = this.selectedFiles.item(0);
+    this.usuario.foto = this.currentFile;
+    console.log(this.usuario);
     this._userService.register(this.usuario).subscribe(
       response => {
         if (response) {

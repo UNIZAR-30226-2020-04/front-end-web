@@ -28,7 +28,8 @@ export class VerPodcastComponent implements OnInit {
     private _podcastService: PodcastService,
   ) {
     this.podcast = this._podcastService.getPodcast();
-    this.token = this._userService.getToken();
+    console.log(this.podcast);
+    this.token = this._userService.getToken(); 
    }
 
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class VerPodcastComponent implements OnInit {
   }
 
   seguir(){
-    this._podcastService.seguir(this.token, this.podcast.idPodcast.p_id).subscribe(
+    this._podcastService.seguir(this.token, this.podcast.idPodcast.l_id).subscribe(
       response => {
         if(response){
           this.status = 'succes';

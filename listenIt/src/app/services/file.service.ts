@@ -12,6 +12,7 @@ export class FileService {
   }
  
   uploadFile(correo,idAlbum,titCancion,file: File): Observable<HttpEvent<{}>> {
+  		console.log("Subiendo: " + file);
 		const formdata: FormData = new FormData();
 		formdata.append('file', file);
 		formdata.append('idalbum',idAlbum);

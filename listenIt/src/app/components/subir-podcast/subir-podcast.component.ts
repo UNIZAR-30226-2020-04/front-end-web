@@ -11,7 +11,8 @@ import { GLOBAL } from 'src/app/services/global';
   templateUrl: './subir-podcast.component.html'
 })
 export class SubirPodcastComponent implements OnInit {
-
+  selectedFiles: FileList;
+  currentFile: File;
   public title: string;
   public status;
   public identity;
@@ -35,8 +36,13 @@ export class SubirPodcastComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
   newPodcast() {
-    this._podcastService.createPodcast(this.token,this.tituloPodcast).subscribe(
+    this.currentFile = this.selectedFiles.item(0);
+    this._podcastService.createPodcast(this.token,this.tituloPodcast,this.currentFile).subscribe(
       response => {
         if (response) {
           this.status = "success";

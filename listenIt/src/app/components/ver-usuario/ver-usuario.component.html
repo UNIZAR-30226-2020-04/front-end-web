@@ -7,7 +7,7 @@
 					<li class="list-inline-item" *ngFor="let album of albums">
 						<a class="text-light" href="/VerAlbum" (click)="localA(album)">
 							<div class="container text-center">
-									<img src="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<img src="album.foto" alt="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<h5>{{album.nombre}}</h5>
 							</div>
 						</a>
@@ -20,7 +20,7 @@
 				<li class="list-inline-item" *ngFor="let lista of listas">
 					<a class="text-light" href="/VerPlay" (click)="localL(lista)">
 						<div class="container text-center">
-								<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<img src="lista.foto" alt="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 								<h5>{{lista.nombre}}</h5>
 						</div>
 					</a>
@@ -33,7 +33,7 @@
 				<li class="list-inline-item" *ngFor="let podcast of podcasts">
 					<a class="text-light" href="/Verpodcast" (click)="localP(podcast)">
 						<div class="container text-center">
-								<img src="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<img src="podcast.foto" alt="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
 								<h5>{{podcast.nombre}}</h5>
 						</div>
 					</a>
