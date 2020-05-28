@@ -28,12 +28,7 @@ export class UserService {
 		return this.usuario;
 	  }
 
-<<<<<<< HEAD
-
-
-=======
 	//Sigue a un usuario
->>>>>>> 5fdbd2b65920f48ae3a82db5b5aeb97f05dd34ba
 	seguir(token,user): Observable<any> {
 		let data = {sessionUser: token, targetUser: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');

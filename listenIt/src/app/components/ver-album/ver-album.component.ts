@@ -4,10 +4,6 @@ import { usuario } from '../../models/usuario';
 import { album } from '../../models/album';
 import { AlbumService } from '../../services/album.service';
 import { UserService } from '../../services/user.service';
-<<<<<<< HEAD
-
-=======
->>>>>>> 5fdbd2b65920f48ae3a82db5b5aeb97f05dd34ba
 import { SongService } from 'src/app/services/song.service';
 import { GLOBAL } from 'src/app/services/global';
 
@@ -72,12 +68,14 @@ export class VerAlbumComponent implements OnInit {
     this.songs.forEach(element => {
       this._songService.getLike(this.token,element.idCancion.l_id.l_id,element.idCancion.c_id).subscribe(
         response => {
-          if(response != null){
+          if(response){
             this.status = 'succes';
             var i = this.num(element);
-            this.likes[i]=response;
+            this.likes[i]=true;
           }else{						
-            this.status = 'error';
+            this.status = 'succes';
+            var i = this.num(element);
+            this.likes[i] = false;
           }
         },
         error => {
