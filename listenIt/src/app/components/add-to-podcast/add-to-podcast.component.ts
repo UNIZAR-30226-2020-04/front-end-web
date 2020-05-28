@@ -58,12 +58,13 @@ export class AddToPodcastComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
+  //Sube un nuevo capítulo al podcast, con los datos recogidos del formulario
   uploadCap(){
     this.currentFile = this.selectedFiles.item(0);
     this.fileService.uploadFile(this.token,this.idPodcast,this.nombreCapitulo,this.currentFile).subscribe(
       response => {
         if(response) {
-          //Canción añadida correctamente al podcast.
+          //Capítulo añadido correctamente al podcast.
           this.status = "success";
         }
         else {
@@ -82,7 +83,7 @@ export class AddToPodcastComponent implements OnInit {
     this.caps.push(new cancion("","",this.nombreCapitulo,"","",""));
   }
 
-  
+  //Finaliza el proceso de subida de un podcast
   finalizar(){
     if(this.caps.length == 0) this.status = 'errorV';
     else this._router.navigate(['/Principal']);

@@ -4,7 +4,10 @@ import { usuario } from '../../models/usuario';
 import { album } from '../../models/album';
 import { AlbumService } from '../../services/album.service';
 import { UserService } from '../../services/user.service';
-import { cancion } from 'src/app/models/cancion';
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5fdbd2b65920f48ae3a82db5b5aeb97f05dd34ba
 import { SongService } from 'src/app/services/song.service';
 import { GLOBAL } from 'src/app/services/global';
 
@@ -43,7 +46,6 @@ export class VerAlbumComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.likes = [false,true,false,true,false,false,false,false,false,false,false,false];
     //Obtiene las canciones del álbum
     this._songService.getSongs(this.album).subscribe(
       response => {
@@ -67,7 +69,7 @@ export class VerAlbumComponent implements OnInit {
 
   isLiked(){
     //Comprueba que canciones del álbum te gustan, y cuáles no
-    /*this.songs.forEach(element => {
+    this.songs.forEach(element => {
       this._songService.getLike(this.token,element.idCancion.l_id.l_id,element.idCancion.c_id).subscribe(
         response => {
           if(response != null){
@@ -83,10 +85,11 @@ export class VerAlbumComponent implements OnInit {
             this.status = 'error';
         }	
       );
-    });*/
+    });
   }
 
   like(song){
+    //Guarda el like de la canción a la que el usuario ha dado like
     this._songService.like(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response){
@@ -102,7 +105,9 @@ export class VerAlbumComponent implements OnInit {
       }	
     );
   }
+
   unlike(song){
+    //Guarda el dislike de la canción a la que el usuario ha quitado el like
     this._songService.unlike(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response){

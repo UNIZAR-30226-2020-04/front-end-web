@@ -15,24 +15,28 @@ export class ListaService {
     this.url = GLOBAL.url;
   }
 
+  //Sigue una lista
   seguir(token,lista){
     let data = {correo: token, idplaylist: JSON.stringify(lista.idRep.l_id), correoplaylist: lista.idRep.u};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url+ 'followPlayList', data, {headers: headers});
   }
   
+  //Deja de seguir una lista
   dejarSeguir(token,lista){
-    let data = {correo: token, idplaylist: lista.idRep.l_id, correoplaylist: lista.idRep.u};
+    let data = {correo: token, idplaylist: JSON.stringify(lista.idRep.l_id), correoplaylist: lista.idRep.u};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url+ 'unfollowPlayList', data, {headers: headers});
 	}
 
+  //Comprueba si sigues una lista
   seguido(token,lista){
-    let data = {email: token, name: lista};
+    let data = {correo: token, idplaylist: JSON.stringify(lista.idRep.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url+ 'seguidaLista', data, {headers: headers});
+    return this._http.post(this.url+ 'checkFollow', data, {headers: headers});
   }
 
+  //Recoge la lista que el componente verLista debe mostrar
   getLista(){
     let lista = JSON.parse(localStorage.getItem('verLista'));
     if (lista != "undefined") {
@@ -43,16 +47,20 @@ export class ListaService {
     return this.lista;
   }
   
+  //Lista las listas que un usuario ha creado
   getListas(token) : Observable<any> {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+'getPlaylistByUser', JSON.stringify(token), {headers: headers});
   }
 
+  //Lista las listas que un usuario sigue
   getListasBiblio(token) : Observable<any> {
+    let data = {user: token };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+'getPlaylistBiblio', JSON.stringify(token), {headers: headers});
+		return this._http.post(this.url+'listFollows', data , {headers: headers});
   }
   
+  //Crea una nueva lista
   createLista(email,titulo,imagen): Observable<any>{
     const formdata: FormData = new FormData();
     formdata.append('email',email);
@@ -62,6 +70,7 @@ export class ListaService {
     return this._http.post(this.url + 'createPlaylist', formdata, {headers: null});
   }
 
+  //Añade una canción a una lista
   addToLista(token,nombre,autor,idA,idP,idC){
     console.log("holi  ",token,nombre,autor,idA,idP,idC);
     let data = {user: token, nombre: nombre, usercancion: autor,idalbum : JSON.stringify(idA),idplaylist: idP,idcancion: JSON.stringify(idC)};
@@ -69,6 +78,7 @@ export class ListaService {
     return this._http.post(this.url+ 'addToPlaylist', data, {headers: headers});
   }
 
+  //Borra una lista
   deleteLista(token, lista: lista){
     let data = {user: token, idplaylist: JSON.stringify(lista.idRep.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json')

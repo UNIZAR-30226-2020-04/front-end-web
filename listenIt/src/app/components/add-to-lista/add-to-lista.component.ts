@@ -8,7 +8,7 @@ import { cancion } from 'src/app/models/cancion';
 import { GLOBAL } from '../../services/global';
 import { ListaService } from 'src/app/services/lista.service';
 import { BuscarService } from 'src/app/services/buscar.service';
-import { empty } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-to-lista',
@@ -62,7 +62,9 @@ export class AddToListaComponent implements OnInit {
     this.idLista = localStorage.getItem('idLista');
   }
 
-  busqueda() {
+  //Busca canciones por nombre y muestra la lista de resultados coincidentes
+  busqueda(searchForm) {
+    searchForm.resetForm();
   	this.buscarService.searchSong(this.texto).subscribe(
   		response => {
   			if(response.length != 0 ) {
@@ -85,6 +87,7 @@ export class AddToListaComponent implements OnInit {
   	);
   }
 
+//Permite selccionar una canción entre los resultados de la búsqueda
 seleccionar(elegido){
   this.cancion = elegido;
   this.resultado= [this.cancion];
@@ -94,6 +97,7 @@ seleccionar(elegido){
     this.selectedFiles = event.target.files;
   }
 
+  //Añade la canción , o canciones seleccionadas a la lista.
   uploadSong(){
     this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.idCancion.l_id.u,this.cancion.idCancion.l_id.l_id,this.idLista,this.cancion.idCancion.c_id).subscribe(
       response => {
@@ -116,7 +120,7 @@ seleccionar(elegido){
     if (this.status = 'success' ) this.songs.push(this.cancion);
   }
 
-  
+  //Finaliza el proceso de subida de una playlist
   finalizar(){
     if(this.songs.length == 0) this.status = 'errorV';
     else this._router.navigate(['/Principal']);

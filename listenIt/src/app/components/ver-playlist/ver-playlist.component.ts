@@ -21,7 +21,7 @@ export class VerPlaylistComponent implements OnInit {
   public usuario: usuario;
   public userPhoto;
   public identity;
-  public songs: cancion[];
+  public songs;
   public token;
   public status;
   public likes: boolean[];
@@ -62,8 +62,8 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   isLiked(){
-    //Comprueba que canciones del álbum te gustan, y cuáles no
-    /*this.songs.forEach(element => {
+    //Comprueba que canciones de la playlist que te gustan, y cuáles no
+    this.songs.forEach(element => {
       this._songService.getLike(this.token,element.idCancion.l_id.l_id,element.idCancion.c_id).subscribe(
         response => {
           if(response != null){
@@ -79,10 +79,11 @@ export class VerPlaylistComponent implements OnInit {
             this.status = 'error';
         }	
       );
-    });*/
+    });
   }
 
   like(song){
+    //Guarda el like de la canción a la que el usuario ha dado like
     this._songService.like(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response != null){
@@ -100,6 +101,7 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   unlike(song){
+   //Guarda el dislike de la canción a la que el usuario ha quitado el like
     this._songService.unlike(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response){
@@ -121,6 +123,7 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   seguir(){
+    //Sigue la lista de reproducción
     this._listaService.seguir(this.token, this.lista).subscribe(
       response => {
         if(response){
@@ -138,6 +141,7 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   dejarSeguir(){
+    //Deja de seguir la lista de reproducción
     this._listaService.seguir(this.token, this.lista).subscribe(
       response => {
         if(response){
@@ -154,7 +158,8 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   seguido(): number{
-     /* this._listaService.seguido(this.token, this.lista.nombre).subscribe(
+    //Comprueba al cargar la página si sigues la lista de reproducción, para mostrar el botón correcto
+    this._listaService.seguido(this.token, this.lista).subscribe(
       response => {
         if(response){
           return 1;
@@ -166,7 +171,7 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
     return 0;
   }
 

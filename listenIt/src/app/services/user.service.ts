@@ -28,36 +28,54 @@ export class UserService {
 		return this.usuario;
 	  }
 
-	getPhoto(urlfoto): Observable<any> {
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		console.log(this.url + urlfoto);
-		return this._http.get(this.url + urlfoto, {headers: null});
-	}
+<<<<<<< HEAD
 
+
+=======
+	//Sigue a un usuario
+>>>>>>> 5fdbd2b65920f48ae3a82db5b5aeb97f05dd34ba
 	seguir(token,user): Observable<any> {
-		let data = {user: token, userSeguir: user};
+		let data = {sessionUser: token, targetUser: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url + 'suscribeUser', data, {headers: headers});
+		return this._http.post(this.url + 'followUser', data, {headers: headers});
 	}
 
+	//Deja de seguir a un usuario
 	dejarSeguir(token,user): Observable<any> {
-		let data = {user: token, userSeguir: user};
+		let data = {sessionUser: token, targetUser: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url + 'desuscribeUser', data, {headers: headers});
+		return this._http.post(this.url + 'unfollowUser', data, {headers: headers});
 	}
 
+	//Comprueba si sigues a un usuario
 	seguido(token,user){
-		let data = {user: token, userSeguido: user};
+		let data = {sessionUser: token, targetUser: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+ 'seguidoPodcast', data, {headers: headers});
-	  }
+		return this._http.post(this.url+ 'checkFollowedUsers', data, {headers: headers});
+	}
 
+	//Obtiene la lista de usuarios seguidos
+	seguidos(token){
+		let data = {user: token};
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url + 'listFollowedUsers', data, {headers: headers});
+	}
+
+	//Obtiene la lista de usuarios que aparecerán en la biblioteca
+	getUserBiblio(token){
+		let data = {user: token};
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.post(this.url + 'listUsersLikes', data, {headers: headers});
+	}
+
+	//Hace log in de un usuario
 	signup(user: usuario): Observable<any> {
 		let data = {email: user.correo, password: user.contrasena};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url + 'loginUser', data, {headers: headers});
 	}
 
+	//Registra un nuevo usuario
 	register(user: usuario): Observable<any> {
 		//let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
 		const formdata: FormData = new FormData();
@@ -73,48 +91,42 @@ export class UserService {
         return this._http.post(this.url + 'registerUser', formdata, {headers: null});
 	}
 
+	//Cambia el nombre de un usuario
 	changeName(email,name,newName): Observable<any> {
 		let data = {user: email, name: name, newName: newName};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'cambiarNombre', data, {headers: headers});
 	}
 
+	//Cambia el nick de un usuario
 	changeNick(email,nick,newNick): Observable<any> {
 		let data = {user: email, nick: nick, newNick: newNick};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'cambiarNick', data, {headers: headers});
 	}
 
+	//Cambia la foto de perfil de un usuario
 	changePhoto(email,photo): Observable<any> {
 		let data = {user: email, foto: photo};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'cambiarFoto', data, {headers: headers});
 	}
 
+	//Cambia la contraseña de un usuario
 	changePass(email,pass,newPass): Observable<any> {
 		let data = {user: email, pass: pass, newPass: newPass};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'cambiarPass', data, {headers: headers});
 	}
 
+	//Elimina un usuario
     deleteAccount(emailD,passA,passB): Observable<any> {
     	let data = {email: emailD, pass: passA, confPass: passB};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'deleteUser', data, {headers: headers});
 	}
 	
-	seguidos(token){
-		let data = {user: token};
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'seguidos', data, {headers: headers});
-	}
-
-	getUserBiblio(token){
-		let data = {user: token};
-        let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'userBiblio', data, {headers: headers});
-	}
-	
+	//Recoge el usuario que está conectado actualmente
 	getIdentity() {
 		let identity = JSON.parse(localStorage.getItem('identity'));
 		if(identity != "undefined") {
@@ -125,7 +137,8 @@ export class UserService {
 		}
 		return this.identity;
 	}
-	
+
+	//Recoge el correo del usuario que está conectado actualmente
 	getToken() {
         let token = localStorage.getItem('token');
         if (token != "undefined") {

@@ -2,7 +2,7 @@
 <br/>
 <br/>
 <div id="izq" class="col-lg-8">
-    <form #subirCancion="ngForm" (ngSubmit)="uploadSong()" class="col-lg-16">
+    <form #subirCancion="ngForm" (ngSubmit)="uploadSong(subirCancion)" class="col-lg-16">
         <p>
             <label>Nombre de la canción:</label>
             <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCancion" required />

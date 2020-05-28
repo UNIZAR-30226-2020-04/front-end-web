@@ -62,8 +62,8 @@ export class EditListaComponent implements OnInit {
   }
 
   ngOnInit(){
-    
-    /*this._songService.getSongsL(this.lista).subscribe(
+    //Obtiene las canciones de la lista
+    this._songService.getSongsL(this.lista).subscribe(
     response => {
       if(response != null){
         this.status = 'succes';
@@ -76,10 +76,12 @@ export class EditListaComponent implements OnInit {
       console.log(<any> error);
         this.status = 'error';
     }	
-  );*/
+  );
   }
 
-  busqueda() {
+  //Busca canciones por nombre y muestra la lista de resultados
+  busqueda(subirCancion) {
+    subirCancion.resetForm();
   	this.buscarService.searchSong(this.texto).subscribe(
   		response => {
   			if(response) {
@@ -102,6 +104,7 @@ export class EditListaComponent implements OnInit {
   	);
   }
 
+  //Permite seleccionar una canción entre los resultados de la búsqueda
   seleccionar(elegido){
     this.cancion = elegido;
     this.resultado= [this.cancion];
@@ -111,6 +114,7 @@ export class EditListaComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
+  //Añade la canción o canciones selecconadas a la lista
   uploadSong(){
     this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.idCancion.l_id.u,this.cancion.idCancion.l_id.l_id,this.idLista,this.cancion.idCancion.c_id).subscribe(
       response => {
@@ -157,8 +161,7 @@ export class EditListaComponent implements OnInit {
 
   deleteSong(){
     this.selectedSong.forEach(element => {
-      console.log(element)
-      this._songService.deleteSong(this.lista, element).subscribe(
+      this._songService.deleteSongL(this.token,this.lista, element).subscribe(
         response => {
           if(response){
             this.status = 'success';

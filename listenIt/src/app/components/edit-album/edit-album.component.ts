@@ -74,7 +74,9 @@ export class EditAlbumComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  uploadSong(){
+  //Sube una nueva canción, o varias, al álbum
+  uploadSong(subirCancion){
+    subirCancion.resetForm();
     this.currentFile = this.selectedFiles.item(0);
     this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.currentFile).subscribe(
       response => {
@@ -122,7 +124,6 @@ export class EditAlbumComponent implements OnInit {
 
   deleteSong(){
     this.selectedSong.forEach(element => {
-      console.log(element)
       this._songService.deleteSong(this.album, element).subscribe(
         response => {
           if(response){

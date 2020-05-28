@@ -24,7 +24,7 @@ export class SeguidosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  /*  this._userService.seguidos(this.token).subscribe(
+    this._userService.seguidos(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -37,7 +37,7 @@ export class SeguidosComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error2';
       }	
-    );*/
+    );
   }
   local(elemento){
   	localStorage.setItem('elemento', JSON.stringify(elemento));
