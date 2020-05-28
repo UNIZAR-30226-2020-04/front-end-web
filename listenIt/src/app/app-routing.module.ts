@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -21,6 +20,7 @@ import { DelPodcastComponent } from './components/del-podcast/del-podcast.compon
 import { VerPodcastComponent } from './components/ver-podcast/ver-podcast.component';
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { AddToListaComponent } from './components/add-to-lista/add-to-lista.component';
+import { AddToPodcastComponent } from './components/add-to-podcast/add-to-podcast.component';
 import { EditListaComponent } from './components/edit-lista/edit-lista.component';
 import { EditAlbumComponent } from './components/edit-album/edit-album.component';
 
@@ -53,6 +53,7 @@ const routes: Routes = [
 
   { path: 'SubirCanc', component: AddSongComponent },
   { path: 'AddToLista', component: AddToListaComponent },
+  { path: 'AddToPodcast', component: AddToPodcastComponent },
   { path: 'EditAlbum', component: EditAlbumComponent },
   { path: 'EditLista', component: EditListaComponent }
 ];

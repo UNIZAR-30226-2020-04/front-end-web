@@ -1,9 +1,6 @@
 <h1 class="h1-strong">{{title}}</h1>
 <div id="conMenu">
     <div class="col-lg-8">
-        <div class="alert alert-success" *ngIf="status == 'success'">
-            Su álbum ha sido creado!
-        </div>
         <div class="alert alert-danger" *ngIf="status == 'error'">
             Error al crear álbum.
         </div>
@@ -18,8 +15,8 @@
             <label>
                 <input type="file" (change)="selectFile($event)">
             </label>
-
-            <input type="submit" value="SUBIR ÁLBUM" class="btn btn-success" [disabled]="!subirAlbum.form.valid" />
+            <br/>
+            <input type="submit" value="SUBIR ÁLBUM" class="btn btn-success" [disabled]="!selectedFiles || !subirAlbum.form.valid" />
         </form> 
     <br/>
         <input type="submit" value="SALIR" routerLink="/Principal" class="btn btn-success"/>

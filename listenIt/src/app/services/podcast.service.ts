@@ -66,12 +66,9 @@ export class PodcastService {
 		return this._http.get(this.url+'podcastBiblio/'+ token, {headers: headers});
   }
   
-  addPodcast(token, podcast: podcast){
-    let data = {email: token, name: podcast.nombre, date: podcast.fecha};
-    console.log(data);
-    let headers = new HttpHeaders()
-    .set('Content-Type', 'application/json');
-
+  addCapitulo(token, podcast: podcast){
+    let data = {user: token, name: podcast.nombre, date: podcast.fecha};
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url+ 'createPodcast', data, {headers: headers});
   }
 

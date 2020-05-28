@@ -84,14 +84,14 @@ export class EditAlbumComponent implements OnInit {
         }
         else {
           //Hubo algún problema.
-          this.status = "error";
+          this.status = "errorU";
         }
       },
       error => {
           console.log(<any> error);
           var errorMessage = <any> error;
           if (errorMessage != null) {
-              this.status = 'error';
+              this.status = 'errorU';
           }
       }
     );
@@ -142,4 +142,8 @@ export class EditAlbumComponent implements OnInit {
     });
   }
 
+  finalizar(){
+    if(this.songs.length == 0) this.status = 'errorV';
+    else this._router.navigate(['/Principal']);
+  }
 }

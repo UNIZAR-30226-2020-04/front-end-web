@@ -18,6 +18,7 @@ export class VerUsuarioComponent implements OnInit {
   public albums;
   public listas;
   public podcasts;
+  public identity;
 
   constructor(
     private _route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class VerUsuarioComponent implements OnInit {
     private _albumService: AlbumService,
   ) { 
     this.token = this._userService.getToken();
+    this.identity = this._userService.getIdentity();
     this.usuario = this._userService.getUsuario();
   }
 
@@ -145,4 +147,13 @@ export class VerUsuarioComponent implements OnInit {
     return 0;
    }
 
+
+   localVer() {
+    localStorage.setItem("verUsuario",this.identity);
+  }
+
+  logout(){
+      localStorage.clear();
+      this._router.navigate(['/Login']);
+  }
 }

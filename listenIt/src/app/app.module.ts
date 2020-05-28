@@ -18,9 +18,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { BibliotecaComponent } from './components/biblioteca/biblioteca.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ReestablecerComponent } from './components/reestablecer/reestablecer.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarModule } from 'ng-sidebar';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
 import { CrearPlaylistComponent } from './components/crear-playlist/crear-playlist.component';
 import { SubirAlbum1Component } from './components/subir-album1/subir-album1.component';
@@ -39,6 +37,7 @@ import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { AddToListaComponent } from './components/add-to-lista/add-to-lista.component';
 import { EditAlbumComponent } from './components/edit-album/edit-album.component';
 import { EditListaComponent } from './components/edit-lista/edit-lista.component';
+import { AddToPodcastComponent } from './components/add-to-podcast/add-to-podcast.component';
 
 
 
@@ -49,8 +48,6 @@ import { EditListaComponent } from './components/edit-lista/edit-lista.component
     LoginComponent,
     RegistroComponent,
     ReestablecerComponent,
-    SidebarComponent,
-    NavbarComponent,
     ReproductorComponent,
     UsuarioComponent,
     BibliotecaComponent,
@@ -71,7 +68,8 @@ import { EditListaComponent } from './components/edit-lista/edit-lista.component
     SeguidosComponent,
     AddToListaComponent,
     EditAlbumComponent,
-    EditListaComponent
+    EditListaComponent,
+    AddToPodcastComponent
   ],
   imports: [
     BrowserModule,

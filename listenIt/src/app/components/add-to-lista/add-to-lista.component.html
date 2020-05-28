@@ -20,6 +20,12 @@
             </tbody>
         </table>
     </div>
+    <div class="alert alert-danger" *ngIf="status == 'errorB'">
+        La canción no existe.
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        La canción no se ha podido añadir.
+    </div>
     <input type="submit" value="AÑADIR CANCIÓN" (click)="uploadSong()" class="btn btn-success"/>
 </div>
 
@@ -43,5 +49,8 @@
             </tbody>
         </table>
     </div>
-    <input type="submit" value="Finalizar" routerLink="/Principal" class="btn btn-success"/>
+    <div class="alert alert-danger" *ngIf="status == 'errorV'">
+        No se puede subir una playlist sin canciones.
+    </div>
+    <input type="submit" value="Finalizar" (click)="finalizar()" class="btn btn-success"/>
 </div>

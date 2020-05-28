@@ -16,15 +16,15 @@ export class ListaService {
   }
 
   seguir(token,lista){
-    let data = {email: token, name: lista};
+    let data = {correo: token, idplaylist: JSON.stringify(lista.idRep.l_id), correoplaylist: lista.idRep.u};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url+ 'seguirLista', data, {headers: headers});
+    return this._http.post(this.url+ 'followPlayList', data, {headers: headers});
   }
   
   dejarSeguir(token,lista){
-    let data = {email: token, name: lista};
+    let data = {correo: token, idplaylist: lista.idRep.l_id, correoplaylist: lista.idRep.u};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url+ 'dejarSeguirLista', data, {headers: headers});
+    return this._http.post(this.url+ 'unfollowPlayList', data, {headers: headers});
 	}
 
   seguido(token,lista){
@@ -55,7 +55,6 @@ export class ListaService {
   
   createLista(email,titulo,imagen): Observable<any>{
     let data = {user: email, playlist: titulo, image: imagen};
-    console.log(data);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url + 'createPlaylist', data, {headers: headers});
   }

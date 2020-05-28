@@ -5,6 +5,7 @@ import { FileService } from '../../services/file.service';
 import { lista } from 'src/app/models/lista';
 import { ListaService } from 'src/app/services/lista.service';
 import { AlbumService } from 'src/app/services/album.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -19,14 +20,17 @@ export class PrincipalComponent implements OnInit {
   public token;
   public albums: album[];
   public listas: lista[];
+  public identity;
     
   constructor(
+    private _router: Router,
     private userService: UserService,
     private _listaService: ListaService,
     private _albumService: AlbumService,
   	private fileService: FileService) 
   {
     this.token = this.userService.getToken();
+    this.identity = this.userService.getIdentity();
   }
 
   ngOnInit(): void {
@@ -91,6 +95,15 @@ export class PrincipalComponent implements OnInit {
           }
       }
     );
+  }
+
+  localVer() {
+    localStorage.setItem("verUsuario",this.identity);
+  }
+
+  logout(){
+      localStorage.clear();
+      this._router.navigate(['/Login']);
   }
 
 }

@@ -97,5 +97,14 @@ seguido(): number{
   );*/
   return 0;
 }
+
+localVer() {
+  localStorage.setItem("verUsuario",this.identity);
+}
+
+logout(){
+    localStorage.clear();
+    this._router.navigate(['/Login']);
+}
   
 }

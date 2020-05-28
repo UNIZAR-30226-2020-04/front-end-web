@@ -25,12 +25,6 @@
                 </tbody>
                 <input type="submit" value="Borrar seleccionados" (click)="deleteAlbum()" class="btn btn-success" />
             </table>
-            <div class="alert alert-success" *ngIf="status == 'success'">
-                Se han borrado correctamente
-            </div>
-            <div class="alert alert-danger" *ngIf="status == 'error2'">
-                Error al coger albums del usuario.
-            </div>
             <div class="alert alert-danger" *ngIf="status == 'error'">
                 Error al borrar un album.
             </div>

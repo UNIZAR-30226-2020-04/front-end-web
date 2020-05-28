@@ -1,4 +1,40 @@
-<app-sidebar></app-sidebar>
+<div id="menu">
+	<div class="col-9">
+	  <a class="text-light" routerLink="/VerUsuario" (click)="localVer()">
+		<div class="container text-center">
+			<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:100px !important; height:100px !important"/>
+			<h3>{{identity.nombre}}</h3>
+		</div>
+	  </a>
+	  <ul ngbNav #nav="ngbNav" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Principal">Principal
+			<img src="assets/home.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link active" routerLink="/Buscar">Buscar
+			<img src="assets/lupa.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Biblioteca">Biblioteca
+			<img src="assets/books.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Seguidos">Seguidos
+			<img src="assets/user.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" (click)="logout()" >Cerrar sesión</a>
+		</li>
+	  </ul>
+  </div>
+</div> 
+
+
 <div id="navbar" class="btn-group">
 	<button type="button" class="btn btn-outline-secondary text-light" (click)="cambiarVista(1)">Playlists</button>
 	<button type="button" class="btn btn-outline-secondary text-light" (click)="cambiarVista(2)">Artistas</button>
@@ -16,16 +52,16 @@
  		<div class="container" *ngIf="buscado">
 			<h2>Lista encontrada de {{view}}:</h2>
 			<ul class="list-inline">
-				<li class="list-inline-item" *ngFor= "let elem of lista">
+				<li class="list-inline-item" id="listaPrinci" *ngFor= "let elem of lista">
 					<a class="text-light" (click)=verElem(elem)>
 						<div class="container text-center">
 								<div *ngIf="elem.foto">
 									<img src="elem.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>{{elem.nombre}}</h3>
+									<h3>{{elem.nombre.substr(0, 11)}}</h3>
 								</div>
 								<div *ngIf="!elem.foto">
 									<img src="assets/album.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>{{elem.nombre}}</h3>
+									<h3>{{elem.nombre.substr(0, 11)}}</h3>
 								</div>
 						</div>
 					</a>

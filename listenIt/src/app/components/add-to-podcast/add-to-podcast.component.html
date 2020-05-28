@@ -1,29 +1,24 @@
-<h1 class="h1-strong">{{title}} a {{tituloAlbum}}</h1>
+<h1 class="h1-strong">{{title}} a {{tituloPodcast}}</h1>
 <br/>
 <br/>
 <div id="izq" class="col-lg-8">
-    <form #subirCancion="ngForm" (ngSubmit)="uploadSong()" class="col-lg-16">
+    <form #subirCapitulo="ngForm" (ngSubmit)="uploadCap()" class="col-lg-16">
         <p>
-            <label>Nombre de la canción:</label>
-            <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCancion" required />
-        </p>
-        <p>
-            <label>Genero de la canción:</label>
-            <input type="text" name="genero" #name="ngModel" class="form-control" [(ngModel)]="genero" required />
+            <label>Nombre del capítulo:</label>
+            <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCapitulo" required />
         </p>
         <div style="text-align:center">
             <div [innerHtml]='msg'></div>
             <label>
                 <input type="file" (change)="selectFile($event)">
-            </label>
+                </label>
         </div>
         <div class="alert alert-danger" *ngIf="status == 'error'">
-            La canción no se ha podido añadir.
+            El capítulo no se ha podido añadir.
         </div>
-        <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!selectedFiles || !subirCancion.form.valid"/>
+        <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!selectedFiles || !subirCapitulo.form.valid"/>
     </form>
 </div>
-
 
 <div id="izq" >
     <div class="container">
@@ -32,14 +27,12 @@
                 <tr>
                     <th>Imagen</th>
                     <th>Título</th>
-                    <th>Género</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let song of songs" >
+            <tbody *ngFor="let cap of caps" >
                 <tr>
                     <td><i class="fas fa-music"></i></td>
-                    <td>{{song.nombre}}</td>
-                    <td>{{song.genero}}</td>
+                    <td>{{cap.nombre}}</td>
                 </tr>
             </tbody>
         </table>

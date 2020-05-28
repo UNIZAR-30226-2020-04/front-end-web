@@ -17,7 +17,9 @@
                 <input type="file" (change)="selectFile($event)">
                 </label>
         </div>
-
+        <div class="alert alert-danger" *ngIf="status == 'errorU'">
+            La canción no se ha podido añadir.
+        </div>
         <input type="submit" value="AÑADIR CANCIÓN" class="btn btn-success" [disabled]="!selectedFiles || !subirCancion.form.valid"/>
     </form>
 </div>
@@ -48,6 +50,9 @@
             <input type="submit" value="Borrar seleccionadas" (click)="deleteSong()" class="btn btn-success" />
         </table>
     </div>
-    <input type="submit" value="Finalizar" routerLink="/Principal" class="btn btn-success"/>
+    <div class="alert alert-danger" *ngIf="status == 'errorV'">
+        No se puede dejar un álbum sin canciones.
+    </div>
+    <input type="submit" value="Finalizar" (click)="finalizar()" class="btn btn-success"/>
 </div>
 

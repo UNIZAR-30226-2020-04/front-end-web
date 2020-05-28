@@ -48,7 +48,7 @@ export class SubirPodcastComponent implements OnInit {
           this.status = "success";
           localStorage.setItem('idPodcast', response.l_id);
           localStorage.setItem('podcast',this.tituloPodcast);
-          //this._router.navigate(['/SubirPodcast']);
+          this._router.navigate(['/AddToPodcast']);
         }
         else {
         	this.status = "error";

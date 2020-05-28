@@ -32,15 +32,13 @@ export class VerPlaylistComponent implements OnInit {
   ) {
     this.lista = this._listaService.getLista();
     this.token = this._userService.getToken();
+    this.identity = this._userService.getIdentity();
    }
 
    ngOnInit(): void {
-
-
-    localStorage.setItem('editAlbum', JSON.stringify(this.lista));
-    /*this._songService.getSongsL(this.lista).subscribe(
+    this._songService.getSongsL(this.lista).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.songs = response;
           this.isLiked();
@@ -52,7 +50,7 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
   }
 
   isLiked(){
@@ -77,7 +75,7 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   like(song){
-    /*this._songService.likeL(this.token,song.idCancion.l_id.l_id,song.idCancion.c_id).subscribe(
+    this._songService.like(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -90,7 +88,24 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
+  }
+
+  unlike(song){
+    this._songService.unlike(this.token,song.idCancion.l_id.l_id,song).subscribe(
+      response => {
+        if(response){
+          this.status = 'succes';
+          this.isLiked();
+        }else{						
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
   }
 
   num(song): number{
@@ -98,35 +113,36 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   seguir(){
-      this._listaService.seguir(this.token, this.lista.nombre).subscribe(
-        response => {
-          if(response){
-            this.status = 'succes';
-          }else{						
-            this.status = 'error';
-          }
-        },
-        error => {
-          console.log(<any> error);
-            this.status = 'error';
-        }	
-      );
+    this._listaService.seguir(this.token, this.lista).subscribe(
+      response => {
+        if(response){
+          this.status = 'succes';
+        }else{						
+          this.status = 'error';
+          console.log(response);
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
   }
 
   dejarSeguir(){
-      this._listaService.seguir(this.token, this.lista.nombre).subscribe(
-        response => {
-          if(response){
-            this.status = 'succes';
-          }else{						
-            this.status = 'error';
-          }
-        },
-        error => {
-          console.log(<any> error);
-            this.status = 'error';
-        }	
-      );
+    this._listaService.seguir(this.token, this.lista).subscribe(
+      response => {
+        if(response){
+          this.status = 'succes';
+        }else{						
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
   }
 
   seguido(): number{
@@ -144,6 +160,15 @@ export class VerPlaylistComponent implements OnInit {
       }	
     );*/
     return 0;
+  }
+
+  localVer() {
+    localStorage.setItem("verUsuario",this.identity);
+  }
+
+  logout(){
+      localStorage.clear();
+      this._router.navigate(['/Login']);
   }
   
 }

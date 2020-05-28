@@ -1,14 +1,49 @@
-<app-sidebar></app-sidebar>
+<div id="menu">
+	<div class="col-9">
+	  <a class="text-light" routerLink="/VerUsuario" (click)="localVer()">
+		<div class="container text-center">
+			<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:100px !important; height:100px !important"/>
+			<h3>{{identity.nombre}}</h3>
+		</div>
+	  </a>
+	  <ul ngbNav #nav="ngbNav" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Principal">Principal
+			<img src="assets/home.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Buscar">Buscar
+			<img src="assets/lupa.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Biblioteca">Biblioteca
+			<img src="assets/books.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Seguidos">Seguidos
+			<img src="assets/user.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" (click)="logout()">Cerrar sesión</a>
+		</li>
+	  </ul>
+  </div>
+</div> 
+
 <div class="row">
 	<div id="listaPrinci" class="col-sm-7"  *ngIf="albums">
 		<div class="container">
 			<h3>Sus álbumes...</h3>
 				<ul class="list-inline">
-					<li class="list-inline-item" *ngFor="let album of albums">
+					<li class="list-inline-item" id="listaPrinci" *ngFor="let album of albums">
 						<a class="text-light" href="/VerAlbum" (click)="localA(album)">
 							<div class="container text-center">
 									<img src="album.foto" alt="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h5>{{album.nombre}}</h5>
+									<h5>{{album.nombre.substr(0, 11)}}</h5>
 							</div>
 						</a>
 					</li>
@@ -17,11 +52,11 @@
 		<div class="container">
 		<h3>Sus playlist...</h3>
 			<ul class="list-inline" *ngIf="listas">
-				<li class="list-inline-item" *ngFor="let lista of listas">
+				<li class="list-inline-item" id="listaPrinci" *ngFor="let lista of listas">
 					<a class="text-light" href="/VerPlay" (click)="localL(lista)">
 						<div class="container text-center">
 								<img src="lista.foto" alt="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-								<h5>{{lista.nombre}}</h5>
+								<h5>{{lista.nombre.substr(0, 11)}}</h5>
 						</div>
 					</a>
 				</li>
@@ -30,11 +65,11 @@
 		<div class="container">
 		<h3>Sus podcast...</h3>
 			<ul class="list-inline" *ngIf="podcasts">
-				<li class="list-inline-item" *ngFor="let podcast of podcasts">
+				<li class="list-inline-item" id="listaPrinci" *ngFor="let podcast of podcasts">
 					<a class="text-light" href="/Verpodcast" (click)="localP(podcast)">
 						<div class="container text-center">
 								<img src="podcast.foto" alt="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-								<h5>{{podcast.nombre}}</h5>
+								<h5>{{podcast.nombre.substr(0, 11)}}</h5>
 						</div>
 					</a>
 				</li>

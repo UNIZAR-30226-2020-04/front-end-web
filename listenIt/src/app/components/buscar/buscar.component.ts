@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BuscarService } from '../../services/buscar.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-album',
@@ -16,15 +17,18 @@ export class BuscarComponent implements OnInit {
   // Lista de elementos buscados.
 	public lista;
 	public status;
+	public identity;
 
   constructor(
   	private route: ActivatedRoute,
-  	private router: Router,
+	private router: Router,
+	private userService: UserService,
   	private buscarService: BuscarService
   ) {
   	this.buscado = false;
   	this.select = 1;
-  	this.view = "playlist"
+	  this.view = "playlist"
+	  this.identity = this.userService.getIdentity();
   }
 
   ngOnInit(): void {
@@ -109,5 +113,14 @@ export class BuscarComponent implements OnInit {
 		localStorage.setItem('verPodcast', elemento);
   		this.router.navigate(['/Verpodcast']);
   	}
+  }
+
+  localVer() {
+    localStorage.setItem("verUsuario",this.identity);
+  }
+
+  logout(){
+      localStorage.clear();
+      this.router.navigate(['/Login']);
   }
 }

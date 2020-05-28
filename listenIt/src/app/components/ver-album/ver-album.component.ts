@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { usuario } from '../../models/usuario';
 import { album } from '../../models/album';
@@ -31,15 +31,11 @@ export class VerAlbumComponent implements OnInit {
   ) {
     this.album = this._albumService.getAlbum();
     this.token = this._userService.getToken();
-    this.likes = [false,false,false,false,false,false,false,false,false,false,false,false];
+    this.identity = this._userService.getIdentity();
    }
 
   ngOnInit(): void {
-
-
-    localStorage.setItem('editAlbum', JSON.stringify(this.album));
-
-
+    this.likes = [false,true,false,true,false,false,false,false,false,false,false,false];
     //Obtiene las canciones del álbum
     this._songService.getSongs(this.album).subscribe(
       response => {
@@ -80,9 +76,9 @@ export class VerAlbumComponent implements OnInit {
   }
 
   like(song){
-    /*this._songService.like(this.token,song.idCancion.l_id.l_id,song.idCancion.c_id).subscribe(
+    this._songService.like(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.isLiked();
         }else{						
@@ -93,11 +89,36 @@ export class VerAlbumComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
+  }
+  unlike(song){
+    this._songService.unlike(this.token,song.idCancion.l_id.l_id,song).subscribe(
+      response => {
+        if(response){
+          this.status = 'succes';
+          this.isLiked();
+        }else{						
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
   }
 
   num(song): number{
     return this.songs.indexOf(song);
   }
   
+
+  localVer() {
+    localStorage.setItem("verUsuario",this.identity);
+  }
+
+  logout(){
+      localStorage.clear();
+      this._router.navigate(['/Login']);
+  }
 }

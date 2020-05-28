@@ -89,14 +89,14 @@ export class EditListaComponent implements OnInit {
   				this.buscado = true;
   			}
   			else {
-  				this.status = 'error';
+  				this.status = 'errorB';
   			}
   		},
   		error => {
 	      console.log(<any> error);
 	      var errorMessage = <any> error;
 	      if (errorMessage != null) {
-	          this.status = 'error';
+	          this.status = 'errorB';
 	      }  			
   		}
   	);
@@ -175,6 +175,11 @@ export class EditListaComponent implements OnInit {
         }	
       );
     });
+  }
+
+  finalizar(){
+    if(this.songs.length == 0) this.status = 'errorV';
+    else this._router.navigate(['/Principal']);
   }
 
 }

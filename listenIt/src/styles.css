@@ -92,3 +92,45 @@ nav#reproductor{
     background-color: #7471cc;
     margin-top: 15%;
 }
+
+.nav-pills .nav-link.active,
+.show>.nav-pills .nav-link{
+    background: #000000 !important
+}
+
+a:link {
+    color:#ffffff;
+}
+a:visited {
+    color:#ffffff;
+}
+a:active {
+    color:#ffffff;
+}
+a:hover {
+    color:#ffffff;
+}
+
+input .btn .btn-success {
+    background:#161616 !important
+}
+
+.btn-success {
+    background-color: #043a4b !important;
+    border-color: #367d92 !important;
+}
+
+.btn-success:hover {
+    background-color: #367d92 !important;
+    border-color: #043a4b !important;
+}
+
+.btn-success:active:hover {
+    background-color: #367d92 !important;
+    border-color: #043a4b !important;
+}
+
+.btn-outline-success{
+    color: #fff !important;
+    border-color: #fff !important;
+}

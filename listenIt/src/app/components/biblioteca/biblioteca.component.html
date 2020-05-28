@@ -1,4 +1,42 @@
-<app-sidebar></app-sidebar>
+<div id="menu">
+	<div class="col-9">
+	  <a class="text-light" routerLink="/VerUsuario" (click)="localVer()">
+		<div class="container text-center">
+			<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:100px !important; height:100px !important"/>
+			<h3>{{identity.nombre}}</h3>
+		</div>
+	  </a>
+	  <ul ngbNav #nav="ngbNav" class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Principal">Principal
+			<img src="assets/home.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Buscar">Buscar
+			<img src="assets/lupa.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link active" routerLink="/Biblioteca">Biblioteca
+			<img src="assets/books.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" routerLink="/Seguidos">Seguidos
+			<img src="assets/user.png" width=20px height=20px padding-left=50px>
+		  </a>
+		</li>
+		<li ngbNavItem>
+		  <a class="nav-link" (click)="logout()" >Cerrar sesión</a>
+		</li>
+	  </ul>
+  </div>
+</div> 
+
+
+
+
 <div class="row">
 	<div class="col-sm-10">
 		<div id="menuBiblio" class="btn-group">
@@ -14,11 +52,11 @@
 				<a class="text-light" routerLink="/VerPlay" (click)="localL(lista)">
 					<div class="container text-center" *ngIf="!lista.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{lista.nombre.substr(0, 10)}}</h5>
+							<h6>{{lista.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="lista.foto">
 							<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{lista.nombre}}</h5>
+							<h6>{{lista.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>
@@ -26,11 +64,11 @@
 				<a class="text-light" routerLink="/VerPlay" (click)="localL(lista)">
 					<div class="container text-center" *ngIf="!lista.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{lista.nombre.substr(0, 10)}}</h5>
+							<h6>{{lista.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="lista.foto">
 							<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{lista.nombre}}</h5>
+							<h6>{{lista.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>
@@ -40,11 +78,11 @@
 				<a class="text-light" routerLink="/VerUsuario" (click)="localU(usuario)">
 					<div class="container text-center" *ngIf="!usuario.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{usuario.nombre.substr(0, 10)}}</h5>
+							<h6>{{usuario.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="usuario.foto">
 							<img src="usuario.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{usuario.nombre}}</h5>
+							<h6>{{usuario.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>
@@ -52,11 +90,11 @@
 				<a class="text-light" routerLink="/VerUsuario" (click)="localU(usuario)">
 					<div class="container text-center" *ngIf="!usuario.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{usuario.nombre.substr(0, 10)}}</h5>
+							<h6>{{usuario.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="usuario.foto">
 							<img src="usuario.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{usuario.nombre}}</h5>
+							<h6>{{usuario.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>
@@ -66,11 +104,11 @@
 				<a class="text-light" routerLink="/VerAlbum" (click)="localA(album)">
 					<div class="container text-center" *ngIf="!album.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{album.nombre.substr(0, 10)}}</h5>
+							<h6>{{album.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="album.foto">
 							<img src="album.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{album.nombre}}</h5>
+							<h6>{{album.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>
@@ -78,11 +116,11 @@
 				<a class="text-light" routerLink="/VerAlbum" (click)="localA(album)">
 					<div class="container text-center" *ngIf="!album.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{album.nombre.substr(0, 10)}}</h5>
+							<h6>{{album.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="album.foto">
 							<img src="album.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{album.nombre}}</h5>
+							<h6>{{album.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>
@@ -92,11 +130,11 @@
 				<a class="text-light" routerLink="/Verpodcast" (click)="localP(podcast)">
 					<div class="container text-center" *ngIf="!podcast.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{podcast.nombre.substr(0, 10)}}</h5>
+							<h6>{{podcast.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="podcast.foto">
 							<img src="podcast.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{podcast.nombre}}</h5>
+							<h6>{{podcast.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>
@@ -104,11 +142,11 @@
 				<a class="text-light" routerLink="/Verpodcast" (click)="localP(podcast)">
 					<div class="container text-center" *ngIf="!podcast.foto">
 							<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{podcast.nombre.substr(0, 10)}}</h5>
+							<h6>{{podcast.nombre.substr(0, 11)}}</h6>
 					</div>
 					<div class="container text-center" *ngIf="podcast.foto">
 							<img src="podcast.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-							<h5>{{podcast.nombre}}</h5>
+							<h6>{{podcast.nombre.substr(0, 11)}}</h6>
 					</div>
 				</a>
 			</div>

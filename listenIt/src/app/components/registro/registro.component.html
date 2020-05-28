@@ -19,7 +19,7 @@
 
                 <label>Imagen de perfil:</label>
                 <label>
-                    <input type="file" (change)="selectFile($event)">
+                    <input type="file" (change)="selectFile($event)" required>
                 </label> 
 
             <p>
@@ -43,7 +43,7 @@
         <br/>
         <p>
             <a>¿Ya tienes cuenta?</a>
-            <a routerLink="/Login"> Entra.</a>
+            <a routerLink="/Login" style="color: #367d92"> Entra.</a>
         </p>
     </div>
 </div>

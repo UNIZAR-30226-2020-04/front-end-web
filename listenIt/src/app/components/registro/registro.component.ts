@@ -34,7 +34,6 @@ export class RegistroComponent implements OnInit {
   onSubmit() {
     this.currentFile = this.selectedFiles.item(0);
     this.usuario.foto = this.currentFile;
-    console.log(this.usuario);
     this._userService.register(this.usuario).subscribe(
       response => {
         if (response) {

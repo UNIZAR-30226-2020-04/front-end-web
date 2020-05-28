@@ -8,6 +8,7 @@ import { cancion } from 'src/app/models/cancion';
 import { GLOBAL } from '../../services/global';
 import { ListaService } from 'src/app/services/lista.service';
 import { BuscarService } from 'src/app/services/buscar.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-add-to-lista',
@@ -62,24 +63,23 @@ export class AddToListaComponent implements OnInit {
   }
 
   busqueda() {
-    console.log(this.texto)
   	this.buscarService.searchSong(this.texto).subscribe(
   		response => {
-  			if(response) {
+  			if(response.length != 0 ) {
   				this.status = 'success';
   				this.resultado = response;
   				console.log(this.resultado);
   				this.buscado = true;
   			}
   			else {
-  				this.status = 'error';
+          this.status = 'errorB';
   			}
   		},
   		error => {
 	      console.log(<any> error);
 	      var errorMessage = <any> error;
 	      if (errorMessage != null) {
-	          this.status = 'error';
+	          this.status = 'errorB';
 	      }  			
   		}
   	);
@@ -114,6 +114,12 @@ seleccionar(elegido){
       }
     );
     if (this.status = 'success' ) this.songs.push(this.cancion);
+  }
+
+  
+  finalizar(){
+    if(this.songs.length == 0) this.status = 'errorV';
+    else this._router.navigate(['/Principal']);
   }
 
 }

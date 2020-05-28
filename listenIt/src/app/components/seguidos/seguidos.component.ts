@@ -13,14 +13,15 @@ export class SeguidosComponent implements OnInit {
   public seguidos;
   public status;
   public token;
+  public identity;
 
   constructor(
     private _userService: UserService,
     private _router: Router,
     ) { 
     this.token = this._userService.getToken();
+    this.identity = this._userService.getIdentity();
   }
-
 
   ngOnInit(): void {
   /*  this._userService.seguidos(this.token).subscribe(
@@ -40,6 +41,15 @@ export class SeguidosComponent implements OnInit {
   }
   local(elemento){
   	localStorage.setItem('elemento', JSON.stringify(elemento));
+  }
+
+  localVer() {
+    localStorage.setItem("verUsuario",this.identity);
+  }
+
+  logout(){
+      localStorage.clear();
+      this._router.navigate(['/Login']);
   }
 
 }

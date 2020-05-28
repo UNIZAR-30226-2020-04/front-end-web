@@ -1,11 +1,8 @@
 <h1 class="h1-strong">{{title}}</h1>
 <div id="conMenu">
     <div class="col-lg-8">
-        <div class="alert alert-success" *ngIf="status == 'success'">
-            Su álbum ha sido creado!
-        </div>
         <div class="alert alert-danger" *ngIf="status == 'error'">
-            Error al crear álbum.
+            La playlist no se ha podido crear.
         </div>
         <form #newPlaylistForm="ngForm" (ngSubmit)="newPlaylist()" class="col-lg-16">
             <p>
@@ -19,6 +16,7 @@
             </label> 
             <input type="submit" value="CREAR PLAYLIST" class="btn btn-success" [disabled]="!newPlaylistForm.form.valid" />
         </form> 
+        <br/>
         <input type="submit" value="SALIR" routerLink="/Principal" class="btn btn-success"/>
     </div>
 </div>

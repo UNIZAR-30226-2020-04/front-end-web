@@ -130,4 +130,13 @@ export class BibliotecaComponent implements OnInit {
       }	
     );*/
   }
+
+  localVer() {
+    localStorage.setItem("verUsuario",this.identity);
+  }
+
+  logout(){
+      localStorage.clear();
+      this._router.navigate(['/Login']);
+  }
 }
