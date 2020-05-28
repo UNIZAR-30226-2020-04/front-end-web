@@ -67,6 +67,10 @@ export class BibliotecaComponent implements OnInit {
   	localStorage.setItem('verUsuario', JSON.stringify(usuario));
   }
 
+  foto(objeto){
+    return this.url + objeto.urlfoto;
+  }
+
   //Muestra las listas que sigue el usuario
   mostrarListas(): void {
     this._listaService.getListasBiblio(this.token).subscribe(
@@ -103,7 +107,7 @@ export class BibliotecaComponent implements OnInit {
     );
   }
 
-  //Muestra los álbumes de canciones a als que el usuario ha dado like
+  //Muestra los álbumes de canciones a las que el usuario ha dado like
   mostrarAlbums(): void {
     this._albumService.getAlbumsBiblio(this.token).subscribe(
       response => {
@@ -159,7 +163,7 @@ export class BibliotecaComponent implements OnInit {
 
   //Muestra en el sidebar el usuario actual
   localVer() {
-    localStorage.setItem("verUsuario",this.identity);
+    localStorage.setItem("verUsuario",JSON.stringify(this.identity));
   }
 
   //Permite cerrar sesión en el sidebar

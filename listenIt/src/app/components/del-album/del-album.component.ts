@@ -30,6 +30,8 @@ export class DelAlbumComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //Obtiene la lista de álbumes de un usuario
     this._albumService.getAlbums(this.token).subscribe(
       response => {
         if(response != null){
@@ -50,15 +52,16 @@ export class DelAlbumComponent implements OnInit {
     return this.albums.indexOf( album );
   }
 
+  //Añade un álbum a la lista de álbumes que se van a borrar
   addSelected(album: album){
     var i = this.albums.indexOf( album );
     if (this.selected[i] != 0){
       this.selectedAlbum.push(album);
       this.selected[i]= 0;
-    }
-
-    
+    }   
   }
+
+  //Quita un álbum de la lista de álbumes que se van a borrar
   quitSelected(album: album){
     var i = this.selectedAlbum.indexOf( album);
     var j = this.albums.indexOf( album );
@@ -68,6 +71,7 @@ export class DelAlbumComponent implements OnInit {
     }
   }
 
+  //Borra la lista de álbumes seleccionada por el usuario
   deleteAlbum(){
     this.selectedAlbum.forEach(element => {
       this._albumService.deleteAlbum(this.token, element).subscribe(

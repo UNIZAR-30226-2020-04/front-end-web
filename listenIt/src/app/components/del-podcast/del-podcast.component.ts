@@ -30,6 +30,8 @@ export class DelPodcastComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //Obtiene la lista de podcast de un usuario
     this._podcastService.getPodcasts(this.token).subscribe(
       response => {
         if(response){
@@ -49,6 +51,7 @@ export class DelPodcastComponent implements OnInit {
     return this.podcasts.indexOf( podcast );
   }
 
+  //Añade un podcast a la lista de podcasts que se van a borrar
   addSelected(podcast: podcast){
     var i = this.podcasts.indexOf( podcast );
     if (this.selected[i] != 0){
@@ -57,6 +60,7 @@ export class DelPodcastComponent implements OnInit {
     }
   }
 
+  //Quita un podcast de la lista de podcasts que se van a borrar
   quitSelected(podcast: podcast){
     var i = this.selectedPodcast.indexOf(podcast);
     var j = this.podcasts.indexOf(podcast);
@@ -66,6 +70,7 @@ export class DelPodcastComponent implements OnInit {
     }
   }
 
+  //Borra la lista de podcast seleccionada por el usuario
   deletePodcast(){
     this.selectedPodcast.forEach(element => {
       this._podcastService.deletePodcast(this.token, element.idPodcast.l_id).subscribe(

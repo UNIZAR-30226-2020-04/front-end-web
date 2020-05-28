@@ -100,6 +100,7 @@ export class EditPodcastComponent implements OnInit {
     return this.caps.indexOf(cap);
   }
 
+  //Añade un capítulo a la lista de capítulos seleccionados para borrar
   addSelected(cap){
     var i = this.caps.indexOf(cap);
     if (this.selected[i] != 0){
@@ -108,6 +109,7 @@ export class EditPodcastComponent implements OnInit {
     }
   }
 
+  //Quita un capítulo de la lista de capítulos seleccionados para borrar
   quitSelected(cap){
     var i = this.selectedCap.indexOf(cap);
     var j = this.caps.indexOf(cap);
@@ -117,6 +119,7 @@ export class EditPodcastComponent implements OnInit {
     }
   }
 
+  //Borra todos los capítulos de la lista de capítulos seleccionados para borrar
   deleteCap(){
     this.selectedCap.forEach(element => {
       this._podcastService.deleteCap(this.podcast, element).subscribe(

@@ -74,14 +74,15 @@ export class EditAlbumComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
-  //Sube una nueva canción, o varias, al álbum
+  //Sube una nueva canción al álbum
   uploadSong(subirCancion){
     this.currentFile = this.selectedFiles.item(0);
-    this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.currentFile).subscribe(
+    this.fileService.uploadFile(this.token,this.album.idAlbum.l_id,this.nombreCancion,this.currentFile).subscribe(
       response => {
         if(response) {
           //Canción añadida correctamente al album.
           this.status = "success";
+          console.log("YES");
         }
         else {
           //Hubo algún problema.
@@ -105,6 +106,7 @@ export class EditAlbumComponent implements OnInit {
     return this.songs.indexOf(song);
   }
 
+  //Añade una canción a la lista de canciones seleccionadas para borrar
   addSelected(song){
     var i = this.songs.indexOf(song);
     if (this.selected[i] != 0){
@@ -113,6 +115,7 @@ export class EditAlbumComponent implements OnInit {
     }
   }
 
+  //Quita una canción de la lista de canciones seleccionadas para borrar
   quitSelected(song){
     var i = this.selectedSong.indexOf(song);
     var j = this.songs.indexOf(song);
@@ -122,20 +125,24 @@ export class EditAlbumComponent implements OnInit {
     }
   }
 
+  //Borra todas las canciones de la lista de canciones seleccionadas para borrar
   deleteSong(){
     this.selectedSong.forEach(element => {
       this._songService.deleteSong(this.album, element).subscribe(
         response => {
           if(response){
+            console.log(response);
             this.status = 'success';
             this.selectedSong = [];
             this.selected = [];
             this.ngOnInit();
           }else{						
             this.status = 'error';
+            console.log(response);
           }
         },
         error => {
+          console.log("MAL");
           console.log(<any> error);
             this.status = 'error';
         }	

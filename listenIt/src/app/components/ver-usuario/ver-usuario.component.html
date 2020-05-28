@@ -42,44 +42,47 @@
 					<li class="list-inline-item" id="listaPrinci" *ngFor="let album of albums">
 						<a class="text-light" href="/VerAlbum" (click)="localA(album)">
 							<div class="container text-center">
-									<img src="album.foto" alt="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<img [src]="foto(album)" alt="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<h5>{{album.nombre.substr(0, 11)}}</h5>
 							</div>
-							<input *ngIf="esPerfil" type="submit" value="Editar" routerLink="/EditAlbum" (click)="localEditA(album)" class="btn btn-success"/>
 						</a>
+						<input *ngIf="esPerfil" type="submit" value="Editar" (click)="localEditA(album)" routerLink="/EditAlbum" class="btn btn-success"/>
 					</li>
 				</ul>
 		</div>
+		<br/>
 		<div class="container">
 		<h3>Sus playlist...</h3>
 			<ul class="list-inline" *ngIf="listas">
 				<li class="list-inline-item" id="listaPrinci" *ngFor="let lista of listas">
 					<a class="text-light" href="/VerPlay" (click)="localL(lista)">
 						<div class="container text-center">
-								<img src="lista.foto" alt="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<img [src]="foto(lista)" alt="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 								<h5>{{lista.nombre.substr(0, 11)}}</h5>
 						</div>
-						<input *ngIf="esPerfil" type="submit" value="Editar" (click)="localEditL(lista)" routerLink="/EditLista" class="btn btn-success"/>
 					</a>
+					<input *ngIf="esPerfil" type="submit" value="Editar" (click)="localEditL(lista)" routerLink="/EditLista" class="btn btn-success"/>
 				</li>
 			</ul>
 		</div>
+		<br/>
 		<div class="container">
 		<h3>Sus podcast...</h3>
 			<ul class="list-inline" *ngIf="podcasts">
 				<li class="list-inline-item" id="listaPrinci" *ngFor="let podcast of podcasts">
 					<a class="text-light" href="/Verpodcast" (click)="localP(podcast)">
 						<div class="container text-center">
-								<img src="podcast.foto" alt="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<img [src]="foto(podcast)" alt="assets/podcast.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
 								<h5>{{podcast.nombre.substr(0, 11)}}</h5>
 						</div>
 					</a>
+					<input *ngIf="esPerfil" type="submit" value="Editar" (click)="localEditP(podcast)" routerLink="/EditPodcast" class="btn btn-success"/>
 				</li>
 			</ul>
 		</div>
 	</div>
 	<div class="col-sm-2 text-center">
-		<i class="fas fa-user fa-7x"></i>
+		<img [src]="verUserPhoto" alt="assets/podcast.png" class="img-responsive" style="width:100px !important; height:100px !important"/>
 		<h4>{{usuario.nombre}}</h4>
 		<div *ngIf="seguidoU == 0" >
 			<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />

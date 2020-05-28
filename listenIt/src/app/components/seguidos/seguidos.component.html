@@ -40,13 +40,9 @@
 			<ul class="list-inline" *ngIf="seguidos">
 				<li class="list-inline-item" *ngFor="let user of seguidos">
 					<a class="text-light" href="/VerUsuario" (click)="local(user)">
-						<div class="container text-center" *ngIf="!user.foto">
-								<img src="assets/uuser.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-								<h3>{{user.nombre}}</h3>
-						</div>
-						<div class="container text-center" *ngIf="user.foto">
-								<img src="user.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-								<h3>{{user.nombre}}</h3>
+						<div class="container text-center" >
+							<img [src]="foto(user)" class="img-responsive" style="width:85px !important; height:85px !important"/>
+							<h3>{{user.nombre}}</h3>
 						</div>
 					</a>
 				</li>

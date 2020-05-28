@@ -93,7 +93,14 @@ export class PrincipalComponent implements OnInit {
   localA(album){
   	localStorage.setItem('verAlbum', JSON.stringify(album));
   }
-
+  localU() {
+    console.log(this.identity);
+    localStorage.setItem("verUsuario",JSON.stringify(this.identity));
+  }
+  foto(objeto){
+    return this.url + objeto.urlfoto;
+  }
+  
   //Obtiene la URL de la cancion solicitada.
   reproducir() {
   	this.idAlbumRep = "1";
@@ -117,10 +124,6 @@ export class PrincipalComponent implements OnInit {
           }
       }
     );
-  }
-
-  localVer() {
-    localStorage.setItem("verUsuario",this.identity);
   }
 
   logout(){

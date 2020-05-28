@@ -52,17 +52,13 @@
  		<div class="container" *ngIf="buscado">
 			<h2>Lista encontrada de {{view}}:</h2>
 			<ul class="list-inline">
-				<li class="list-inline-item" id="listaPrinci" *ngFor= "let elem of lista">
+				<li class="list-inline-item" id="listaPrinci" *ngFor="let elem of lista">
 					<a class="text-light" (click)=verElem(elem)>
 						<div class="container text-center">
-								<div *ngIf="elem.foto">
-									<img src="elem.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>{{elem.nombre.substr(0, 11)}}</h3>
-								</div>
-								<div *ngIf="!elem.foto">
-									<img src="assets/album.png" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<h3>{{elem.nombre.substr(0, 11)}}</h3>
-								</div>
+							<div>
+								<img [src]="foto(elem)" class="img-responsive" style="width:85px !important; height:85px !important"/>
+								<h3>{{elem.nombre.substr(0, 11)}}</h3>
+							</div>
 						</div>
 					</a>
 				</li>

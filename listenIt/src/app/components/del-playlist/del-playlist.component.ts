@@ -32,6 +32,8 @@ export class DelPlaylistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //Obtiene las listas de un usuario
     this._listaService.getListas(this.token).subscribe(
       response => {
         if(response != null){
@@ -51,6 +53,7 @@ export class DelPlaylistComponent implements OnInit {
     return this.listas.indexOf( lista );
   }
 
+  //Añade una lista a la lista de seleccionadas para borrar
   addSelected(lista: lista){
     var i = this.listas.indexOf( lista );
     if (this.selected[i] != 0){
@@ -58,6 +61,8 @@ export class DelPlaylistComponent implements OnInit {
       this.selected[i]= 0;
     }    
   }
+
+  //Quita una lista de la lista de seleccionadas para borrar
   quitSelected(lista: lista){
     var i = this.selectedLista.indexOf( lista );
     var j = this.listas.indexOf( lista );
@@ -67,6 +72,7 @@ export class DelPlaylistComponent implements OnInit {
     }
   }
 
+  //Borra las listas seleccionadas por el usuario
   deleteLista(){
     this.selectedLista.forEach(element => {
       this._listaService.deleteLista(this.token, element).subscribe(
@@ -76,7 +82,6 @@ export class DelPlaylistComponent implements OnInit {
             this.selectedLista = [];
             this.selected = [];
             this.ngOnInit();
-            //this._router.navigate(['/verLista']);
           }else{						
             this.status = 'error';
           }

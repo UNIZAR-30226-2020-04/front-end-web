@@ -93,6 +93,10 @@ export class BuscarComponent implements OnInit {
   	);
   }
 
+  foto(objeto){
+    return this.url + objeto.urlfoto;
+  }
+
   verElem(elem) {
 	  let elemento = JSON.stringify(elem);
 	  
@@ -121,7 +125,7 @@ export class BuscarComponent implements OnInit {
   }
 
   localVer() {
-    localStorage.setItem("verUsuario",this.identity);
+    localStorage.setItem("verUsuario",JSON.stringify(this.identity));
   }
 
   logout(){

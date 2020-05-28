@@ -36,6 +36,7 @@ export class CrearPlaylistComponent implements OnInit {
     this.selectedFiles = event.target.files;
   }
 
+  //Crea la nueva playlist y la almacena para que el componente de añadir canciones la tenga
   newPlaylist() {
     this.currentFile = this.selectedFiles.item(0);
     this.listaService.createLista(this.token,this.tituloPlaylist,this.currentFile).subscribe(

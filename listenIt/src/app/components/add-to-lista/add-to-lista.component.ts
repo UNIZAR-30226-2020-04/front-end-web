@@ -96,7 +96,7 @@ seleccionar(elegido){
     this.selectedFiles = event.target.files;
   }
 
-  //Añade la canción , o canciones seleccionadas a la lista.
+  //Añade la canción seleccionada a la lista.
   uploadSong(){
     this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.idCancion.l_id.u,this.cancion.idCancion.l_id.l_id,this.idLista,this.cancion.idCancion.c_id).subscribe(
       response => {

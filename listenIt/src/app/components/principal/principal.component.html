@@ -1,6 +1,6 @@
 <div id="menu">
 	<div class="col-9">
-	  <a class="text-light" routerLink="/VerUsuario" (click)="localVer()">
+	  <a class="text-light" routerLink="/VerUsuario" (click)="localU()">
 		<div class="container text-center">
 			<img [src]="userPhoto" alt=lo class="img-responsive" style="width:100px !important; height:100px !important"/>
 			<h3>{{identity.nombre}}</h3>
@@ -37,34 +37,12 @@
 <div class="row">
 	<div class="col-sm-10">
 		<div id="listaPrinci" class="container" *ngIf="listas">
-			<h3>Últimas canciones escuchadas...</h3>
-				<ul class="list-inline" >
-					<li class="list-inline-item" id="celdaBiblio" *ngFor="let lista of songs">
-						<a class="text-light" id="celdaBiblio" routerLink="/VerPlay" (click)="localL(lista)">
-							<div class="container text-center" id="celdaBiblio" *ngIf="!lista.foto">
-									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<br/><a>{{lista.nombre.substr(0, 11)}}</a>
-							</div>
-							<div class="container text-center" *ngIf="lista.foto">
-									<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<br/><a>{{lista.nombre.substr(0, 11)}}</a>
-							</div>
-						</a>
-					</li>
-				</ul>
-		</div>
-
-		<div id="listaPrinci" class="container" *ngIf="listas">
 			<h3>Tus playlist</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item" id="celdaBiblio" *ngFor="let lista of listas">
 						<a class="text-light" routerLink="/VerPlay" (click)="localL(lista)">
 							<div class="container text-center" *ngIf="!lista.foto">
-									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<br/><a>{{lista.nombre.substr(0, 11)}}</a>
-							</div>
-							<div class="container text-center" *ngIf="lista.foto">
-									<img src="lista.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<img [src]="foto(lista)" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{lista.nombre.substr(0, 11)}}</a>
 							</div>
 						</a>
@@ -73,16 +51,12 @@
 		</div>
 
 		<div id="listaPrinci" class="container" *ngIf="albums">
-			<h3>Tus albums</h3>
+			<h3>Álbumes que te han gustado...</h3>
 				<ul class="list-inline">
 					<li class="list-inline-item" id="celdaBiblio" *ngFor="let album of albums">
 						<a class="text-light" routerLink="/VerAlbum" (click)="localA(album)">
 							<div class="container text-center" *ngIf="!album.foto">
-									<img src="assets/portadas/laraiz.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
-									<br/><a>{{album.nombre.substr(0, 11)}}</a>
-							</div>
-							<div class="container text-center" *ngIf="album.foto">
-									<img src="album.foto" class="img-responsive" style="width:85px !important; height:85px !important"/>
+									<img [src]="foto(album)" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<br/><a>{{album.nombre.substr(0, 11)}}</a>
 							</div>
 						</a>

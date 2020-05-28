@@ -63,7 +63,7 @@ export class EditListaComponent implements OnInit {
 
   ngOnInit(){
     //Obtiene las canciones de la lista
-    this._songService.getSongsL(this.lista).subscribe(
+    /*this._songService.getSongsL(this.lista).subscribe(
     response => {
       if(response != null){
         this.status = 'succes';
@@ -76,7 +76,7 @@ export class EditListaComponent implements OnInit {
       console.log(<any> error);
         this.status = 'error';
     }	
-  );
+  );*/
   }
 
   //Busca canciones por nombre y muestra la lista de resultados
@@ -116,7 +116,7 @@ export class EditListaComponent implements OnInit {
 
   //Añade la canción o canciones selecconadas a la lista
   uploadSong(){
-    this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.idCancion.l_id.u,this.cancion.idCancion.l_id.l_id,this.idLista,this.cancion.idCancion.c_id).subscribe(
+    this._listaService.addToLista(this.token,this.cancion.nombre,this.cancion.idCancion.l_id.u,this.cancion.idCancion.l_id.l_id,this.lista.idRep.l_id,this.cancion.idCancion.c_id).subscribe(
       response => {
         if(response) {
           this.status = "success";
@@ -141,6 +141,7 @@ export class EditListaComponent implements OnInit {
     return this.songs.indexOf(song);
   }
 
+  //Añade una canción a la lista de canciones seleccionadas para borrar
   addSelected(song){
     var i = this.songs.indexOf(song);
     if (this.selected[i] != 0){
@@ -149,6 +150,7 @@ export class EditListaComponent implements OnInit {
     }
   }
 
+  //Quita una canción de la lista de canciones seleccionadas para borrar
   quitSelected(song){
     var i = this.selectedSong.indexOf(song);
     var j = this.songs.indexOf(song);
@@ -158,7 +160,7 @@ export class EditListaComponent implements OnInit {
     }
   }
 
-
+  //Borra todas las canciones de la lista de canciones seleccionadas para borrar
   deleteSong(){
     this.selectedSong.forEach(element => {
       this._songService.deleteSongL(this.token,this.lista, element).subscribe(

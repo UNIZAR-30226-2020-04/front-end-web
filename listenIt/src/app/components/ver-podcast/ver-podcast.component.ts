@@ -21,7 +21,8 @@ export class VerPodcastComponent implements OnInit {
   public token;
   public capitulos;
   public userPhoto;
-	public url;
+  public url;
+  public podcastPhoto;
 
   constructor(
     private _route: ActivatedRoute,
@@ -34,6 +35,7 @@ export class VerPodcastComponent implements OnInit {
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
     this.userPhoto = this.url + this.identity.urlfoto;
+    this.podcastPhoto = this.url + this.podcast.urlfoto;
    }
 
   ngOnInit(): void {

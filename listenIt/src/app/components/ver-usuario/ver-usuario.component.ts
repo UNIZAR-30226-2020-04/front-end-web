@@ -24,6 +24,7 @@ export class VerUsuarioComponent implements OnInit {
   public userPhoto;
   public url;
   public seguidoU;
+  public verUserPhoto;
 
   constructor(
     private _route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class VerUsuarioComponent implements OnInit {
     this.url = GLOBAL.url;
     this.seguidoU = 0;
     this.userPhoto = this.url + this.identity.urlfoto;
+    this.verUserPhoto = this.url + this.usuario.urlfoto;
     if (this.token == this.usuario.correo) this.esPerfil = true;
     else this.esPerfil = false;
   }
@@ -117,6 +119,10 @@ export class VerUsuarioComponent implements OnInit {
   	localStorage.setItem('editPodcast', JSON.stringify(podcast));
   }
 
+  foto(objeto){
+    return this.url + objeto.urlfoto;
+  }
+
   seguir(){
    this._userService.seguir(this.token,this.usuario.correo).subscribe(
       response => {
@@ -171,8 +177,8 @@ export class VerUsuarioComponent implements OnInit {
    }
 
 
-   localVer() {
-    localStorage.setItem("verUsuario",this.identity);
+  localVer() {
+    localStorage.setItem("verUsuario",JSON.stringify(this.identity));
   }
 
   logout(){

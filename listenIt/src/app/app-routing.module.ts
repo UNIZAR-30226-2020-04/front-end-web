@@ -23,6 +23,7 @@ import { AddToListaComponent } from './components/add-to-lista/add-to-lista.comp
 import { AddToPodcastComponent } from './components/add-to-podcast/add-to-podcast.component';
 import { EditListaComponent } from './components/edit-lista/edit-lista.component';
 import { EditAlbumComponent } from './components/edit-album/edit-album.component';
+import { EditPodcastComponent } from './components/edit-podcast/edit-podcast.component';
 
 const routes: Routes = [
   
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: 'AddToLista', component: AddToListaComponent },
   { path: 'AddToPodcast', component: AddToPodcastComponent },
   { path: 'EditAlbum', component: EditAlbumComponent },
-  { path: 'EditLista', component: EditListaComponent }
+  { path: 'EditLista', component: EditListaComponent },
+  { path: 'EditPodcast', component: EditPodcastComponent }
 ];
 
 @NgModule({

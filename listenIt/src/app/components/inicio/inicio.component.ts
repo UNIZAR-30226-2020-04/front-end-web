@@ -7,23 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
   public generos;
-  constructor() {
-    this.generos=['Pop','Rock','Techno','Hip Hop','Folk','Ska','Dubstep','Jazz',
-                'Blues','Reggaeton','Electrónica','country','metal','hardcore','Clásica',
-                'Podcast','Funk','Disco','Bachata','Balada','Indie']
-   }
-
+  constructor() {}
   ngOnInit(): void {
   }
-
-  login() {
-  	
-
-  }
-
-  registro() {
-
-  	
-  }
-
 }
