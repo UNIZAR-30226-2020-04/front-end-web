@@ -3,6 +3,15 @@
 <div id="conMenu">
     <div class="col-sm-8">
         <div class="container" *ngIf="albums">
+            <div class="alert alert-success" *ngIf="status == 'success'">
+                Se han borrado correctamente
+            </div>
+            <div class="alert alert-danger" *ngIf="status == 'error2'">
+                Error al coger albums del usuario.
+            </div>
+            <div class="alert alert-danger" *ngIf="status == 'error'">
+                Error al borrar un album.
+            </div>
             <table class="table table-dark table-hover">
                 <thead>
                     <tr>
@@ -25,9 +34,7 @@
                 </tbody>
                 <input type="submit" value="Borrar seleccionados" (click)="deleteAlbum()" class="btn btn-success" />
             </table>
-            <div class="alert alert-danger" *ngIf="status == 'error'">
-                Error al borrar un album.
-            </div>
         </div>
+        <input type="submit" value="SALIR" routerLink="/Principal" class="btn btn-success"/>
     </div>
 </div>

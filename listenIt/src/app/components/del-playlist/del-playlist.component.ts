@@ -28,6 +28,7 @@ export class DelPlaylistComponent implements OnInit {
     this.token = this._userService.getToken();
     this.selected= new Array<number>();
     this.selectedLista=[];
+    this.status = null;
   }
 
   ngOnInit(): void {

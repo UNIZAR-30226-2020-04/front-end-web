@@ -53,9 +53,18 @@ export class UserService {
 	}
 
 	register(user: usuario): Observable<any> {
-		let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'registerUser', data, {headers: headers});
+		//let data = {name: user.nombre, surname: " ", username: user.nick, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
+		const formdata: FormData = new FormData();
+		formdata.append('name', user.nombre);
+		formdata.append('surname'," ");
+		formdata.append('username',user.nick);
+		formdata.append('email',user.correo);
+		formdata.append('password',user.contrasena);
+		formdata.append('dateOfBirth',user.nacimiento);
+		formdata.append('foto',user.foto);
+		let data = {name: user.nombre, surname: " ", username: user.nick, foto: user.foto, email: user.correo, password: user.contrasena, dateOfBirth: user.nacimiento};
+        let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        return this._http.post(this.url + 'registerUser', formdata, {headers: null});
 	}
 
 	changeName(email,name,newName): Observable<any> {

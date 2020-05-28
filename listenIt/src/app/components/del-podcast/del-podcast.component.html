@@ -3,6 +3,12 @@
 <div id="conMenu">
     <div class="col-sm-8">
         <div class="container" *ngIf="podcasts">
+            <div class="alert alert-danger" *ngIf="status == 'error2'">
+                Error al coger podcasts del usuario.
+            </div>
+            <div class="alert alert-danger" *ngIf="status == 'error'">
+                Error al borrar un podcast.
+            </div>
             <table class="table table-dark table-hover">
                 <thead>
                     <tr>
@@ -25,13 +31,8 @@
                 </tbody>
                 <input type="submit" value="Borrar seleccionados" (click)="deletePodcast()" class="btn btn-success" />
             </table>
-            <div class="alert alert-danger" *ngIf="status == 'error2'">
-                Error al coger podcasts del usuario.
-            </div>
-            <div class="alert alert-danger" *ngIf="status == 'error'">
-                Error al borrar un podcast.
-            </div>
         </div>
+        <input type="submit" value="SALIR" routerLink="/Principal" class="btn btn-success"/>
     </div>
 </div>
 
