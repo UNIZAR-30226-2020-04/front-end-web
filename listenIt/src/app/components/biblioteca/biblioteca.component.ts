@@ -21,6 +21,7 @@ export class BibliotecaComponent implements OnInit {
 	public select = 1;
   public albums;
   public listas;
+  public listasPropias;
   public podcasts;
   public usuarios;
   public identity;
@@ -50,6 +51,8 @@ export class BibliotecaComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  //Si el usuario hace click sobre cualquier album, podcast, lista o usuario, 
+  //se envía la información de estos al componente ver, para que este los muestre
   localL(lista){
   	localStorage.setItem('verLista', JSON.stringify(lista));
   }
@@ -63,8 +66,9 @@ export class BibliotecaComponent implements OnInit {
   	localStorage.setItem('verUsuario', JSON.stringify(usuario));
   }
 
+  //Muestra las listas que sigue el usuario
   mostrarListas(): void {
-    this._listaService.getListas(this.token).subscribe(
+    this._listaService.getListasBiblio(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -80,8 +84,27 @@ export class BibliotecaComponent implements OnInit {
     );
   }
 
+  //Muestra las listas de reproducción que el usuario ha creado
+  mostrarListasPropias(): void {
+    this._listaService.getListas(this.token).subscribe(
+      response => {
+        if(response != null){
+          this.status = 'succes';
+          this.listasPropias = response;
+        }else{						
+          this.status = 'error2';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error2';
+      }	
+    );
+  }
+
+  //Muestra los álbumes de canciones a als que el usuario ha dado like
   mostrarAlbums(): void {
-    this._albumService.getAlbums(this.token).subscribe(
+    this._albumService.getAlbumsBiblio(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -97,8 +120,9 @@ export class BibliotecaComponent implements OnInit {
     );
   }
 
+  //Muestra los usuarios de canciones a las que el usuario ha dado like
   mostrarUsuarios(): void {
-    /*this._userService.getUserBiblio(this.token).subscribe(
+    this._userService.getUserBiblio(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -111,11 +135,12 @@ export class BibliotecaComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error2';
       }	
-    );*/
+    );
   }
 
+  //Muestra los podcast que el usuario sigue
   mostrarPodcasts(): void {
-    /*this._podcastService.getPodcastsBiblio(this.token).subscribe(
+    this._podcastService.getPodcastsBiblio(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -128,13 +153,15 @@ export class BibliotecaComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error2';
       }	
-    );*/
+    );
   }
 
+  //Muestra en el sidebar el usuario actual
   localVer() {
     localStorage.setItem("verUsuario",this.identity);
   }
 
+  //Permite cerrar sesión en el sidebar
   logout(){
       localStorage.clear();
       this._router.navigate(['/Login']);

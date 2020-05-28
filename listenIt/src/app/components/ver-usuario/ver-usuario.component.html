@@ -45,6 +45,7 @@
 									<img src="album.foto" alt="assets/portadas/laPegatina.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 									<h5>{{album.nombre.substr(0, 11)}}</h5>
 							</div>
+							<input *ngIf="esPerfil" type="submit" value="Editar" routerLink="/EditAlbum" (click)="localEditA(album)" class="btn btn-success"/>
 						</a>
 					</li>
 				</ul>
@@ -58,6 +59,7 @@
 								<img src="lista.foto" alt="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
 								<h5>{{lista.nombre.substr(0, 11)}}</h5>
 						</div>
+						<input *ngIf="esPerfil" type="submit" value="Editar" (click)="localEditL(lista)" routerLink="/EditLista" class="btn btn-success"/>
 					</a>
 				</li>
 			</ul>

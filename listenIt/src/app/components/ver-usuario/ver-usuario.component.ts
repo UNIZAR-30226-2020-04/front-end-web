@@ -19,6 +19,7 @@ export class VerUsuarioComponent implements OnInit {
   public listas;
   public podcasts;
   public identity;
+  public esPerfil: boolean;
 
   constructor(
     private _route: ActivatedRoute,
@@ -31,6 +32,8 @@ export class VerUsuarioComponent implements OnInit {
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
     this.usuario = this._userService.getUsuario();
+    if (this.token == this.usuario.correo) this.esPerfil = true;
+    else this.esPerfil = false;
   }
 
   ngOnInit() {
@@ -67,21 +70,20 @@ export class VerUsuarioComponent implements OnInit {
     );
 
     //Busca los podcast del artista
-    /*this._podcastService.getPodcasts(this.usuario.idUser.u_id).subscribe(
+    this._podcastService.getPodcasts(this.usuario.correo).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.podcasts = response;
         }else{						
           this.status = 'error';
-          //this._router.navigate(['/verPodcast']);
         }
       },
       error => {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
 
   }
 
@@ -98,8 +100,18 @@ export class VerUsuarioComponent implements OnInit {
   	localStorage.setItem('verUsuario', JSON.stringify(usuario));
   }
 
+  localEditL(lista){
+  	localStorage.setItem('editLista', JSON.stringify(lista));
+  }
+  localEditA(album){
+  	localStorage.setItem('editAlbum', JSON.stringify(album));
+  }
+  localEditP(podcast){
+  	localStorage.setItem('editPodcast', JSON.stringify(podcast));
+  }
+
   seguir(){
-   this._userService.seguir(this.token,this.usuario.idUser.u_id).subscribe(
+   this._userService.seguir(this.token,this.usuario.correo).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -115,7 +127,7 @@ export class VerUsuarioComponent implements OnInit {
   }
 
   dejarSeguir(){
-    this._userService.dejarSeguir(this.token,this.usuario.idUser.u_id).subscribe(
+    this._userService.dejarSeguir(this.token,this.usuario.correo).subscribe(
        response => {
          if(response != null){
            this.status = 'succes';
@@ -131,7 +143,7 @@ export class VerUsuarioComponent implements OnInit {
    }
   
    seguido() : number{
-    /*this._userService.dejarSeguir(this.token,this.usuario.idUser.u_id).subscribe(
+    this._userService.dejarSeguir(this.token,this.usuario.correo).subscribe(
        response => {
          if(response != null){
            return 1;
@@ -143,7 +155,7 @@ export class VerUsuarioComponent implements OnInit {
          console.log(<any> error);
            this.status = 'error';
        }	
-     );*/
+     );
     return 0;
    }
 

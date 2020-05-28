@@ -3,7 +3,7 @@
 <br/>
 <div id="izq" class="col-lg-8">
     <form #subirCancion="ngForm" class="col-lg-16">
-        <form #searchForm="ngForm" (ngSubmit)="busqueda()" class="form-inline my-2 my-lg-0">
+        <form #searchForm="ngForm" (ngSubmit)="busqueda(searchForm)" class="form-inline my-2 my-lg-0">
             <input type="search" #search="ngModel" name="search" [(ngModel)]="texto" required class="form-control mr-sm-2" placeholder="Buscar" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!searchForm.form.valid">Buscar</button>
         </form>
@@ -26,7 +26,7 @@
     <div class="alert alert-danger" *ngIf="status == 'error'">
         La canción no se ha podido añadir.
     </div>
-    <input type="submit" value="AÑADIR CANCIÓN" (click)="uploadSong()" class="btn btn-success"/>
+    <input type="submit reset" value="AÑADIR CANCIÓN" (click)="uploadSong()" class="btn btn-success"/>
 </div>
 
 

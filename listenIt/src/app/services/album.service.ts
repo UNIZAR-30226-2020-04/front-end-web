@@ -15,6 +15,7 @@ export class AlbumService {
 		this.url = GLOBAL.url;
   }
   
+  //Recoge el álbum que el componente verAlbum debe mostrar
   getAlbum(){
     let album = JSON.parse(localStorage.getItem('verAlbum'));
     if (album != "undefined") {
@@ -25,16 +26,20 @@ export class AlbumService {
     return this.album;
   }
 
+  //Lista los álbums de un usuario
   getAlbums(token : String) : Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'getAlbumsByUser', JSON.stringify(token), {headers: headers});
   }
   
+  //Lista los álbums que deben aparecer en la biblioteca de un usuario
   getAlbumsBiblio(token : String) : Observable<any> {
+    let data = { user: token };
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+ 'getAlbumsBiblio', JSON.stringify(token), {headers: headers});
+		return this._http.post(this.url+ 'listAlbumsLikes', data, {headers: headers});
 	}
 
+  //Sube un álbum
   addAlbum(token, album: album, imagen: File) : Observable<any> {
     let data = {email: token, name: album.nombre, image: imagen};
     console.log(data); 
@@ -42,6 +47,7 @@ export class AlbumService {
     return this._http.post(this.url+ 'createAlbum', data, {headers: headers});
   }
 
+  //Borra un álbum y todas sus canciones
   deleteAlbum(token, album: album){
     let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json')

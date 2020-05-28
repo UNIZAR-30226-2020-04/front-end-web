@@ -3,10 +3,6 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { GLOBAL } from './global';
 import { Observable } from 'rxjs';
-import { cancion } from '../models/cancion';
-import { album } from '../models/album';
-import { idAlbum } from '../models/album';
-import { lista } from '../models/lista';
 
 
 @Injectable()
@@ -31,28 +27,45 @@ export class SongService{
 		return this._http.post(this.url+ 'unlikeSong', data, {headers: headers});
 	}
 
-	//Obtener si le has dado like a una cancion de un album
+	//Obtener si le has dado like a una cancion
 	getLike(token,album,song) : Observable<any> {
-		let data = { user: token, idalbum: JSON.stringify(album.idAlbum.l_id),song: song };
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
-		return this._http.post(this.url+ 'getLike', data, {headers: headers});
+		let data = { correo: token, idalbum: JSON.stringify(album),idcancion: JSON.stringify(song)};
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url+ 'checkLike', data, {headers: headers});
 	}
 
+	//Obtener las canciones de una lista
 	getSongsL(lista) : Observable<any> {
 		let data = { user: lista.idRep.u, idalbum: JSON.stringify(lista.idRep.l_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
 		return this._http.post(this.url+ 'listSongsLista', data, {headers: headers});
 	}
 
+	//Obtener las canciones de un álbum
 	getSongs(album) : Observable<any> {
 		let data = { user: album.idAlbum.u, idalbum: JSON.stringify(album.idAlbum.l_id) };
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'listSongsAlbum', data, {headers: headers});
 	}
 
+	//Obtener las canciones que te han gustado
+	getLikedSongs(token) : Observable<any> {
+		let data = { user: token };
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url+ 'listLikes', data, {headers: headers});
+	}
+
+	//Borrar una canción de un álbum
 	deleteSong(album,song) : Observable<any> {
 		let data = { user: song.idCancion.l_id.u, idalbum: JSON.stringify(album.idAlbum.l_id), idcancion: JSON.stringify(song.idCancion.c_id) };
-		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'deleteCancion', data, {headers: headers});
+	}
+
+	//Borrar una canción de una lista
+	deleteSongL(token,lista,song) : Observable<any> {
+		let data = { user: token, nombre:"", usercancion: song.idCancion.l_id.u, idplaylist: JSON.stringify(lista.idRep.l_lid) ,idalbum: JSON.stringify(song.idCancion.l_id.l_id), idcancion: JSON.stringify(song.idCancion.c_id) };
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url+ 'deleteSongPlaylist', data, {headers: headers});
 	}
 }

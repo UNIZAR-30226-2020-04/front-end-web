@@ -6,6 +6,7 @@ import { lista } from 'src/app/models/lista';
 import { ListaService } from 'src/app/services/lista.service';
 import { AlbumService } from 'src/app/services/album.service';
 import { Router } from '@angular/router';
+import { SongService } from 'src/app/services/song.service';
 
 @Component({
   selector: 'app-principal',
@@ -18,13 +19,15 @@ export class PrincipalComponent implements OnInit {
   public idAlbumRep;
   public idCancRep;
   public token;
-  public albums: album[];
-  public listas: lista[];
+  public albums;
+  public listas;
+  public songs;
   public identity;
     
   constructor(
     private _router: Router,
     private userService: UserService,
+    private _songService: SongService,
     private _listaService: ListaService,
     private _albumService: AlbumService,
   	private fileService: FileService) 
@@ -34,6 +37,22 @@ export class PrincipalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this._songService.getLikedSongs(this.token).subscribe(
+      response => {
+        if(response != null){
+          this.status = 'succes';
+          this.listas = response;
+        }else{						
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
+
     this._listaService.getListas(this.token).subscribe(
       response => {
         if(response != null){
@@ -50,7 +69,7 @@ export class PrincipalComponent implements OnInit {
     );
 
 
-    /*this._albumService.getAlbumsBiblio(this.token).subscribe(
+    this._albumService.getAlbumsBiblio(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
@@ -63,7 +82,7 @@ export class PrincipalComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
   }
   localL(lista){
   	localStorage.setItem('verLista', JSON.stringify(lista));

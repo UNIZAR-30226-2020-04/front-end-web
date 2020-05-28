@@ -39,7 +39,7 @@
 		<div id="listaPrinci" class="container" *ngIf="listas">
 			<h3>Últimas canciones escuchadas...</h3>
 				<ul class="list-inline" >
-					<li class="list-inline-item" id="celdaBiblio" *ngFor="let lista of listas">
+					<li class="list-inline-item" id="celdaBiblio" *ngFor="let lista of songs">
 						<a class="text-light" id="celdaBiblio" routerLink="/VerPlay" (click)="localL(lista)">
 							<div class="container text-center" id="celdaBiblio" *ngIf="!lista.foto">
 									<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:85px !important; height:85px !important"/>
