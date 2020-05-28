@@ -1,0 +1,52 @@
+<h1 class="h1-strong">{{title}} {{podcast.nombre}}</h1>
+<br/>
+<br/>
+<div id="izq" class="col-lg-8">
+    <form #subirCap="ngForm" (ngSubmit)="uploadCap(subirCap)" class="col-lg-16">
+        <p>
+            <label>Nombre del capítulo:</label>
+            <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCap" required />
+        </p>
+        <div style="text-align:center">
+            <div [innerHtml]='msg'></div>
+            <label>
+                <input type="file" (change)="selectFile($event)">
+                </label>
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'errorU'">
+            El capítulo no se ha podido añadir.
+        </div>
+        <input type="submit" value="AÑADIR CAPÍTULO" class="btn btn-success" [disabled]="!selectedFiles || !subirCap.form.valid"/>
+    </form>
+</div>
+
+
+<div id="izq" >
+    <div class="container">
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Título</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let cap of caps">
+                <tr *ngIf="selected[num(cap)] != 0 " (click)="addSelected(cap)">
+                    <td><i class="fas fa-music"></i></td>
+                    <td>{{cap.nombre}}</td>
+                </tr>
+                <tr *ngIf="selected[num(cap)] == 0" (click)="quitSelected(cap)" id="selected">
+                    <td><i class="fas fa-music" ></i></td>
+                    <td>{{cap.nombre}}</td>
+                </tr>
+            </tbody>
+            <input type="submit" value="Borrar seleccionadas" (click)="deleteCap()" class="btn btn-success" />
+        </table>
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'errorV'">
+        No se puede dejar un podcast sin capítulos.
+    </div>
+    <input type="submit" value="Finalizar" (click)="finalizar()" class="btn btn-success"/>
+</div>
+
+

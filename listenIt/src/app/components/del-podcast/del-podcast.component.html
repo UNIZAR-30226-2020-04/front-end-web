@@ -14,19 +14,16 @@
                     <tr>
                         <th>Imagen</th>
                         <th>Título</th>
-                        <th>Autor</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let podcast of podcasts" >
                         <tr *ngIf="selected[num(podcast)] != 0" (click)="addSelected(podcast)">
                             <td><i class="fas fa-music"></i></td>
                             <td>{{podcast.nombre}}</td>
-                            <td>{{podcast.autor}}</td>
                         </tr>
                         <tr (click)="quitSelected(podcast)" *ngIf="selected[num(podcast)] == 0" id="selected" >
                             <td><i class="fas fa-music" ></i></td>
                             <td>{{podcast.nombre}}</td>
-                            <td>{{podcast.autor}}</td>
                         </tr>
                 </tbody>
                 <input type="submit" value="Borrar seleccionados" (click)="deletePodcast()" class="btn btn-success" />

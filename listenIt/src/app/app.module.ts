@@ -38,6 +38,7 @@ import { AddToListaComponent } from './components/add-to-lista/add-to-lista.comp
 import { EditAlbumComponent } from './components/edit-album/edit-album.component';
 import { EditListaComponent } from './components/edit-lista/edit-lista.component';
 import { AddToPodcastComponent } from './components/add-to-podcast/add-to-podcast.component';
+import { EditPodcastComponent } from './components/edit-podcast/edit-podcast.component';
 
 
 
@@ -69,7 +70,8 @@ import { AddToPodcastComponent } from './components/add-to-podcast/add-to-podcas
     AddToListaComponent,
     EditAlbumComponent,
     EditListaComponent,
-    AddToPodcastComponent
+    AddToPodcastComponent,
+    EditPodcastComponent
   ],
   imports: [
     BrowserModule,
