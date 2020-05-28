@@ -2,7 +2,7 @@
 	<div class="col-9">
 	  <a class="text-light" routerLink="/VerUsuario" (click)="localVer()">
 		<div class="container text-center">
-			<img src="assets/portadas/trench.jpg" class="img-responsive" style="width:100px !important; height:100px !important"/>
+			<img [src]="userPhoto" class="img-responsive" style="width:100px !important; height:100px !important"/>
 			<h3>{{identity.nombre}}</h3>
 		</div>
 	  </a>
@@ -81,18 +81,12 @@
 	<div class="col-sm-2 text-center">
 		<i class="fas fa-user fa-7x"></i>
 		<h4>{{usuario.nombre}}</h4>
-		<div *ngIf="seguido()==0" >
+		<div *ngIf="seguidoU == 0" >
 			<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
 		</div>
-		<div *ngIf="seguido()==1">
+		<div *ngIf="seguidoU == 1">
 			<input type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
 		</div>
 	</div>
 
 </div>
-
-<!--
-<nav class="container fixed-bottom navbar-dark bg-dark">
-  <app-reproductor></app-reproductor>
-</nav>
--->

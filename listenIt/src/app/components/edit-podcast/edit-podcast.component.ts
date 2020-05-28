@@ -73,7 +73,6 @@ export class EditPodcastComponent implements OnInit {
 
   //Sube un nuevo capítulo, o varios, al podcast
   uploadCap(subirCap){
-    subirCap.resetForm();
     this.currentFile = this.selectedFiles.item(0);
     this.fileService.uploadFile(this.token,this.idPodcast,this.nombreCap,this.currentFile).subscribe(
       response => {
@@ -93,6 +92,7 @@ export class EditPodcastComponent implements OnInit {
       }
     );
     if (this.status == 'success' ) this.caps.push(new podcast(null,"",this.nombreCap,"",""));
+    subirCap.resetForm();
   }
 
 

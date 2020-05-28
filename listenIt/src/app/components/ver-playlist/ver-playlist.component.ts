@@ -25,6 +25,7 @@ export class VerPlaylistComponent implements OnInit {
   public token;
   public status;
   public likes: boolean[];
+  public seguida;
 
   constructor(
     private _route: ActivatedRoute,
@@ -44,7 +45,7 @@ export class VerPlaylistComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    this._songService.getSongsL(this.lista).subscribe(
+    /*this._songService.getSongsL(this.lista).subscribe(
       response => {
         if(response){
           this.status = 'succes';
@@ -58,7 +59,8 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );
+    );*/
+    this.seguido();
   }
 
   isLiked(){
@@ -66,12 +68,14 @@ export class VerPlaylistComponent implements OnInit {
     this.songs.forEach(element => {
       this._songService.getLike(this.token,element.idCancion.l_id.l_id,element.idCancion.c_id).subscribe(
         response => {
-          if(response != null){
+          if(response){
             this.status = 'succes';
             var i = this.num(element);
-            this.likes[i]=response;
+            this.likes[i]=true;
           }else{						
-            this.status = 'error';
+            this.status = 'succes';
+            var i = this.num(element);
+            this.likes[i]=false;
           }
         },
         error => {
@@ -124,10 +128,12 @@ export class VerPlaylistComponent implements OnInit {
 
   seguir(){
     //Sigue la lista de reproducción
+    console.log("SEGUIR");
     this._listaService.seguir(this.token, this.lista).subscribe(
       response => {
         if(response){
           this.status = 'succes';
+          this.seguido();
         }else{						
           this.status = 'error';
           console.log(response);
@@ -146,6 +152,7 @@ export class VerPlaylistComponent implements OnInit {
       response => {
         if(response){
           this.status = 'succes';
+          this.seguido();
         }else{						
           this.status = 'error';
         }
@@ -157,14 +164,17 @@ export class VerPlaylistComponent implements OnInit {
     );
   }
 
-  seguido(): number{
+  seguido(){
+    console.log("SEGUIDO");
     //Comprueba al cargar la página si sigues la lista de reproducción, para mostrar el botón correcto
     this._listaService.seguido(this.token, this.lista).subscribe(
       response => {
         if(response){
-          return 1;
-        }else{						
-          return 0;
+          this.seguida = 1;
+          console.log("TRUE");
+        }else{				
+          this.seguida = 0;
+          console.log("FALSE");		
         }
       },
       error => {
@@ -172,7 +182,6 @@ export class VerPlaylistComponent implements OnInit {
           this.status = 'error';
       }	
     );
-    return 0;
   }
 
   localVer() {

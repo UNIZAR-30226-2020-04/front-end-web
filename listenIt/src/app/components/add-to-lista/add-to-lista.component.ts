@@ -64,13 +64,11 @@ export class AddToListaComponent implements OnInit {
 
   //Busca canciones por nombre y muestra la lista de resultados coincidentes
   busqueda(searchForm) {
-    searchForm.resetForm();
   	this.buscarService.searchSong(this.texto).subscribe(
   		response => {
   			if(response.length != 0 ) {
   				this.status = 'success';
   				this.resultado = response;
-  				console.log(this.resultado);
   				this.buscado = true;
   			}
   			else {
@@ -84,7 +82,8 @@ export class AddToListaComponent implements OnInit {
 	          this.status = 'errorB';
 	      }  			
   		}
-  	);
+    );
+    searchForm.resetForm();
   }
 
 //Permite selccionar una canción entre los resultados de la búsqueda

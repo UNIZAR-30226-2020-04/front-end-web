@@ -81,7 +81,6 @@ export class EditListaComponent implements OnInit {
 
   //Busca canciones por nombre y muestra la lista de resultados
   busqueda(subirCancion) {
-    subirCancion.resetForm();
   	this.buscarService.searchSong(this.texto).subscribe(
   		response => {
   			if(response) {
@@ -101,7 +100,8 @@ export class EditListaComponent implements OnInit {
 	          this.status = 'errorB';
 	      }  			
   		}
-  	);
+    );
+    subirCancion.resetForm();
   }
 
   //Permite seleccionar una canción entre los resultados de la búsqueda

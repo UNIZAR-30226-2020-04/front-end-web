@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { album } from 'src/app/models/album';
 import { UserService } from '../../services/user.service';
 import { FileService } from '../../services/file.service';
-import { lista } from 'src/app/models/lista';
 import { ListaService } from 'src/app/services/lista.service';
 import { AlbumService } from 'src/app/services/album.service';
 import { GLOBAL } from 'src/app/services/global';
@@ -38,9 +36,7 @@ export class PrincipalComponent implements OnInit {
     this.url = GLOBAL.url;
     this.token = this.userService.getToken();
     this.identity = this.userService.getIdentity();
-    console.log(this.identity);
     this.userPhoto = this.url + this.identity.urlfoto;
-    console.log(this.userPhoto);
   }
 
   ngOnInit(): void {

@@ -76,7 +76,6 @@ export class EditAlbumComponent implements OnInit {
 
   //Sube una nueva canción, o varias, al álbum
   uploadSong(subirCancion){
-    subirCancion.resetForm();
     this.currentFile = this.selectedFiles.item(0);
     this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.currentFile).subscribe(
       response => {
@@ -98,6 +97,7 @@ export class EditAlbumComponent implements OnInit {
       }
     );
     if (this.status == 'success' ) this.songs.push(new cancion("",this.genero,this.nombreCancion,"","",""));
+    subirCancion.resetForm();
   }
 
 

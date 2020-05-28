@@ -134,3 +134,12 @@ input .btn .btn-success {
     color: #fff !important;
     border-color: #fff !important;
 }
+
+.container#rep{
+    background-color: #686868 !important;
+    color: #fff !important;
+}
+
+mat-advanced-audio-player{
+    background-color: #201e1e !important;
+}

@@ -58,7 +58,6 @@ export class AddSongComponent implements OnInit {
 
   //Sube una nueva canción con los datos y el mp3 recogidos del formulario
   uploadSong(subirCancion){
-    subirCancion.resetForm();
     this.currentFile = this.selectedFiles.item(0);
     this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.currentFile).subscribe(
       response => {
@@ -80,6 +79,7 @@ export class AddSongComponent implements OnInit {
       }
     );
     if (this.status == "success") this.songs.push(new cancion("",this.genero,this.nombreCancion,"","",""));
+    subirCancion.resetForm();
   }
 
   //El proceso de creación de un álbum ha terminado

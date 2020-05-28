@@ -2,7 +2,7 @@
 <br/>
 <br/>
 <div id="izq" class="col-lg-8">
-    <form #subirCapitulo="ngForm" (ngSubmit)="uploadCap()" class="col-lg-16">
+    <form #subirCapitulo="ngForm" (ngSubmit)="uploadCap(subirCapitulo)" class="col-lg-16">
         <p>
             <label>Nombre del capítulo:</label>
             <input type="text" name="name" #name="ngModel" class="form-control" [(ngModel)]="nombreCapitulo" required />
@@ -38,7 +38,7 @@
         </table>
     </div>
     <div class="alert alert-danger" *ngIf="status == 'errorV'">
-        No se puede subir un álbum sin canciones.
+        No se puede subir un podcast sin capítulos.
     </div>
     <input type="submit" value="Finalizar" (click)="finalizar()" class="btn btn-success"/>
 </div>

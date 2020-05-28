@@ -46,10 +46,10 @@
 				<h3>{{lista.autor}}</h3>
 				<h3>{{lista.fecha}}</h3>
 			</div>
-			<div *ngIf="seguido()==0" >
+			<div *ngIf="seguida == 0" >
 				<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
 			</div>
-			<div *ngIf="seguido()==1">
+			<div *ngIf="seguida == 1">
 				<input type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
 			</div>
 		</div>

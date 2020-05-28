@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { usuario } from 'src/app/models/usuario';
 import { ListaService } from 'src/app/services/lista.service';
 import { PodcastService } from 'src/app/services/podcast.service';
 import { AlbumService } from 'src/app/services/album.service';
+import { GLOBAL } from 'src/app/services/global';
 
 @Component({
   selector: 'app-ver-usuario',
@@ -20,6 +21,9 @@ export class VerUsuarioComponent implements OnInit {
   public podcasts;
   public identity;
   public esPerfil: boolean;
+  public userPhoto;
+  public url;
+  public seguidoU;
 
   constructor(
     private _route: ActivatedRoute,
@@ -32,6 +36,9 @@ export class VerUsuarioComponent implements OnInit {
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
     this.usuario = this._userService.getUsuario();
+    this.url = GLOBAL.url;
+    this.seguidoU = 0;
+    this.userPhoto = this.url + this.identity.urlfoto;
     if (this.token == this.usuario.correo) this.esPerfil = true;
     else this.esPerfil = false;
   }
@@ -84,7 +91,7 @@ export class VerUsuarioComponent implements OnInit {
           this.status = 'error';
       }	
     );
-
+    this.seguido();
   }
 
   localL(lista){
@@ -115,6 +122,7 @@ export class VerUsuarioComponent implements OnInit {
       response => {
         if(response != null){
           this.status = 'succes';
+          this.seguido();
         }else{						
           this.status = 'error';
         }
@@ -131,6 +139,7 @@ export class VerUsuarioComponent implements OnInit {
        response => {
          if(response != null){
            this.status = 'succes';
+           this.seguido();
          }else{						
            this.status = 'error';
          }
@@ -142,13 +151,16 @@ export class VerUsuarioComponent implements OnInit {
      );
    }
   
-   seguido() : number{
-    this._userService.dejarSeguir(this.token,this.usuario.correo).subscribe(
+   seguido(){
+    console.log(this.token,this.usuario.correo);
+    this._userService.seguido(this.token,this.usuario.correo).subscribe(
        response => {
-         if(response != null){
-           return 1;
-         }else{						
-          return 0;
+         if(response){
+           console.log("SEGUIDO");
+           this.seguidoU = 1;
+         }else{		
+          this.seguidoU = 0;	
+          console.log("NO SEGUIDO");			
          }
        },
        error => {
@@ -156,7 +168,6 @@ export class VerUsuarioComponent implements OnInit {
            this.status = 'error';
        }	
      );
-    return 0;
    }
 
 

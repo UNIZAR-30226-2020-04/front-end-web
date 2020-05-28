@@ -32,6 +32,7 @@ export class BibliotecaComponent implements OnInit {
   public status: string;
   public filesToUpload: Array<File>;
   public title;
+  public userPhoto;
   
   
   constructor(
@@ -45,7 +46,7 @@ export class BibliotecaComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;
-    this.title = "Subir álbum";
+    this.userPhoto = this.url + this.identity.urlfoto;
    }
 
   ngOnInit(): void {

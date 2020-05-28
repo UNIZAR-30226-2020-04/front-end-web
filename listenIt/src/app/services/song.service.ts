@@ -15,6 +15,7 @@ export class SongService{
 
 	//Dar like a una canción 
 	like(token,album,song) : Observable<any> {
+		console.log( "correo:", token, "idalbum:", JSON.stringify(album), "correoalbum:", song.idCancion.l_id.u, "idcancion:", JSON.stringify(song.idCancion.c_id));
 		let data = { correo: token, idalbum: JSON.stringify(album), correoalbum: JSON.stringify(song.idCancion.l_id.u), idcancion: JSON.stringify(song.idCancion.c_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'likeSong', data, {headers: headers});
@@ -22,7 +23,7 @@ export class SongService{
 
 	//Quitar el like a una canción 
 	unlike(token,album,song) : Observable<any> {
-		let data = { correo: token, idalbum: JSON.stringify(album), correoalbum: JSON.stringify(song.idCancion.l_id.u), idcancion: JSON.stringify(song.idCancion.c_id) };
+		let data = { correo: token, idalbum: JSON.stringify(album), correoalbum: song.idCancion.l_id.u, idcancion: JSON.stringify(song.idCancion.c_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'unlikeSong', data, {headers: headers});
 	}
@@ -31,7 +32,7 @@ export class SongService{
 	getLike(token,album,song) : Observable<any> {
 		let data = { correo: token, idalbum: JSON.stringify(album),idcancion: JSON.stringify(song)};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+ 'checkLike', data, {headers: headers});
+		return this._http.post(this.url+ '/checkLike', data, {headers: headers});
 	}
 
 	//Obtener las canciones de una lista

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { GLOBAL } from 'src/app/services/global';
 
 @Component({
   selector: 'app-seguidos',
@@ -14,13 +15,17 @@ export class SeguidosComponent implements OnInit {
   public status;
   public token;
   public identity;
+  public userPhoto;
+  public url;
 
   constructor(
     private _userService: UserService,
     private _router: Router,
     ) { 
+    this.url = GLOBAL.url;
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
+    this.userPhoto = this.url + this.identity.urlfoto;
   }
 
   ngOnInit(): void {

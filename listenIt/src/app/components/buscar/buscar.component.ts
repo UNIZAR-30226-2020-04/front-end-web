@@ -3,6 +3,7 @@ import { BuscarService } from '../../services/buscar.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
+import { GLOBAL } from 'src/app/services/global';
 
 @Component({
   selector: 'app-album',
@@ -18,6 +19,8 @@ export class BuscarComponent implements OnInit {
 	public lista;
 	public status;
 	public identity;
+	public userPhoto;
+	public url;
 
   constructor(
   	private route: ActivatedRoute,
@@ -27,8 +30,10 @@ export class BuscarComponent implements OnInit {
   ) {
   	this.buscado = false;
   	this.select = 1;
-	  this.view = "playlist"
-	  this.identity = this.userService.getIdentity();
+	this.view = "playlist";
+	this.url = GLOBAL.url;
+	this.identity = this.userService.getIdentity();
+	this.userPhoto = this.url + this.identity.urlfoto;
   }
 
   ngOnInit(): void {

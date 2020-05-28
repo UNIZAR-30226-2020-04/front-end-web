@@ -4,10 +4,6 @@ import { usuario } from '../../models/usuario';
 import { album } from '../../models/album';
 import { AlbumService } from '../../services/album.service';
 import { UserService } from '../../services/user.service';
-<<<<<<< HEAD
-
-=======
->>>>>>> 5fdbd2b65920f48ae3a82db5b5aeb97f05dd34ba
 import { SongService } from 'src/app/services/song.service';
 import { GLOBAL } from 'src/app/services/global';
 
@@ -43,6 +39,7 @@ export class VerAlbumComponent implements OnInit {
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
     this.userPhoto = this.url + this.identity.urlfoto;
+    this.likes=[]
    }
 
   ngOnInit(): void {
@@ -53,8 +50,6 @@ export class VerAlbumComponent implements OnInit {
           this.status = 'succes';
           // Lista de canciones del album.
           this.songs = response;
-          // Extraer 
-          console.log(this.songs);
           this.isLiked();
         }else{						
           this.status = 'error';
@@ -72,12 +67,18 @@ export class VerAlbumComponent implements OnInit {
     this.songs.forEach(element => {
       this._songService.getLike(this.token,element.idCancion.l_id.l_id,element.idCancion.c_id).subscribe(
         response => {
-          if(response != null){
+          if(response){
             this.status = 'succes';
             var i = this.num(element);
-            this.likes[i]=response;
+            this.likes[i]=true;
+            console.log("RESPUESTA",response,i);
+            console.log(this.likes[i]);
           }else{						
-            this.status = 'error';
+            this.status = 'succes';
+            var i = this.num(element);
+            this.likes[i]=false;
+            console.log("RESPUESTAaaaaaaaa",response,i);
+            console.log(this.likes[i]);
           }
         },
         error => {
@@ -94,6 +95,7 @@ export class VerAlbumComponent implements OnInit {
       response => {
         if(response){
           this.status = 'succes';
+          console.log("BIEN");
           this.isLiked();
         }else{						
           this.status = 'error';
@@ -124,7 +126,7 @@ export class VerAlbumComponent implements OnInit {
     );
   }
 
-  num(song): number{
+  num(song: any): number{
     return this.songs.indexOf(song);
   }
   
