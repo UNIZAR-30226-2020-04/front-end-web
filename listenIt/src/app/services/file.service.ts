@@ -18,6 +18,7 @@ export class FileService {
 		formdata.append('idalbum',idAlbum);
 		formdata.append('user',correo);
 		formdata.append('nombreC',titCancion);
+		console.log(idAlbum + " -- " + correo + " -- " + titCancion);
 		//let data = {email: correo, tituloAl: idAlbum, tituloCanc: titCancion, mp3: formdata};
 		//console.log(data);
 		const req = new HttpRequest('POST', GLOBAL.url + 'subirCancion', formdata, {

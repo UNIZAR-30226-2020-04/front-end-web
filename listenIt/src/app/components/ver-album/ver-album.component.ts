@@ -5,8 +5,8 @@ import { album } from '../../models/album';
 import { AlbumService } from '../../services/album.service';
 import { UserService } from '../../services/user.service';
 import { cancion } from 'src/app/models/cancion';
-import { GLOBAL } from '../../services/global';
 import { SongService } from 'src/app/services/song.service';
+import { GLOBAL } from 'src/app/services/global';
 
 @Component({
   selector: 'app-ver-album',
@@ -14,13 +14,17 @@ import { SongService } from 'src/app/services/song.service';
   styleUrls: ['./ver-album.component.css']
 })
 export class VerAlbumComponent implements OnInit {
-  public album: album;
+  public url;
+  public album;
+  public albumPhoto;
   public usuario: usuario;
   public identity;
+  public userPhoto;
   public songs;
   public status;
   public token;
   public likes: boolean[];
+  public urlCanciones;
 
   constructor(
     private _route: ActivatedRoute,
@@ -29,9 +33,13 @@ export class VerAlbumComponent implements OnInit {
     private _albumService: AlbumService,
     private _songService: SongService,
   ) {
+    this.url = GLOBAL.url;
     this.album = this._albumService.getAlbum();
+    console.log(this.album);
+    this.albumPhoto = this.url + this.album.urlfoto;
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
+    this.userPhoto = this.url + this.identity.urlfoto;
    }
 
   ngOnInit(): void {
@@ -41,7 +49,10 @@ export class VerAlbumComponent implements OnInit {
       response => {
         if(response != null){
           this.status = 'succes';
+          // Lista de canciones del album.
           this.songs = response;
+          // Extraer 
+          console.log(this.songs);
           this.isLiked();
         }else{						
           this.status = 'error';

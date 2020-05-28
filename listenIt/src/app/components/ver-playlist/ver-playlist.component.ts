@@ -15,8 +15,11 @@ import { SongService } from 'src/app/services/song.service';
 })
 
 export class VerPlaylistComponent implements OnInit {
-  public lista: lista;
+  public url;
+  public lista;
+  public listaPhoto;
   public usuario: usuario;
+  public userPhoto;
   public identity;
   public songs: cancion[];
   public token;
@@ -30,9 +33,14 @@ export class VerPlaylistComponent implements OnInit {
     private _listaService: ListaService,
     private _songService: SongService,
   ) {
+    this.url = GLOBAL.url;
     this.lista = this._listaService.getLista();
+    console.log(this.lista);
+    this.listaPhoto = this.url + this.lista.urlfoto;
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
+    console.log(this.identity);
+    this.userPhoto = this.url + this.identity.urlfoto;
    }
 
    ngOnInit(): void {

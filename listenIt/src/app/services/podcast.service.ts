@@ -16,11 +16,13 @@ export class PodcastService {
   }
 
   createPodcast(email,titulo,imagen: File): Observable<any>{
-    let data = {user: email, podcast: titulo, image: imagen};
-    console.log(data);
+    const formdata: FormData = new FormData();
+    formdata.append('email',email);
+    formdata.append('podcast',titulo);
+    formdata.append('foto',imagen);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url + 'createPodcast',data, {headers: headers});
-  } 
+		return this._http.post(this.url + 'createPodcast',formdata, {headers: null});
+  }
 
   seguir(token,podcast){
     let data = {email: token, name: podcast};

@@ -28,6 +28,12 @@ export class UserService {
 		return this.usuario;
 	  }
 
+	getPhoto(urlfoto): Observable<any> {
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		console.log(this.url + urlfoto);
+		return this._http.get(this.url + urlfoto, {headers: null});
+	}
+
 	seguir(token,user): Observable<any> {
 		let data = {user: token, userSeguir: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Track } from 'ngx-audio-player'; 
 
 @Component({
   selector: 'app-reproductor',
@@ -7,13 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReproductorComponent implements OnInit {
 
+ 
+  msaapDisplayTitle = true;
+  msaapDisplayPlayList = true;
+  msaapPageSizeOptions = [2,4,6];
+  msaapDisplayVolumeControls = true;
+     
+  // Material Style Advance Audio Player Playlist
+  msaapPlaylist: Track[] = [
+    {
+      title: 'Audio One Title',
+      link: 'Link to Audio One URL'
+    },
+    {
+      title: 'Audio Two Title',
+      link: 'Link to Audio Two URL'
+    },
+    {
+      title: 'Audio Three Title',
+      link: 'Link to Audio Three URL'
+    },
+  ];
+
 	
   public msbapTitle ='';
   public msbapAudioUrl = '';
 	msbapDisplayTitle = true;
   msbapDisplayVolumeControls = true;
 
-
+ 
   constructor() { }
 
   ngOnInit(): void {
@@ -23,7 +46,7 @@ export class ReproductorComponent implements OnInit {
 
   // Actualizar la canción del reproductor si se requiere.
   ngDoCheck() {
-    
+    // Dos posibilidades: Reproducir una canción o reproducir una lista de reproduccion.
     //this.msbapTitle = localStorage.getItem("titulo-reprod");
     if(this.msbapAudioUrl != localStorage.getItem("URL-reprod")) {
       console.log("Actualizando reproductor");

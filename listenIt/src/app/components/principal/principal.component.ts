@@ -5,6 +5,7 @@ import { FileService } from '../../services/file.service';
 import { lista } from 'src/app/models/lista';
 import { ListaService } from 'src/app/services/lista.service';
 import { AlbumService } from 'src/app/services/album.service';
+import { GLOBAL } from 'src/app/services/global';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
+  public url;
   public status;
   public album;
   public idAlbumRep;
@@ -21,6 +23,7 @@ export class PrincipalComponent implements OnInit {
   public albums: album[];
   public listas: lista[];
   public identity;
+  public userPhoto;
     
   constructor(
     private _router: Router,
@@ -29,8 +32,12 @@ export class PrincipalComponent implements OnInit {
     private _albumService: AlbumService,
   	private fileService: FileService) 
   {
+    this.url = GLOBAL.url;
     this.token = this.userService.getToken();
     this.identity = this.userService.getIdentity();
+    console.log(this.identity);
+    this.userPhoto = this.url + this.identity.urlfoto;
+    console.log(this.userPhoto);
   }
 
   ngOnInit(): void {

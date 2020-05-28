@@ -1,16 +1,13 @@
-<div class="container fixed-bottom">
-	<div class="row">
-		<div id="cancion" class="col-sm-2">
-			<h2>Una cancion</h2>
-		</div>
+<div class="container fixed-bottom navbar-light bg-light text-light">
 
-		<div class="col-sm-8">
+		<!--<div class="col-sm-8">
 		    <mat-basic-audio-player class="col-12 col-md-6" [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted"
 		    [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msbapDisplayVolumeControls">
 		    </mat-basic-audio-player>
-		</div>
+		</div>-->
 
-		<div id="listAct" class="col-sm-2">
-			<h2>Lista actual</h2>
-		</div>
+		<mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
+    muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions" 
+        [displayVolumeControls]="msaapDisplayVolumeControls" [expanded]="false"></mat-advanced-audio-player>  
+
 </div>

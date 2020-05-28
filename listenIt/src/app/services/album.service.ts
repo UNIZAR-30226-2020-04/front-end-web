@@ -38,8 +38,13 @@ export class AlbumService {
   addAlbum(token, album: album, imagen: File) : Observable<any> {
     let data = {email: token, name: album.nombre, image: imagen};
     console.log(data); 
+    const formdata: FormData = new FormData();
+    formdata.append('email',token);
+    formdata.append('name',album.nombre);
+    formdata.append('foto',imagen);
+    console.log(token + " --- " + album.nombre + " --- " + imagen);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url+ 'createAlbum', data, {headers: headers});
+    return this._http.post(this.url+ 'createAlbum', formdata, {headers: null});
   }
 
   deleteAlbum(token, album: album){

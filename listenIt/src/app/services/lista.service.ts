@@ -54,9 +54,12 @@ export class ListaService {
   }
   
   createLista(email,titulo,imagen): Observable<any>{
-    let data = {user: email, playlist: titulo, image: imagen};
+    const formdata: FormData = new FormData();
+    formdata.append('email',email);
+    formdata.append('playlist',titulo);
+    formdata.append('foto',imagen);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url + 'createPlaylist', data, {headers: headers});
+    return this._http.post(this.url + 'createPlaylist', formdata, {headers: null});
   }
 
   addToLista(token,nombre,autor,idA,idP,idC){
