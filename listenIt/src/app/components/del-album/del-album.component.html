@@ -17,19 +17,16 @@
                     <tr>
                         <th>Imagen</th>
                         <th>Título</th>
-                        <th>Autor</th>
                     </tr>
                 </thead>
                 <tbody *ngFor="let album of albums" >
                         <tr *ngIf="selected[num(album)] != 0" (click)="addSelected(album)">
                             <td><i class="fas fa-music"></i></td>
                             <td>{{album.nombre}}</td>
-                            <td>{{album.autor}}</td>
                         </tr>
                         <tr (click)="quitSelected(album)" *ngIf="selected[num(album)] == 0" id="selected" >
                             <td><i class="fas fa-music" ></i></td>
                             <td>{{album.nombre}}</td>
-                            <td>{{album.autor}}</td>
                         </tr>
                 </tbody>
                 <input type="submit" value="Borrar seleccionados" (click)="deleteAlbum()" class="btn btn-success" />

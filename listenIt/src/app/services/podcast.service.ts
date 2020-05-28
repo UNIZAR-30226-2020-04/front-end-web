@@ -57,9 +57,9 @@ export class PodcastService {
 
   //Muestra los capítulos que componen el podcast
   getCapitulos(token,podcast) : Observable<any> {
-    let data = {user: token, podcast: podcast};
+    let data = {user: token, idalbum: JSON.stringify(podcast)};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.get(this.url+'podcast/'+ token, {headers: headers});
+		return this._http.post(this.url+'listPodcast', data , {headers: headers});
 	}
   
   //Muestra los diferentes Podcast que ha subido un usuario
@@ -74,9 +74,9 @@ export class PodcastService {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+'listSubscriptions',data, {headers: headers});
   }
-  
-  //Añade un nuevo capítulo a un podcast
-  addCapitulo(token, podcast: podcast){
+
+  //Borra un capítulo de un podcast
+  deleteCap(token, podcast: podcast){
     let data = {user: token, name: podcast.nombre, date: podcast.fecha};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url+ 'createPodcast', data, {headers: headers});
