@@ -27,23 +27,23 @@ export class PodcastService {
 
   //Sigue un podcast
   seguir(token,podcast){
-    let data = {email: token, name: podcast};
+    let data = {user: token, userpodcast: JSON.stringify(podcast.idPodcast.l_id.u),idpodcast: JSON.stringify(podcast.idPodcast.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url+ 'seguirPodcast', data, {headers: headers});
+    return this._http.post(this.url+ 'subscribeUser', data, {headers: headers});
   }
   
   //Deja de seguir un podcast
   dejarSeguir(token,podcast){
-    let data = {email: token, name: podcast};
+    let data = {user: token, userpodcast: JSON.stringify(podcast.idPodcast.l_id.u),idpodcast: JSON.stringify(podcast.idPodcast.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url+ 'dejarSeguirPodcast', data, {headers: headers});
+    return this._http.post(this.url+ 'unsubscribeUser', data, {headers: headers});
 	}
 
   //Comprueba si sigues un podcast o no
   seguido(token,podcast){
-    let data = {email: token, name: podcast};
+    let data = {user: token, userpodcast: JSON.stringify(podcast.idPodcast.l_id.u),idpodcast: JSON.stringify(podcast.idPodcast.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.post(this.url+ 'seguidoPodcast', data, {headers: headers});
+    return this._http.post(this.url+ 'checkSubscription', data, {headers: headers});
   }
 
   //Recoge el podcast que el componente verPodcast debe mostrar

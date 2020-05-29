@@ -23,6 +23,7 @@ export class VerPodcastComponent implements OnInit {
   public userPhoto;
   public url;
   public podcastPhoto;
+  public esSeguido;
 
   constructor(
     private _route: ActivatedRoute,
@@ -55,6 +56,7 @@ export class VerPodcastComponent implements OnInit {
           this.status = 'error';
       }	
     );
+    this.seguido();
   }
 
   repCapitulo(podcast) {
@@ -79,7 +81,7 @@ export class VerPodcastComponent implements OnInit {
   }
 
   seguir(){
-    this._podcastService.seguir(this.token, this.podcast.idPodcast.l_id).subscribe(
+    this._podcastService.seguir(this.token, this.podcast).subscribe(
       response => {
         if(response){
           this.status = 'succes';
@@ -95,7 +97,7 @@ export class VerPodcastComponent implements OnInit {
 }
 
 dejarSeguir(){
-    this._podcastService.seguir(this.token, this.podcast.idPodcast.p_id).subscribe(
+    this._podcastService.seguir(this.token, this.podcast).subscribe(
       response => {
         if(response){
           this.status = 'succes';
@@ -111,12 +113,12 @@ dejarSeguir(){
 }
 
 seguido(): number{
-  this._podcastService.seguido(this.token, this.podcast.idPodcast.p_id).subscribe(
+  this._podcastService.seguido(this.token, this.podcast).subscribe(
     response => {
       if(response){
-        return 1;
+        this.esSeguido = 0;
       }else{						
-        return 0;
+        this.esSeguido = 1;
       }
     },
     error => {
