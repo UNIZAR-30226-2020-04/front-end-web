@@ -127,18 +127,19 @@ export class EditAlbumComponent implements OnInit {
 
   //Borra todas las canciones de la lista de canciones seleccionadas para borrar
   deleteSong(){
+    console.log("borro");
     this.selectedSong.forEach(element => {
       this._songService.deleteSong(this.album, element).subscribe(
         response => {
           if(response){
-            console.log(response);
+            console.log("BIEN",response);
             this.status = 'success';
             this.selectedSong = [];
             this.selected = [];
             this.ngOnInit();
           }else{						
             this.status = 'error';
-            console.log(response);
+            console.log("MAL",response);
           }
         },
         error => {

@@ -87,10 +87,8 @@ export class BibliotecaComponent implements OnInit {
           this.status = 'error2';
       }	
     );
-  }
-
-  //Muestra las listas de reproducción que el usuario ha creado
-  mostrarListasPropias(): void {
+    
+    //Muestra las listas de reproducción que el usuario ha creado
     this._listaService.getListas(this.token).subscribe(
       response => {
         if(response){

@@ -66,7 +66,7 @@ export class SongService{
 
 	//Borrar una canción de una lista
 	deleteSongL(token,lista,song) : Observable<any> {
-		let data = { user: token, nombre:"", usercancion: song.idCancion.l_id.u, idplaylist: JSON.stringify(lista.idRep.l_lid) ,idalbum: JSON.stringify(song.idCancion.l_id.l_id), idcancion: JSON.stringify(song.idCancion.c_id) };
+		let data = { user: token, nombre: "", usercancion: song.idCancion.l_id.u, idplaylist: JSON.stringify(lista.idRep.l_lid) ,idalbum: JSON.stringify(song.idCancion.l_id.l_id), idcancion: JSON.stringify(song.idCancion.c_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'deleteSongPlaylist', data, {headers: headers});
 	}

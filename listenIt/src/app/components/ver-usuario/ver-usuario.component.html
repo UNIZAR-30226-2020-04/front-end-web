@@ -85,10 +85,10 @@
 		<img [src]="verUserPhoto" alt="assets/podcast.png" class="img-responsive" style="width:100px !important; height:100px !important"/>
 		<h4>{{usuario.nombre}}</h4>
 		<div *ngIf="seguidoU == 0" >
-			<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
+			<input *ngIf="!esPerfil" type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
 		</div>
 		<div *ngIf="seguidoU == 1">
-			<input type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
+			<input *ngIf="!esPerfil" type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
 		</div>
 	</div>
 

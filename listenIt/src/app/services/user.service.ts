@@ -30,7 +30,6 @@ export class UserService {
 
 	//Sigue a un usuario
 	seguir(token,user): Observable<any> {
-		console.log("sessionUser:", token," targetUser:", user)
 		let data = {sessionUser: token, targetUser: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url + 'followUser', data, {headers: headers});
@@ -52,9 +51,8 @@ export class UserService {
 
 	//Obtiene la lista de usuarios seguidos
 	seguidos(token){
-		console.log("sigo",token)
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url + 'listFollowingUsers',JSON.stringify(token), {headers: headers});
+		return this._http.post(this.url + 'listFollowingUsers',token, {headers: headers});
 	}
 
 	//Obtiene la lista de usuarios que aparecerán en la biblioteca

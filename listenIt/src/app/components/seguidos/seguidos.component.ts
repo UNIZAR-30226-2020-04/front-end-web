@@ -29,14 +29,15 @@ export class SeguidosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log();
     this._userService.seguidos(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.seguidos = response;
+          console.log("BIEN",response);
         }else{						
           this.status = 'error2';
+          console.log("MAL");
         }
       },
       error => {
