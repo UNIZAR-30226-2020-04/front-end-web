@@ -10,6 +10,7 @@ import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http'
   providers: [UserService]
 })
 export class RegistroComponent implements OnInit {
+  public identity;
   selectedFiles: FileList;
   currentFile: File;
   public title: string;
@@ -40,7 +41,7 @@ export class RegistroComponent implements OnInit {
             this.status = 'success';
             localStorage.setItem('identity', JSON.stringify(this.usuario));
             localStorage.setItem('token', this.usuario.correo);
-            this._router.navigate(['/Principal']);
+            this.login();
         } else {
             this.status = 'error';
         }
@@ -50,4 +51,30 @@ export class RegistroComponent implements OnInit {
         this.status = 'error';
     }
   ); }
+
+  login() {
+    this._userService.signup(this.usuario).subscribe(
+      response => {
+        if (response.correo == null) {
+          this.status = 'error';
+          console.log(this.status);
+        }
+        else {
+          this.status = 'success';
+          this.identity = response;
+          console.log(this.identity);
+          localStorage.setItem('identity', JSON.stringify(this.identity));
+          localStorage.setItem('token', this.identity.correo);
+          this._router.navigate(['/Principal']);
+        }
+      },
+      error => {
+          console.log(<any> error);
+          var errorMessage = <any> error;
+          if (errorMessage != null) {
+              this.status = 'error';
+          }
+      }
+    );
+  }
 }
