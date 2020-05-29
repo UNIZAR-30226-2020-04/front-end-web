@@ -57,6 +57,27 @@ export class VerPodcastComponent implements OnInit {
     );
   }
 
+  repCapitulo(podcast) {
+    // Reproducir cancion seleccionada.
+    let track = [{title: podcast.nombre, link: (this.url + podcast.mp3)}];
+    console.log(track);
+    // Enviar lista a reproductor.
+    localStorage.setItem("listaReproduccion",JSON.stringify(track));
+    // Indicar al reproductor que puede trabajar.
+    localStorage.setItem("eventoReprod","actualizar");
+  }
+
+  repPodcast() {
+    let track = new Array();
+    for(let i in this.capitulos) {
+      // Recorrer todas las canciones
+      track.push({title: this.capitulos[i].nombre, link: (this.url + this.capitulos[i].mp3)});
+    }
+    console.log(track);
+    localStorage.setItem("listaReproduccion",JSON.stringify(track));
+    localStorage.setItem("eventoReprod","actualizar");
+  }
+
   seguir(){
     this._podcastService.seguir(this.token, this.podcast.idPodcast.l_id).subscribe(
       response => {

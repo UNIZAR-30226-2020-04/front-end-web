@@ -59,7 +59,7 @@ export class PodcastService {
 
   //Muestra los capítulos que componen el podcast
   getCapitulos(token,podcast) : Observable<any> {
-    let data = {user: token, idalbum: podcast.idPodcast.l_id};
+    let data = {user: token, idalbum: JSON.stringify(podcast.idPodcast.l_id)};
     console.log(data);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+'listPodcast', data , {headers: headers});
@@ -85,6 +85,7 @@ export class PodcastService {
     formdata.append('idalbum',idAlbum);
     formdata.append('user',correo);
     formdata.append('nombreC',titCancion);
+    formdata.append('genero',"genero");
     console.log(idAlbum + " -- " + correo + " -- " + titCancion);
     const req = new HttpRequest('POST', GLOBAL.url + 'subirCapitulo', formdata, {
         reportProgress: true,
