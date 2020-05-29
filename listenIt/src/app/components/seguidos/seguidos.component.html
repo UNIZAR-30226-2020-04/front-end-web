@@ -39,7 +39,7 @@
 		<h3 *ngIf="!seguidos">Todavía no has seguido a ningún usuario...</h3>
 			<ul class="list-inline" *ngIf="seguidos">
 				<li class="list-inline-item" *ngFor="let user of seguidos">
-					<a class="text-light" href="/VerUsuario" (click)="local(user)">
+					<a class="text-light" routerLink="/VerUsuario" (click)="local(user)">
 						<div class="container text-center" >
 							<img [src]="foto(user)" class="img-responsive" style="width:85px !important; height:85px !important"/>
 							<h3>{{user.nombre}}</h3>

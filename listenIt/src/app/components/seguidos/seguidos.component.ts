@@ -47,7 +47,7 @@ export class SeguidosComponent implements OnInit {
     );
   }
   local(elemento){
-  	localStorage.setItem('elemento', JSON.stringify(elemento));
+  	localStorage.setItem('verUsuario', JSON.stringify(elemento));
   }
 
   foto(objeto){
