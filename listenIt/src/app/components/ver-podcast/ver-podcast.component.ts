@@ -31,6 +31,7 @@ export class VerPodcastComponent implements OnInit {
     private _podcastService: PodcastService,
   ) {
     this.podcast = this._podcastService.getPodcast();
+    console.log(this.podcast);
     this.url = GLOBAL.url;
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
@@ -39,11 +40,12 @@ export class VerPodcastComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    /*this._podcastService.getCapitulos(this.token,this.podcast).subscribe(
+    this._podcastService.getCapitulos(this.token,this.podcast).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.capitulos = response;
+          console.log(this.capitulos);
         }else{						
           this.status = 'error';
         }
@@ -52,7 +54,7 @@ export class VerPodcastComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
   }
 
   seguir(){

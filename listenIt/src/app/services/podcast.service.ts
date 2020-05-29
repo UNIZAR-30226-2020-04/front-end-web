@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpRequest, HttpEvent} from '@angular/common/http';
 import { GLOBAL } from './global';
 import { podcast } from '../models/podcast';
 import { Observable } from 'rxjs';
@@ -59,7 +59,8 @@ export class PodcastService {
 
   //Muestra los capítulos que componen el podcast
   getCapitulos(token,podcast) : Observable<any> {
-    let data = {user: token, idalbum: JSON.stringify(podcast)};
+    let data = {user: token, idalbum: podcast.idPodcast.l_id};
+    console.log(data);
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+'listPodcast', data , {headers: headers});
 	}
@@ -76,6 +77,21 @@ export class PodcastService {
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+'listSubscriptions',data, {headers: headers});
   }
+
+  addCap(correo,idAlbum,titCancion,file: File): Observable<HttpEvent<{}>> {
+    console.log("Subiendo: " + file);
+    const formdata: FormData = new FormData();
+    formdata.append('file', file);
+    formdata.append('idalbum',idAlbum);
+    formdata.append('user',correo);
+    formdata.append('nombreC',titCancion);
+    console.log(idAlbum + " -- " + correo + " -- " + titCancion);
+    const req = new HttpRequest('POST', GLOBAL.url + 'subirCapitulo', formdata, {
+        reportProgress: true,
+        responseType: 'text'
+    });
+    return this._http.request(req);
+   }
 
   //Borra un capítulo de un podcast
   deleteCap(token, podcast: podcast){
