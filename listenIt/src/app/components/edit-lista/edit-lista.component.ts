@@ -22,7 +22,7 @@ export class EditListaComponent implements OnInit {
   public tituloLista;
   public nombreCancion;
   public genero;
-  public lista: lista;
+  public lista;
   public usuario: usuario;
   public identity;
   public cancion;
@@ -63,7 +63,7 @@ export class EditListaComponent implements OnInit {
 
   ngOnInit(){
     //Obtiene las canciones de la lista
-    /*this._songService.getSongsL(this.lista).subscribe(
+    this._songService.getSongsL(this.lista).subscribe(
     response => {
       if(response != null){
         this.status = 'succes';
@@ -76,7 +76,7 @@ export class EditListaComponent implements OnInit {
       console.log(<any> error);
         this.status = 'error';
     }	
-  );*/
+  );
   }
 
   //Busca canciones por nombre y muestra la lista de resultados

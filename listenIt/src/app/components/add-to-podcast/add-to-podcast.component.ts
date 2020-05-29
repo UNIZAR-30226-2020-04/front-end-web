@@ -80,8 +80,7 @@ export class AddToPodcastComponent implements OnInit {
           }
       }
     );
-    //////////////PONER EL IF this.status = "success"
-    this.caps.push(new cancion("","",this.nombreCapitulo,"","",""));
+    if (this.status == "success") this.caps.push(new cancion("","",this.nombreCapitulo,"","",""));
     subirCapitulo.resetForm();
   }
 

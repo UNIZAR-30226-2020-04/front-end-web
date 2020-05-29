@@ -61,6 +61,7 @@ export class ListaService {
   
   //Crea una nueva lista
   createLista(email,titulo,imagen): Observable<any>{
+    console.log(email,titulo,imagen)
     const formdata: FormData = new FormData();
     formdata.append('email',email);
     formdata.append('playlist',titulo);
@@ -71,14 +72,13 @@ export class ListaService {
 
   //Añade una canción a una lista
   addToLista(token,nombre,autor,idA,idP,idC){
-    console.log("holi  ",token,nombre,autor,idA,idP,idC);
-    let data = {user: token, nombre: nombre, usercancion: autor,idalbum : JSON.stringify(idA),idplaylist: idP,idcancion: JSON.stringify(idC)};
+    let data = {user: token, nombre: nombre, usercancion: autor,idalbum : JSON.stringify(idA),idplaylist: JSON.stringify(idP),idcancion: JSON.stringify(idC)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.post(this.url+ 'addToPlaylist', data, {headers: headers});
   }
 
   //Borra una lista
-  deleteLista(token, lista: lista){
+  deleteLista(token, lista){
     let data = {user: token, idplaylist: JSON.stringify(lista.idRep.l_id)};
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
     return this._http.post(this.url+'deletePlaylist', data, {headers: headers});

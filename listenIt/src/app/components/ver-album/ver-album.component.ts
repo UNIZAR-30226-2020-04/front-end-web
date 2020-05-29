@@ -94,12 +94,10 @@ export class VerAlbumComponent implements OnInit {
             this.status = 'succes';
             var i = this.num(element);
             this.likes[i]=true;
-            console.log(this.likes[i]);
           }else{						
             this.status = 'succes';
             var i = this.num(element);
             this.likes[i]=false;
-            console.log(this.likes[i]);
           }
         },
         error => {

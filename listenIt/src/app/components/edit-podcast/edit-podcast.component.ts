@@ -43,19 +43,23 @@ export class EditPodcastComponent implements OnInit {
     this.caps=[];
     this.selected= new Array<number>();
     this.selectedCap=[];
-    this.podcast = new podcast(null,"","","","");
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;
     this.podcast = JSON.parse(localStorage.getItem('editPodcast'));
   }
   ngOnInit(){
+    this.getCapitulos();
+  }
+
+  getCapitulos(){
     //Obtiene los capítulos del podcast
-    this._podcastService.getCapitulos(this.token,this.podcast.idPodcast.l_id).subscribe(
+    this._podcastService.getCapitulos(this.token,this.podcast).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.caps = response;
+          console.log(response);
         }else{						
           this.status = 'error';
         }
@@ -72,12 +76,13 @@ export class EditPodcastComponent implements OnInit {
   }
 
   //Sube un nuevo capítulo, o varios, al podcast
-  uploadCap(subirCap){/*
+  uploadCap(subirCap){
     this.currentFile = this.selectedFiles.item(0);
-    this.fileService.uploadFile(this.token,this.idPodcast,this.nombreCap,this.currentFile).subscribe(
+    this._podcastService.addCap(this.token,this.podcast.idPodcast.l_id,this.nombreCap,this.currentFile).subscribe(
       response => {
         if(response) {
           this.status = "success";
+          this.getCapitulos();
         }
         else {
           this.status = "errorU";
@@ -91,10 +96,8 @@ export class EditPodcastComponent implements OnInit {
           }
       }
     );
-    if (this.status == 'success' ) this.caps.push(new podcast(null,"",this.nombreCap,"",""));
-    subirCap.resetForm();*/
+    subirCap.resetForm();
   }
-
 
   num(cap): number{
     return this.caps.indexOf(cap);
@@ -122,13 +125,13 @@ export class EditPodcastComponent implements OnInit {
   //Borra todos los capítulos de la lista de capítulos seleccionados para borrar
   deleteCap(){
     this.selectedCap.forEach(element => {
-      this._podcastService.deleteCap(this.podcast, element).subscribe(
+      this._podcastService.deleteCap(this.token,this.podcast, element).subscribe(
         response => {
           if(response){
             this.status = 'success';
             this.selectedCap = [];
             this.selected = [];
-            this.ngOnInit();
+            this.getCapitulos();
           }else{						
             this.status = 'error';
           }

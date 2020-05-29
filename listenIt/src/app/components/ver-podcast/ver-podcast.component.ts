@@ -111,7 +111,7 @@ dejarSeguir(){
 }
 
 seguido(): number{
-  /*this._podcastService.seguido(this.token, this.podcast.idPodcast.p_id).subscribe(
+  this._podcastService.seguido(this.token, this.podcast.idPodcast.p_id).subscribe(
     response => {
       if(response){
         return 1;
@@ -123,7 +123,7 @@ seguido(): number{
       console.log(<any> error);
         this.status = 'error2';
     }	
-  );*/
+  );
   return 0;
 }
 
