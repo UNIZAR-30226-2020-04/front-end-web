@@ -36,6 +36,7 @@ export class VerPlaylistComponent implements OnInit {
   ) {
     this.url = GLOBAL.url;
     this.lista = this._listaService.getLista();
+    console.log(this.lista);
     this.listaPhoto = this.url + this.lista.urlfoto;
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
@@ -43,12 +44,13 @@ export class VerPlaylistComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    /*this._songService.getSongsL(this.lista).subscribe(
+    this._songService.getSongsL(this.lista).subscribe(
       response => {
         if(response){
           this.status = 'succes';
           this.songs = response;
-          this.isLiked();
+          console.log(this.songs);
+          //this.isLiked();
         }else{						
           this.status = 'error';
         }
@@ -57,13 +59,34 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );*/
+    );
     this.seguido();
+  }
+
+  repCancion(cancion) {
+    // Reproducir cancion seleccionada.
+    let track = [{title: cancion.nombre, link: (this.url + cancion.mp3)}];
+    console.log(track);
+    // Enviar lista a reproductor.
+    localStorage.setItem("listaReproduccion",JSON.stringify(track));
+    // Indicar al reproductor que puede trabajar.
+    localStorage.setItem("eventoReprod","actualizar");
+  }
+
+  repLista() {
+    let track = new Array();
+    for(let i in this.songs) {
+      // Recorrer todas las canciones
+      track.push({title: this.songs[i].nombre, link: (this.url + this.songs[i].mp3)});
+    }
+    console.log(track);
+    localStorage.setItem("listaReproduccion",JSON.stringify(track));
+    localStorage.setItem("eventoReprod","actualizar");
   }
 
   isLiked(){
     //Comprueba que canciones de la playlist que te gustan, y cuáles no
-    this.songs.forEach(element => {
+    /*this.songs.forEach(element => {
       this._songService.getLike(this.token,element.idCancion.l_id.l_id,element.idCancion.c_id).subscribe(
         response => {
           if(response){
@@ -81,11 +104,11 @@ export class VerPlaylistComponent implements OnInit {
             this.status = 'error';
         }	
       );
-    });
+    });*/
   }
 
   like(song){
-    //Guarda el like de la canción a la que el usuario ha dado like
+    /*//Guarda el like de la canción a la que el usuario ha dado like
     this._songService.like(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response != null){
@@ -99,11 +122,11 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );
+    );*/
   }
 
   unlike(song){
-   //Guarda el dislike de la canción a la que el usuario ha quitado el like
+   /*//Guarda el dislike de la canción a la que el usuario ha quitado el like
     this._songService.unlike(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response){
@@ -117,7 +140,7 @@ export class VerPlaylistComponent implements OnInit {
         console.log(<any> error);
           this.status = 'error';
       }	
-    );
+    );*/
   }
 
   num(song): number{

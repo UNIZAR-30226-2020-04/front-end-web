@@ -37,7 +37,7 @@ export class SongService{
 
 	//Obtener las canciones de una lista
 	getSongsL(lista) : Observable<any> {
-		let data = { user: lista.idRep.u, idalbum: JSON.stringify(lista.idRep.l_id) };
+		let data = { user: lista.idRep.u, idplaylist: JSON.stringify(lista.idRep.l_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');;
 		return this._http.post(this.url+ 'listSongsPlaylist', data, {headers: headers});
 	}

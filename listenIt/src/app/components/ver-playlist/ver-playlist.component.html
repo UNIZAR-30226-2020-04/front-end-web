@@ -44,13 +44,16 @@
 			<div class="col-sm-7">
 				<h3>{{lista.nombre}}</h3>
 				<h3>{{lista.autor}}</h3>
-				<h3>{{lista.fecha}}</h3>
+				<h3>{{lista.fechaPublicacion}}</h3>
 			</div>
 			<div *ngIf="seguida == 0" >
 				<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
 			</div>
 			<div *ngIf="seguida == 1">
 				<input type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
+			</div>
+			<div>
+			<input type="submit" value="Reproducir" (click)="repLista()" class="btn btn-success"/>
 			</div>
 		</div>
 		<div class="container" *ngIf="songs">
@@ -65,8 +68,8 @@
 				<tbody *ngFor="let cancion of songs">
 					<tr>
 						<td><i class="fas fa-music"></i></td>
-						<td>{{cancion.nombre}}</td>
-						<td>{{cancion.autor}}</td>
+						<td (click)="repCancion(cancion)">{{cancion.nombre}}</td>
+						<td (click)="repCancion(cancion)">{{cancion.autor}}</td>
 						<td *ngIf="likes[num(cancion)] == false">
 							<img src="assets/likew.png" class="img-responsive" (click)="like(cancion)" style="width:20px !important; height:20px !important"/>
 						</td>

@@ -43,13 +43,16 @@
 			<div class="col-sm-7">
 				<h3>{{podcast.nombre}}</h3>
 				<h3>{{podcast.autor}}</h3>
-				<h3>{{podcast.fecha}}</h3>
+				<h3>{{podcast.fechaPublicacion}}</h3>
 			</div>
 			<div *ngIf="seguido()==0" >
 				<input type="submit" value="Seguir" (click)="seguir()" class="btn btn-success" />
 			</div>
 			<div *ngIf="seguido()==1">
 				<input type="submit" value="Dejar de seguir" (click)="dejarSeguir()" class="btn btn-success" />
+			</div>
+			<div>
+			<input type="submit" value="Reproducir" (click)="repPodcast()" class="btn btn-success"/>
 			</div>
 		</div>
 		<div class="container" *ngIf="capitulos">
@@ -64,8 +67,8 @@
 				<tbody *ngFor="let cap of capitulos">
 					<tr>
 						<td><i class="fas fa-music"></i></td>
-						<td>{{cap.nombre}}</td>
-						<td>{{cap.autor}}</td>
+						<td (click)="repCapitulo(cap)">{{cap.nombre}}</td>
+						<td (click)="repCapitulo(cap)">{{cap.autor}}</td>
 					</tr>
 				</tbody>
 			</table>
