@@ -59,7 +59,7 @@ export class AddToPodcastComponent implements OnInit {
   }
 
   //Sube un nuevo capítulo al podcast, con los datos recogidos del formulario
-  uploadCap(subirCapitulo){
+  uploadCap(subirCapitulo){/*
     this.currentFile = this.selectedFiles.item(0);
     this.fileService.uploadFile(this.token,this.idPodcast,this.nombreCapitulo,this.currentFile).subscribe(
       response => {
@@ -82,7 +82,7 @@ export class AddToPodcastComponent implements OnInit {
     );
     //////////////PONER EL IF this.status = "success"
     this.caps.push(new cancion("","",this.nombreCapitulo,"","",""));
-    subirCapitulo.resetForm();
+    subirCapitulo.resetForm();*/
   }
 
   //Finaliza el proceso de subida de un podcast

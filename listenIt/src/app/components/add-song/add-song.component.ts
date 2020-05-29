@@ -59,7 +59,7 @@ export class AddSongComponent implements OnInit {
   //Sube una nueva canción con los datos y el mp3 recogidos del formulario
   uploadSong(subirCancion){
     this.currentFile = this.selectedFiles.item(0);
-    this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.currentFile).subscribe(
+    this.fileService.uploadFile(this.token,this.idAlbum,this.nombreCancion,this.genero,this.currentFile).subscribe(
       response => {
         if(response) {
           //Canción añadida correctamente al album.

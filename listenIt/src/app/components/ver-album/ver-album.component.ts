@@ -66,7 +66,7 @@ export class VerAlbumComponent implements OnInit {
 
   repCancion(cancion) {
     // Reproducir cancion seleccionada.
-    let track = [{title: cancion.nombre, url: (this.url + cancion.mp3)}];
+    let track = [{title: cancion.nombre, link: (this.url + cancion.mp3)}];
     console.log(track);
     // Enviar lista a reproductor.
     localStorage.setItem("listaReproduccion",JSON.stringify(track));

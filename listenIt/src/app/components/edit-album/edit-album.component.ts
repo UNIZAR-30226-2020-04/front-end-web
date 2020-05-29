@@ -77,7 +77,7 @@ export class EditAlbumComponent implements OnInit {
   //Sube una nueva canción al álbum
   uploadSong(subirCancion){
     this.currentFile = this.selectedFiles.item(0);
-    this.fileService.uploadFile(this.token,this.album.idAlbum.l_id,this.nombreCancion,this.currentFile).subscribe(
+    this.fileService.uploadFile(this.token,this.album.idAlbum.l_id,this.nombreCancion,this.genero,this.currentFile).subscribe(
       response => {
         if(response) {
           //Canción añadida correctamente al album.
