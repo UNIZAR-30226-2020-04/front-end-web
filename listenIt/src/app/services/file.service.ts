@@ -11,14 +11,15 @@ export class FileService {
   	this.url = GLOBAL.url;
   }
  
-  uploadFile(correo,idAlbum,titCancion,file: File): Observable<HttpEvent<{}>> {
+  uploadFile(correo,idAlbum,titCancion,genero,file: File): Observable<HttpEvent<{}>> {
   		console.log("Subiendo: " + file);
 		const formdata: FormData = new FormData();
 		formdata.append('file', file);
 		formdata.append('idalbum',idAlbum);
 		formdata.append('user',correo);
 		formdata.append('nombreC',titCancion);
-		console.log(idAlbum + " -- " + correo + " -- " + titCancion);
+		formdata.append('genero',genero);
+		console.log(idAlbum + " -- " + correo + " -- " + titCancion + " --- " + genero);
 		//let data = {email: correo, tituloAl: idAlbum, tituloCanc: titCancion, mp3: formdata};
 		//console.log(data);
 		const req = new HttpRequest('POST', GLOBAL.url + 'subirCancion', formdata, {

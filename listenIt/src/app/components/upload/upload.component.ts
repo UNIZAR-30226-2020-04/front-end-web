@@ -21,7 +21,7 @@ export class UploadComponent implements OnInit {
   	this.selectedFiles = event.target.files;
   }
 
-  upload() {
+  /*upload() {
   	this.currentFile = this.selectedFiles.item(0);
   	this.fileService.uploadFile(this.currentFile,this.currentFile,this.currentFile,this.currentFile).subscribe(response => {
 
@@ -30,6 +30,6 @@ export class UploadComponent implements OnInit {
   			console.log(response.body);
   		}
   	});
-  }
+  }*/
 
 }
