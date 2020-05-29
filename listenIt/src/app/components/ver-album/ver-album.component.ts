@@ -6,6 +6,7 @@ import { AlbumService } from '../../services/album.service';
 import { UserService } from '../../services/user.service';
 import { SongService } from 'src/app/services/song.service';
 import { GLOBAL } from 'src/app/services/global';
+import { Track } from 'ngx-audio-player';
 
 @Component({
   selector: 'app-ver-album',
@@ -39,7 +40,7 @@ export class VerAlbumComponent implements OnInit {
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
     this.userPhoto = this.url + this.identity.urlfoto;
-    this.likes=[]
+    this.likes=[];
    }
 
   ngOnInit(): void {
@@ -50,6 +51,7 @@ export class VerAlbumComponent implements OnInit {
           this.status = 'succes';
           // Lista de canciones del album.
           this.songs = response;
+          console.log(this.songs);
           this.isLiked();
         }else{						
           this.status = 'error';
@@ -60,6 +62,27 @@ export class VerAlbumComponent implements OnInit {
           this.status = 'error';
       }	
     );
+  }
+
+  repCancion(cancion) {
+    // Reproducir cancion seleccionada.
+    let track = [{title: cancion.nombre, url: (this.url + cancion.mp3)}];
+    console.log(track);
+    // Enviar lista a reproductor.
+    localStorage.setItem("listaReproduccion",JSON.stringify(track));
+    // Indicar al reproductor que puede trabajar.
+    localStorage.setItem("eventoReprod","actualizar");
+  }
+
+  repAlbum() {
+    let track = new Array();
+    for(let i in this.songs) {
+      // Recorrer todas las canciones
+      track.push({title: this.songs[i].nombre, link: (this.url + this.songs[i].mp3)});
+    }
+    console.log(track);
+    localStorage.setItem("listaReproduccion",JSON.stringify(track));
+    localStorage.setItem("eventoReprod","actualizar");
   }
 
   isLiked(){

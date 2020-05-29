@@ -45,6 +45,9 @@
 				<h3>{{album.autor}}</h3>
 				<h3>{{album.fecha}}</h3>
 			</div>
+			<div>
+			<input type="submit" value="Reproducir" (click)="repAlbum()" class="btn btn-success"/>
+			</div>
 		</div>
 		<br/>
 		<div class="container" *ngIf="songs">
@@ -57,7 +60,7 @@
 					</tr>
 				</thead>
 				<tbody *ngFor="let cancion of songs">
-					<tr>
+					<tr (click)=repCancion(cancion)>
 						<td><i class="fas fa-music"></i></td>
 						<td>{{cancion.nombre}}</td>
 						<td>{{cancion.genero}}</td>
