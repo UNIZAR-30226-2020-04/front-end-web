@@ -41,26 +41,12 @@ export class PrincipalComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._songService.getLikedSongs(this.token).subscribe(
-      response => {
-        if(response != null){
-          this.status = 'succes';
-          this.listas = response;
-        }else{						
-          this.status = 'error';
-        }
-      },
-      error => {
-        console.log(<any> error);
-          this.status = 'error';
-      }	
-    );
-
     this._listaService.getListas(this.token).subscribe(
       response => {
         if(response != null){
           this.status = 'succes';
           this.listas = response;
+          console.log("TRUE: TUS Listas",response);
         }else{						
           this.status = 'error';
         }
@@ -70,7 +56,6 @@ export class PrincipalComponent implements OnInit {
           this.status = 'error';
       }	
     );
-
 
     this._albumService.getAlbumsBiblio(this.token).subscribe(
       response => {

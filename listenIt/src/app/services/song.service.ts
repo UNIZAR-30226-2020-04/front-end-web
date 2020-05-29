@@ -15,7 +15,8 @@ export class SongService{
 
 	//Dar like a una canción 
 	like(token,album,song) : Observable<any> {
-		let data = { correo: token, idalbum: JSON.stringify(album), correoalbum: JSON.stringify(song.idCancion.l_id.u), idcancion: JSON.stringify(song.idCancion.c_id) };
+		console.log("correo:", token, "idalbum:", JSON.stringify(album), "correoalbum:", song.idCancion.l_id.u, "idcancion:", JSON.stringify(song.idCancion.c_id));
+		let data = { correo: token, idalbum: JSON.stringify(album), correoalbum: song.idCancion.l_id.u, idcancion: JSON.stringify(song.idCancion.c_id) };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ 'likeSong', data, {headers: headers});
 	}
@@ -29,7 +30,7 @@ export class SongService{
 
 	//Obtener si le has dado like a una cancion
 	getLike(token,album,song) : Observable<any> {
-		let data = { correo: token, idalbum: JSON.stringify(album),idcancion: JSON.stringify(song)};
+		let data = { correo: token, correoalbum: song.idCancion.l_id.u , idalbum: JSON.stringify(album), idcancion: JSON.stringify(song.idCancion.c_id)};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url+ '/checkLike', data, {headers: headers});
 	}

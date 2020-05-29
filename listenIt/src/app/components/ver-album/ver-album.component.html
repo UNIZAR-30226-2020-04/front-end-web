@@ -60,10 +60,10 @@
 					</tr>
 				</thead>
 				<tbody *ngFor="let cancion of songs">
-					<tr (click)=repCancion(cancion)>
+					<tr>
 						<td><i class="fas fa-music"></i></td>
-						<td>{{cancion.nombre}}</td>
-						<td>{{cancion.genero}}</td>
+						<td (click)=repCancion(cancion)>{{cancion.nombre}}</td>
+						<td (click)=repCancion(cancion)>{{cancion.genero}}</td>
 						<td *ngIf="likes[num(cancion)] == false">
 							<img src="assets/likew.png" class="img-responsive" (click)="like(cancion)" style="width:20px !important; height:20px !important"/>
 						</td>

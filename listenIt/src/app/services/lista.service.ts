@@ -57,7 +57,7 @@ export class ListaService {
   getListasBiblio(token) : Observable<any> {
     let data = {user: token };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+'listFollows', data , {headers: headers});
+		return this._http.post(this.url+ 'listFollowsPlaylists', data , {headers: headers});
   }
   
   //Crea una nueva lista

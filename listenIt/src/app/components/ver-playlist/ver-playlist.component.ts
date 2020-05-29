@@ -36,11 +36,9 @@ export class VerPlaylistComponent implements OnInit {
   ) {
     this.url = GLOBAL.url;
     this.lista = this._listaService.getLista();
-    console.log(this.lista);
     this.listaPhoto = this.url + this.lista.urlfoto;
     this.token = this._userService.getToken();
     this.identity = this._userService.getIdentity();
-    console.log(this.identity);
     this.userPhoto = this.url + this.identity.urlfoto;
    }
 
@@ -128,7 +126,6 @@ export class VerPlaylistComponent implements OnInit {
 
   seguir(){
     //Sigue la lista de reproducción
-    console.log("SEGUIR");
     this._listaService.seguir(this.token, this.lista).subscribe(
       response => {
         if(response){
@@ -148,12 +145,14 @@ export class VerPlaylistComponent implements OnInit {
 
   dejarSeguir(){
     //Deja de seguir la lista de reproducción
-    this._listaService.seguir(this.token, this.lista).subscribe(
+    this._listaService.dejarSeguir(this.token, this.lista).subscribe(
       response => {
         if(response){
+          console.log("BIEN");
           this.status = 'succes';
           this.seguido();
-        }else{						
+        }else{			
+          console.log("MAL");			
           this.status = 'error';
         }
       },
@@ -165,16 +164,15 @@ export class VerPlaylistComponent implements OnInit {
   }
 
   seguido(){
-    console.log("SEGUIDO");
     //Comprueba al cargar la página si sigues la lista de reproducción, para mostrar el botón correcto
     this._listaService.seguido(this.token, this.lista).subscribe(
       response => {
         if(response){
+          console.log("BIEEN");
           this.seguida = 1;
-          console.log("TRUE");
-        }else{				
-          this.seguida = 0;
-          console.log("FALSE");		
+        }else{			
+          console.log("MAL");	
+          this.seguida = 0;	
         }
       },
       error => {
