@@ -86,7 +86,6 @@ export class VerAlbumComponent implements OnInit {
   }
 
   isLiked(){
-    console.log("isliked")
     //Comprueba que canciones del álbum te gustan, y cuáles no
     this.songs.forEach(element => {
       this._songService.getLike(this.token,element.idCancion.l_id.l_id,element).subscribe(
@@ -95,13 +94,11 @@ export class VerAlbumComponent implements OnInit {
             this.status = 'succes';
             var i = this.num(element);
             this.likes[i]=true;
-            console.log("RESPUESTA",response,i);
             console.log(this.likes[i]);
           }else{						
             this.status = 'succes';
             var i = this.num(element);
             this.likes[i]=false;
-            console.log("RESPUESTAaaaaaaaa",response,i);
             console.log(this.likes[i]);
           }
         },
@@ -114,17 +111,14 @@ export class VerAlbumComponent implements OnInit {
   }
 
   like(song){
-    console.log("likeo")
     //Guarda el like de la canción a la que el usuario ha dado like
     this._songService.like(this.token,song.idCancion.l_id.l_id,song).subscribe(
       response => {
         if(response){
           this.status = 'succes';
-          console.log("BIEN");
           this.isLiked();
         }else{						
           this.status = 'error';
-          console.log("MAL");
         }
       },
       error => {

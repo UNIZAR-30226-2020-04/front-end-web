@@ -75,7 +75,7 @@ export class BibliotecaComponent implements OnInit {
   mostrarListas(): void {
     this._listaService.getListasBiblio(this.token).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.listas = response;
         }else{						
@@ -93,7 +93,7 @@ export class BibliotecaComponent implements OnInit {
   mostrarListasPropias(): void {
     this._listaService.getListas(this.token).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.listasPropias = response;
         }else{						
@@ -111,7 +111,7 @@ export class BibliotecaComponent implements OnInit {
   mostrarAlbums(): void {
     this._albumService.getAlbumsBiblio(this.token).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.albums = response;
         }else{						
@@ -129,7 +129,7 @@ export class BibliotecaComponent implements OnInit {
   mostrarUsuarios(): void {
     this._userService.getUserBiblio(this.token).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.usuarios = response;
         }else{						
@@ -147,11 +147,13 @@ export class BibliotecaComponent implements OnInit {
   mostrarPodcasts(): void {
     this._podcastService.getPodcastsBiblio(this.token).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.podcasts = response;
+          console.log("YES");
         }else{						
           this.status = 'error2';
+          console.log("NO");
         }
       },
       error => {

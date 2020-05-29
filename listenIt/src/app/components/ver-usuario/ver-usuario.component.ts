@@ -49,7 +49,7 @@ export class VerUsuarioComponent implements OnInit {
     //Busca los albumes del artista
     this._albumService.getAlbums(this.usuario.correo).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.albums = response;
           console.log(response)
@@ -65,7 +65,7 @@ export class VerUsuarioComponent implements OnInit {
     //Busca las listas del artista
     this._listaService.getListas(this.usuario.correo).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.listas = response;
         }else{						
@@ -81,7 +81,7 @@ export class VerUsuarioComponent implements OnInit {
     //Busca los podcast del artista
     this._podcastService.getPodcasts(this.usuario.correo).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.podcasts = response;
         }else{						
@@ -126,7 +126,7 @@ export class VerUsuarioComponent implements OnInit {
   seguir(){
    this._userService.seguir(this.token,this.usuario.correo).subscribe(
       response => {
-        if(response != null){
+        if(response){
           this.status = 'succes';
           this.seguido();
         }else{						
@@ -143,7 +143,7 @@ export class VerUsuarioComponent implements OnInit {
   dejarSeguir(){
     this._userService.dejarSeguir(this.token,this.usuario.correo).subscribe(
        response => {
-         if(response != null){
+         if(response){
            this.status = 'succes';
            this.seguido();
          }else{						
@@ -158,15 +158,12 @@ export class VerUsuarioComponent implements OnInit {
    }
   
    seguido(){
-    console.log(this.token,this.usuario.correo);
     this._userService.seguido(this.token,this.usuario.correo).subscribe(
        response => {
          if(response){
-           console.log("SEGUIDO");
            this.seguidoU = 1;
          }else{		
           this.seguidoU = 0;	
-          console.log("NO SEGUIDO");			
          }
        },
        error => {

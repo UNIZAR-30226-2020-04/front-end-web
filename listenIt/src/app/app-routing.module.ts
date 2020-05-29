@@ -24,6 +24,7 @@ import { AddToPodcastComponent } from './components/add-to-podcast/add-to-podcas
 import { EditListaComponent } from './components/edit-lista/edit-lista.component';
 import { EditAlbumComponent } from './components/edit-album/edit-album.component';
 import { EditPodcastComponent } from './components/edit-podcast/edit-podcast.component';
+import { ReestablecerComponent } from './components/reestablecer/reestablecer.component';
 
 const routes: Routes = [
   
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: '', component: InicioComponent},
   { path: 'Login', component: LoginComponent},
   { path: 'Registro', component: RegistroComponent },
+  { path: 'Reestablecer', component: ReestablecerComponent },
 
 
   { path: 'Perfil', component: UsuarioComponent },
@@ -58,6 +60,7 @@ const routes: Routes = [
   { path: 'EditAlbum', component: EditAlbumComponent },
   { path: 'EditLista', component: EditListaComponent },
   { path: 'EditPodcast', component: EditPodcastComponent }
+  
 ];
 
 @NgModule({

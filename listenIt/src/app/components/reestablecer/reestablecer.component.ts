@@ -15,15 +15,13 @@ import { GLOBAL } from '../../services/global';
 export class ReestablecerComponent implements OnInit {
   selectedFiles: FileList;
   currentFile: File;
-  public album: album;
+  public correo;
   public usuario: usuario;
   public identity;
-  public cancion: cancion;
   public token;
   public alertMessage;
   public url;
   public status: string;
-  public filesToUpload: Array<File>;
   public title;
   
   constructor(
@@ -35,13 +33,26 @@ export class ReestablecerComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.url = GLOBAL.url;
-    this.title = "Subir álbum";
+    this.title = "Reestablecer contraseña";
   
   
-  }ngOnInit(): void {
-  }
+  }ngOnInit(): void {}
   
   onSubmit(){
+    this._userService.recoverPass(this.correo).subscribe(
+      response => {
+        if(response){
+          this.status = "success";
+          this._router.navigate(['/Login']);
 
+        }else{		
+         console.log("NO SEGUIDO");
+        }
+      },
+      error => {
+        console.log(<any> error);
+          this.status = 'error';
+      }	
+    );
   }
 }

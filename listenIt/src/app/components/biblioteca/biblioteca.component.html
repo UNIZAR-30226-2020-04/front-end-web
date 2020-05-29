@@ -35,15 +35,13 @@
 </div> 
 
 
-
-
 <div class="row">
 	<div class="col-sm-10">
 		<div id="menuBiblio" class="btn-group">
 		 <button type="button" (click)="select = 1; mostrarListas();" class="btn btn-outline-secondary text-light">Playlists</button>
-		 <button type="button" (click)="select = 2" class="btn btn-outline-secondary text-light">Artistas</button>
+		 <button type="button" (click)="select = 2; mostrarUsuarios();" class="btn btn-outline-secondary text-light">Artistas</button>
 		 <button type="button" (click)="select = 3; mostrarAlbums();" class="btn btn-outline-secondary text-light">Álbumes</button>
-		 <button type="button" (click)="select = 4" class="btn btn-outline-secondary text-light">Podcasts</button>
+		 <button type="button" (click)="select = 4; mostrarPodcasts();" class="btn btn-outline-secondary text-light">Podcasts</button>
 	   </div> 
 
 	   <div id="listaBiblio" class="container-fluid">

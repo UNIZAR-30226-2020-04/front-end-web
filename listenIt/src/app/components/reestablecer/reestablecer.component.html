@@ -7,14 +7,14 @@
         <form #subirAlbum="ngForm" (ngSubmit)="onSubmit()" class="col-lg-16">
             <p>
                 <label>Correo:</label>
-                <input type="text" name="correo" #name="ngModel" class="form-control" [(ngModel)]="album.nombre" required />
+                <input type="text" name="correo" #name="ngModel" class="form-control" [(ngModel)]="correo" required />
                 <span *ngIf="!name.valid && name.touched" >El correo es obligatorio.</span>
             </p>
-
+            <a>Se le enviará un email con la nueva contraseña</a>
             <br/>
-            <input type="submit" value="REESTABLECER" class="btn btn-success" [disabled]="!selectedFiles || !subirAlbum.form.valid" />
+            <br/>
+            <input type="submit" value="Enviar email"  class="btn btn-success" />
         </form> 
     <br/>
-        <input type="submit" value="SALIR" routerLink="/Principal" class="btn btn-success"/>
     </div>
 </div>

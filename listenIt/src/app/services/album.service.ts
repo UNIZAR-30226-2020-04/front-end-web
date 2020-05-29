@@ -33,10 +33,9 @@ export class AlbumService {
   }
   
   //Lista los álbums que deben aparecer en la biblioteca de un usuario
-  getAlbumsBiblio(token : String) : Observable<any> {
-    let data = { user: token };
+  getAlbumsBiblio(token) : Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+ 'listAlbumsLikes', data, {headers: headers});
+		return this._http.post(this.url+ 'listAlbumsLikes', JSON.stringify(token), {headers: headers});
 	}
 
   //Sube un álbum

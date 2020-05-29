@@ -72,9 +72,9 @@ export class PodcastService {
 
   //Obtiene la lista de podcast que sigue un usuario, que serán los que se muestren en la biblioteca.
   getPodcastsBiblio(token) : Observable<any> {
-    let data = {user: token};
+    console.log("podcastBiblio");
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+'listSubscriptions',data, {headers: headers});
+		return this._http.post(this.url+'listSubscriptions', JSON.stringify(token), {headers: headers});
   }
 
   //Borra un capítulo de un podcast

@@ -30,6 +30,7 @@ export class UserService {
 
 	//Sigue a un usuario
 	seguir(token,user): Observable<any> {
+		console.log("sessionUser:", token," targetUser:", user)
 		let data = {sessionUser: token, targetUser: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
 		return this._http.post(this.url + 'followUser', data, {headers: headers});
@@ -46,21 +47,20 @@ export class UserService {
 	seguido(token,user){
 		let data = {sessionUser: token, targetUser: user};
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+ 'checkFollowedUsers', data, {headers: headers});
+		return this._http.post(this.url+ 'checkFollowUser', data, {headers: headers});
 	}
 
 	//Obtiene la lista de usuarios seguidos
 	seguidos(token){
-		let data = {user: token};
+		console.log("sigo",token)
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url + 'listFollowedUsers', data, {headers: headers});
+		return this._http.post(this.url + 'listFollowingUsers',JSON.stringify(token), {headers: headers});
 	}
 
 	//Obtiene la lista de usuarios que aparecerán en la biblioteca
 	getUserBiblio(token){
-		let data = {user: token};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(this.url + 'listUsersLikes', data, {headers: headers});
+        return this._http.post(this.url + 'listUsersLikes', JSON.stringify(token), {headers: headers});
 	}
 
 	//Hace log in de un usuario
@@ -112,6 +112,13 @@ export class UserService {
 		let data = {user: email, pass: pass, newPass: newPass};
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
         return this._http.post(this.url + 'cambiarPass', data, {headers: headers});
+	}
+
+	//Reestablece la contraseña de un usuario
+	recoverPass(email): Observable<any> {
+		console.log("holi")
+		let headers = new HttpHeaders().set('Content-Type', 'application/json');
+		return this._http.post(this.url + 'recoverEmail', email, {headers: headers});
 	}
 
 	//Elimina un usuario

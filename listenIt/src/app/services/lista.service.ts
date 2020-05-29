@@ -55,9 +55,8 @@ export class ListaService {
 
   //Lista las listas que un usuario sigue
   getListasBiblio(token) : Observable<any> {
-    let data = {user: token };
 		let headers = new HttpHeaders().set('Content-Type', 'application/json');
-		return this._http.post(this.url+ 'listFollowsPlaylists', data , {headers: headers});
+		return this._http.post(this.url+ 'listFollowsPlaylists', JSON.stringify(token), {headers: headers});
   }
   
   //Crea una nueva lista
